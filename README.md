@@ -1,10 +1,10 @@
-# FlashOffice Web - React + TypeScript + Vite
+# TrustView Web - React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR, ESLint rules, Biome formatting, and pre-commit hooks for the FlashOffice platform.
+This template provides a minimal setup to get React working in Vite with HMR, ESLint rules, Biome formatting, and pre-commit hooks for the TrustView platform.
 
-## 🎯 About FlashOffice
+## 🎯 About TrustView
 
-FlashOffice is a platform designed to connect users with service professionals, facilitating the management of appointments, reservations, and product purchases.
+TrustView is a platform designed to connect users with service professionals, facilitating the management of appointments, reservations, and product purchases.
 
 ## 🚀 Tech Stack
 
@@ -210,7 +210,7 @@ web/
 
 ## 🤝 Contributing
 
-We welcome contributions to the FlashOffice platform! Please follow these guidelines:
+We welcome contributions to the TrustView platform! Please follow these guidelines:
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -234,8 +234,8 @@ chore: Maintenance tasks
 
 ## 📄 License
 
-This project is proprietary software owned by **FlashOffice**. All rights reserved © 2025 FlashOffice.
+This project is proprietary software owned by **TrustView**. All rights reserved © 2025 TrustView.
 
 ---
 
-**Built with ❤️ by the FlashOffice team**
+**Built with ❤️ by the TrustView team**
