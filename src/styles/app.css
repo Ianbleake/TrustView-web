@@ -1,0 +1,58 @@
+:root {
+  --gradient-hero: linear-gradient(145deg, hsl(225, 30%, 8%), hsl(225, 35%, 14%));
+}
+
+.gradient-hero {
+  background: var(--gradient-hero);
+}
+
+.gradient-bg {
+  background-image: linear-gradient(
+    to bottom right,
+    #f97316, /* orange-500 */
+    #f59e0b, /* amber-500 */
+    #fbbf24  /* amber-400 */
+  );
+}
+
+.gradient-bg-r {
+  background-image: linear-gradient(
+    to right,
+    #f97316, /* orange-500 */
+    #f59e0b, /* amber-500 */
+    #fbbf24  /* amber-400 */
+  );
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px hsl(24 90% 52% / 0.2); }
+  50% { box-shadow: 0 0 20px hsl(24 90% 52% / 0.35); }
+}
