@@ -11,7 +11,7 @@ export const MenuOptions = (): React.ReactElement => {
   return (
     <DropdownMenuGroup>
       <DropdownMenuItem
-        className="cursor-pointer"
+        className="cursor-pointer hover:!bg-gray-200/50"
         onClick={() => {
           navigate("settings");
           setOpenMobile(false);

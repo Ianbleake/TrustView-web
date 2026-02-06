@@ -34,7 +34,7 @@ export default function ProfileManager(): React.ReactElement {
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem>
+            <DropdownMenuItem className="hover:!bg-gray-200/50">
               <LogOutButton />
             </DropdownMenuItem>
           </DropdownMenuContent>
