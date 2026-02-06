@@ -1,0 +1,25 @@
+import type React from "react";
+import { Route } from "react-router-dom";
+import { Reviews } from "@/screens/Platform/Reviews";
+import { Dashboard } from "@/screens/Platform/Dashboard";
+import { PlatformLayout } from "@/components/PlatformLayout";
+
+export const PlatformRouter = (): React.ReactElement => {
+  return (
+    <Route
+      path="/platform"
+      element={<PlatformLayout />}
+    >
+      <Route
+        index
+        element={<Dashboard />}
+      />
+
+      <Route
+        path="transform"
+        element={<Reviews />}
+      />
+
+    </Route>
+  );
+};

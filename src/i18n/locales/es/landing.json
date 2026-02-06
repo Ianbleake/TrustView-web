@@ -1,0 +1,670 @@
+{
+  "header": {
+    "menu": [
+      { "label": "Plataformas", "to": "/integrations" },
+      { "label": "Características", "to": "/features" },
+      { "label": "Precios", "to": "/pricing" },
+      { "label": "Nosotros", "to": "/about" }
+    ],
+    "loginButton": "Iniciar sesión",
+    "startButton": "Comenzar ahora"
+  },
+  "about": {
+    "hero": {
+      "title": "Construyendo puentes en el <highlight>comercio digital</highlight>",
+      "subtitle": "Somos un equipo apasionado por simplificar la vida de los vendedores multicanal."
+    },
+    "story": {
+      "title": "Nuestra historia",
+      "paragraphs": [
+        "Bridgely nació de una frustración real. Como vendedores en múltiples marketplaces, pasábamos horas cada semana convirtiendo archivos manualmente, cometiendo errores y perdiendo tiempo valioso que podríamos dedicar a hacer crecer nuestro negocio.",
+        "En 2022, decidimos crear la herramienta que siempre quisimos tener: una solución simple, rápida y confiable para convertir archivos de productos entre cualquier plataforma de ecommerce.",
+        "Hoy, Bridgely ayuda a miles de vendedores en toda Latinoamérica a ahorrar tiempo y evitar errores en sus migraciones de catálogo. Y esto es solo el comienzo."
+      ]
+    },
+    "values": {
+      "title": "Nuestros valores",
+      "items": [
+        {
+          "icon": "target",
+          "title": "Simplicidad",
+          "description": "Creemos que las herramientas poderosas deben ser fáciles de usar."
+        },
+        {
+          "icon": "heart",
+          "title": "Compromiso",
+          "description": "Nos dedicamos al éxito de cada vendedor que confía en nosotros."
+        },
+        {
+          "icon": "Globe",
+          "title": "Accesibilidad",
+          "description": "Democratizamos el acceso a herramientas de nivel empresarial."
+        },
+        {
+          "icon": "users",
+          "title": "Comunidad",
+          "description": "Construimos junto a nuestra comunidad de vendedores."
+        }
+      ]
+    },
+    "team": {
+      "title": "Nuestro equipo",
+      "members": [
+        { "name": "Ivan Rangel", "role": "CEO y Cofundador", "image": "IR" },
+        { "name": "Raymundo Pulido", "role": "CTO y Cofundador", "image": "RP" }
+      ]
+    },
+    "ctas": {
+      "title": "¿Quieres formar parte de Bridgely?",
+      "description": "Estamos buscando personas talentosas que quieran transformar el ecommerce.",
+      "button": "Ver posiciones abiertas"
+    }
+  },
+  "contact": {
+    "hero": {
+      "badge": "Estamos aquí para ayudarte",
+      "title": "Contáctanos",
+      "subtitle": "¿Tienes preguntas sobre Bridgely? Nuestro equipo está listo para ayudarte a optimizar tus conversiones de archivos."
+    },
+    "contactInfo": {
+      "title": "Información de contacto",
+      "descruocion": "Puedes contactarnos directamente a través de cualquiera de estos canales. Respondemos en menos de 24 horas.",
+      "cards": [
+        {
+          "icon": "email",
+          "title": "Email",
+          "lines": ["soporte@bridgely.com", "ventas@bridgely.com"]
+        },
+        {
+          "icon": "whatsapp",
+          "title": "WhatsApp",
+          "lines": ["+52 (55) 9876-5432", "+52 (55) 8765-4321"]
+        },
+        {
+          "icon": "address",
+          "title": "Dirección",
+          "lines": ["Av. Reforma 123, Ciudad de México, México"]
+        }
+      ],
+      "faq": {
+        "title": "¿Buscas respuestas rápidas?",
+        "description": "Revisa nuestra sección de preguntas frecuentes en la página de precios.",
+        "button": "Ver FAQ"
+      }
+    },
+    "form": {
+      "title": "Envíanos un mensaje",
+
+      "fields": {
+        "name": {
+          "label": "Nombre",
+          "placeholder": "Tu nombre",
+          "errorRequired": "El nombre es obligatorio"
+        },
+        "company": {
+          "label": "Empresa",
+          "placeholder": "Tu empresa"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "tu@email.com",
+          "errorRequired": "El email es obligatorio",
+          "errorInvalid": "Email inválido"
+        },
+        "subjectType": {
+          "label": "Asunto",
+          "placeholder": "Selecciona una opción",
+          "options": {
+            "support": "Soporte",
+            "sales": "Ventas",
+            "quote": "Cotización",
+            "other": "Otro"
+          },
+          "errorRequired": "Selecciona un asunto"
+        },
+        "subject": {
+          "label": "Asunto",
+          "placeholder": "Describe tu asunto",
+          "errorRequired": "Especifica el asunto"
+        },
+        "message": {
+          "label": "Mensaje",
+          "placeholder": "Cuéntanos más sobre tu consulta...",
+          "errorRequired": "El mensaje es obligatorio",
+          "errorMinLength": "Mínimo 10 caracteres"
+        }
+      },
+
+      "button": {
+        "submit": "Enviar mensaje"
+      }
+    }
+  },
+  "features": {
+    "hero": {
+      "badge": "Características completas",
+      "title": "Todo lo que necesitas para <highlight>migrar productos</highlight> entre marketplaces y plataformas de ecommerce",
+      "subtitle": "Herramientas potentes diseñadas para vendedores que operan en múltiples marketplaces."
+    },
+    "grid": {
+      "items": [
+        {
+          "icon": "FileSpreadsheet",
+          "title": "Conversión Multi-formato",
+          "description": "Soporta CSV, XLSX, XML y JSON. Convierte entre cualquier formato que necesites para tus marketplaces.",
+          "benefits": [
+            "CSV, XLSX, XML, JSON",
+            "Detección automática de formato",
+            "Preservación de datos"
+          ]
+        },
+        {
+          "icon": "Zap",
+          "title": "Procesamiento Instantáneo",
+          "description": "Convierte miles de productos en segundos gracias a nuestro motor de procesamiento optimizado.",
+          "benefits": [
+            "Hasta 10,000 productos/minuto",
+            "Procesamiento en la nube",
+            "Sin límites de archivo"
+          ]
+        },
+        {
+          "icon": "Shield",
+          "title": "Mapeo Inteligente",
+          "description": "Nuestro sistema mapea automáticamente los campos entre plataformas, identificando equivalencias.",
+          "benefits": [
+            "IA para mapeo de campos",
+            "Sugerencias inteligentes",
+            "Mapeos personalizables"
+          ]
+        },
+        {
+          "icon": "Clock",
+          "title": "Historial de Conversiones",
+          "description": "Accede a todas tus conversiones anteriores y reutiliza configuraciones guardadas.",
+          "benefits": ["Historial ilimitado", "Configuraciones guardadas", "Exportación de logs"]
+        },
+        {
+          "icon": "BarChart3",
+          "title": "Validación de Datos",
+          "description": "Detecta errores y problemas en tus archivos antes de importarlos a la plataforma destino.",
+          "benefits": ["Validación en tiempo real", "Reportes de errores", "Corrección sugerida"]
+        },
+        {
+          "icon": "Globe",
+          "title": "Multi-región",
+          "description": "Soporta formatos específicos de cada país y región para Amazon, Mercado Libre y más.",
+          "benefits": ["Formatos por país", "Multi-idioma", "Monedas locales"]
+        }
+      ]
+    },
+    "ctas": {
+      "title": "¿Listo para simplificar tus migraciones de productos?",
+      "description": "Únete a miles de vendedores que ya ahorran horas cada semana.",
+      "button": "Comenzar gratis"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Conversión de archivos simplificada",
+      "title": "Conecta tus <highlight>marketplaces</highlight> sin esfuerzo",
+      "subtitle": "Convierte archivos de importación entre plataformas de ecommerce en segundos. De Mercado Libre a Amazon, Shopify y más.",
+      "ctaButton": "Comenzar ahora",
+      "demoButton": "Ver demostración",
+      "carrucelDescription": "Confiado por vendedores en",
+      "feature1": {
+        "title": "Sincronización Automática",
+        "description": "Mantén tus catálogos actualizados en todas las plataformas"
+      },
+      "feature2": {
+        "title": "Transformación Inteligente",
+        "description": "Convierte formatos automáticamente sin intervención manual"
+      },
+      "feature3": {
+        "title": "Sin Límites",
+        "description": "Conecta todas las plataformas que necesites"
+      }
+    },
+    "howItWorks": {
+      "badge": "Simple process",
+      "title": "¿Cómo funciona?",
+      "description": "Tres pasos simples para migrar tus productos entre plataformas",
+      "steps": [
+        {
+          "icon": "Upload",
+          "number": "1",
+          "title": "Sube tu archivo",
+          "description": "Arrastra y suelta tu archivo de exportación desde cualquier marketplace. Soportamos CSV, XLSX y más."
+        },
+        {
+          "icon": "Settings",
+          "number": "2",
+          "title": "Valida el origen",
+          "description": "Valida el formato de origen o selecciona el correcto."
+        },
+        {
+          "icon": "Settings",
+          "number": "3",
+          "title": "Selecciona destino",
+          "description": "Elige la plataforma de destino y personaliza el mapeo de campos según tus necesidades."
+        },
+        {
+          "icon": "Download",
+          "number": "4",
+          "title": "Descarga convertido",
+          "description": "Obtén tu archivo listo para importar en la nueva plataforma. Sin errores, sin complicaciones."
+        }
+      ],
+      "dropzone": {
+        "originLabel": "Origen:",
+        "destinationLabel": "Destino:",
+        "marketsSelect": {
+          "placeholder": "Selecciona un marketplace",
+          "label": "Marketplaces"
+        },
+        "input": {
+          "title": "Arrastra archivos aquí",
+          "titleDragging": "Suelta los archivos aquí",
+          "subtitle": "o haz click para seleccionarlos",
+          "filesSubtitle": "Puedes arrastrar más archivos si quieres",
+          "button": "Iniciar transformación",
+          "filesLoaded": "{{count}} archivo cargado",
+          "filesLoaded_plural": "{{count}} archivos cargados"
+        }
+      }
+    },
+    "platforms": {
+      "badge": "Compatibilidad total",
+      "title": "Todas tus plataformas, <highlight>conectadas</highlight>",
+      "description": "Soportamos las principales plataformas de ecommerce de Latinoamérica y el mundo",
+      "convertionsTitle": "Conversiones populares"
+    },
+    "benefits": {
+      "badge": "¿Por qué Bridgely?",
+      "title": "Beneficios que <highlight>impulsan</highlight> tu negocio",
+      "description": "Diseñado para vendedores que quieren expandir su alcance sin complicaciones",
+      "items": [
+        {
+          "icon": "Clock",
+          "title": "Ahorra tiempo",
+          "description": "Convierte miles de productos en segundos, no en horas de trabajo manual.",
+          "color": "text-blue-600",
+          "background": "bg-blue-100"
+        },
+        {
+          "icon": "Shield",
+          "title": "Sin errores",
+          "description": "Mapeo inteligente que previene errores de formato y datos faltantes.",
+          "color": "text-emerald-600",
+          "background": "bg-emerald-100"
+        },
+        {
+          "icon": "Zap",
+          "title": "Súper rápido",
+          "description": "Procesamiento instantáneo sin importar el tamaño de tu catálogo.",
+          "color": "text-amber-600",
+          "background": "bg-amber-100"
+        },
+        {
+          "icon": "BarChart3",
+          "title": "Múltiples formatos",
+          "description": "Soporte para CSV, XLSX, XML y todos los formatos estándar.",
+          "color": "text-indigo-600",
+          "background": "bg-indigo-100"
+        },
+        {
+          "icon": "Globe",
+          "title": "Multi-región",
+          "description": "Adaptado para marketplaces de LATAM, USA, Europa y más regiones globales.",
+          "color": "text-violet-600",
+          "background": "bg-violet-100"
+        },
+        {
+          "icon": "HeartHandshake",
+          "title": "Soporte experto",
+          "description": "Equipo dedicado para ayudarte con integraciones personalizadas y dudas.",
+          "color": "text-rose-600",
+          "background": "bg-rose-100"
+        }
+      ]
+    },
+    "cta": {
+      "badge": "Comienza gratis hoy",
+      "title": "¿Listo para conectar tus marketplaces?",
+      "description": "Únete a miles de vendedores que ya simplifican sus operaciones multicanal con Bridgely.",
+      "primaryButton": "Crear cuenta gratis",
+      "secondaryButton": "Contactar ventas",
+      "footerNote": "14 días de prueba • Cancela cuando quieras"
+    }
+  },
+  "integrations": {
+    "hero": {
+      "title": "Conecta con <highlight>+20 plataformas</highlight>",
+      "description": "Integraciones nativas con los principales marketplaces y plataformas de ecommerce del mundo."
+    },
+    "grid": {
+      "plataforms": [
+        {
+          "name": "Amazon",
+          "category": "Marketplace",
+          "description": "Conecta con Amazon Seller Central en todas las regiones.",
+          "regions": ["US", "MX", "BR", "ES", "UK", "DE"],
+          "formats": ["CSV", "TXT", "XML"],
+          "color": "bg-orange-500"
+        },
+        {
+          "name": "Mercado Libre",
+          "category": "Marketplace",
+          "description": "Exporta e importa productos en todos los países de LATAM.",
+          "regions": ["MX", "AR", "BR", "CO", "CL"],
+          "formats": ["XLSX", "CSV"],
+          "color": "bg-yellow-500"
+        },
+        {
+          "name": "Shopify",
+          "category": "Ecommerce",
+          "description": "Sincroniza tu catálogo completo con tu tienda Shopify.",
+          "regions": ["Global"],
+          "formats": ["CSV", "JSON"],
+          "color": "bg-green-500"
+        },
+        {
+          "name": "WooCommerce",
+          "category": "Ecommerce",
+          "description": "Importa y exporta productos de tu tienda WordPress.",
+          "regions": ["Global"],
+          "formats": ["CSV", "XML"],
+          "color": "bg-purple-500"
+        },
+        {
+          "name": "eBay",
+          "category": "Marketplace",
+          "description": "Gestiona tu inventario en eBay de manera eficiente.",
+          "regions": ["US", "UK", "DE", "ES"],
+          "formats": ["CSV", "FileExchange"],
+          "color": "bg-blue-500"
+        },
+        {
+          "name": "Etsy",
+          "category": "Marketplace",
+          "description": "Exporta tus productos artesanales y vintage.",
+          "regions": ["Global"],
+          "formats": ["CSV"],
+          "color": "bg-orange-600"
+        },
+        {
+          "name": "PrestaShop",
+          "category": "Ecommerce",
+          "description": "Compatible con todas las versiones de PrestaShop.",
+          "regions": ["Global"],
+          "formats": ["CSV", "XML"],
+          "color": "bg-pink-500"
+        },
+        {
+          "name": "Magento",
+          "category": "Ecommerce",
+          "description": "Soporte completo para Adobe Commerce.",
+          "regions": ["Global"],
+          "formats": ["CSV", "XML"],
+          "color": "bg-red-500"
+        }
+      ]
+    }
+  },
+  "pricing": {
+    "hero": {
+      "title": "Planes simples, <highlight>precios transparentes</highlight>",
+      "subtitle": "Elige el plan que mejor se adapte a tu negocio. Sin costos ocultos."
+    },
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "Gratis",
+        "description": "Perfecto para empezar a explorar",
+        "features": [
+          { "text": "50 conversiones/mes", "included": true },
+          { "text": "Formatos básicos (CSV, XLSX)", "included": true },
+          { "text": "3 plataformas", "included": true },
+          { "text": "Soporte por email", "included": true },
+          { "text": "Mapeo inteligente", "included": false },
+          { "text": "API access", "included": false },
+          { "text": "Prioridad en soporte", "included": false }
+        ],
+        "cta": "Comenzar gratis",
+        "popular": false
+      },
+      {
+        "name": "Pro",
+        "price": "$29",
+        "period": "/mes",
+        "description": "Para vendedores en crecimiento",
+        "features": [
+          { "text": "Conversiones ilimitadas", "included": true },
+          { "text": "Todos los formatos", "included": true },
+          { "text": "Todas las plataformas", "included": true },
+          { "text": "Soporte prioritario", "included": true },
+          { "text": "Mapeo inteligente con IA", "included": true },
+          { "text": "Historial ilimitado", "included": true },
+          { "text": "API access", "included": false }
+        ],
+        "cta": "Comenzar prueba gratis",
+        "popular": true
+      },
+      {
+        "name": "Enterprise",
+        "price": "$99",
+        "period": "/mes",
+        "description": "Para equipos y agencias",
+        "features": [
+          { "text": "Todo en Pro", "included": true },
+          { "text": "API access completo", "included": true },
+          { "text": "Usuarios ilimitados", "included": true },
+          { "text": "Soporte dedicado 24/7", "included": true },
+          { "text": "Integraciones personalizadas", "included": true },
+          { "text": "SLA garantizado", "included": true },
+          { "text": "Onboarding personalizado", "included": true }
+        ],
+        "cta": "Contactar ventas",
+        "popular": false
+      }
+    ],
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "questions": [
+        {
+          "question": "¿Puedo cambiar de plan en cualquier momento?",
+          "answer": "Sí, puedes actualizar o degradar tu plan en cualquier momento. Los cambios se aplican inmediatamente."
+        },
+        {
+          "question": "¿Qué métodos de pago aceptan?",
+          "answer": "Aceptamos todas las tarjetas de crédito principales, PayPal y transferencia bancaria para planes Enterprise."
+        },
+        {
+          "question": "¿Hay algún contrato a largo plazo?",
+          "answer": "No, todos nuestros planes son mensuales sin compromiso. Puedes cancelar en cualquier momento."
+        },
+        {
+          "question": "¿Ofrecen descuentos para pago anual?",
+          "answer": "Sí, ofrecemos 2 meses gratis al pagar anualmente en los planes Pro y Enterprise."
+        }
+      ]
+    }
+  },
+  "Privacy": {
+    "title": "Política de Privacidad",
+    "lastUpdate": "Última actualización: Diciembre 2025",
+
+    "sections": {
+      "informationCollected": {
+        "title": "1. Información que recopilamos",
+        "description": "Recopilamos información que nos proporcionas directamente, como tu nombre, dirección de correo electrónico, información de pago y los archivos que subes para conversión.",
+        "items": [
+          "Información de cuenta (nombre, email, contraseña)",
+          "Información de pago (procesada de forma segura por terceros)",
+          "Archivos subidos para conversión",
+          "Datos de uso y navegación"
+        ]
+      },
+
+      "informationUsage": {
+        "title": "2. Cómo usamos tu información",
+        "description": "Utilizamos la información recopilada para:",
+        "items": [
+          "Proporcionar y mantener nuestros servicios",
+          "Procesar tus conversiones de archivos",
+          "Enviarte actualizaciones y comunicaciones importantes",
+          "Mejorar nuestros productos y servicios",
+          "Cumplir con obligaciones legales"
+        ]
+      },
+
+      "dataSecurity": {
+        "title": "3. Seguridad de datos",
+        "description": "Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos personales. Los archivos subidos se eliminan automáticamente después de 24 horas de su procesamiento. Utilizamos encriptación SSL/TLS para todas las comunicaciones."
+      },
+
+      "informationSharing": {
+        "title": "4. Compartir información",
+        "description": "No vendemos ni alquilamos tu información personal. Solo compartimos datos con proveedores externos necesarios para operar nuestra plataforma (procesadores de pago, servicios de hosting) bajo estrictos acuerdos de confidencialidad."
+      },
+
+      "userRights": {
+        "title": "5. Tus derechos",
+        "description": "Tienes derecho a:",
+        "items": [
+          "Acceder a tus datos personales",
+          "Rectificar datos incorrectos",
+          "Solicitar la eliminación de tus datos",
+          "Exportar tus datos en un formato portable",
+          "Retirar tu consentimiento en cualquier momento"
+        ]
+      },
+
+      "contact": {
+        "title": "6. Contacto",
+        "description": "Si tienes preguntas sobre esta política de privacidad, puedes contactarnos en:",
+        "email": "privacy@bridgely.com"
+      }
+    }
+  },
+  "Terms": {
+    "title": "Términos y Condiciones",
+    "lastUpdate": "Última actualización: Diciembre 2025",
+
+    "sections": {
+      "acceptance": {
+        "title": "1. Aceptación de los términos",
+        "description": "Al acceder y utilizar Bridgely, aceptas estar legalmente vinculado por estos Términos y Condiciones. Si no estás de acuerdo con alguno de estos términos, no debes utilizar nuestros servicios."
+      },
+
+      "serviceDescription": {
+        "title": "2. Descripción del servicio",
+        "description": "Bridgely proporciona herramientas para convertir archivos de productos entre diferentes formatos utilizados por marketplaces y plataformas de ecommerce. El servicio incluye conversión de formatos, mapeo de campos y validación de datos."
+      },
+
+      "account": {
+        "title": "3. Registro y cuenta",
+        "description": "Para utilizar ciertos servicios, debes crear una cuenta. Eres responsable de:",
+        "items": [
+          "Proporcionar información precisa y actualizada",
+          "Mantener la confidencialidad de tu contraseña",
+          "Todas las actividades que ocurran bajo tu cuenta",
+          "Notificarnos inmediatamente cualquier uso no autorizado"
+        ]
+      },
+
+      "acceptableUse": {
+        "title": "4. Uso aceptable",
+        "description": "Te comprometes a no utilizar el servicio para:",
+        "items": [
+          "Violar leyes o regulaciones aplicables",
+          "Infringir derechos de propiedad intelectual",
+          "Transmitir malware o código malicioso",
+          "Intentar acceder sin autorización a sistemas",
+          "Realizar actividades fraudulentas"
+        ]
+      },
+
+      "intellectualProperty": {
+        "title": "5. Propiedad intelectual",
+        "description": "Bridgely y todo su contenido, características y funcionalidad son propiedad de Bridgely y están protegidos por las leyes de propiedad intelectual. No adquieres ningún derecho de propiedad sobre el servicio más allá del derecho limitado de uso otorgado en estos términos."
+      },
+
+      "payments": {
+        "title": "6. Pagos y suscripciones",
+        "description": "Los planes de pago se facturan por adelantado de forma mensual o anual. Los reembolsos se gestionan caso por caso. Nos reservamos el derecho de modificar los precios con un aviso previo de 30 días."
+      },
+
+      "liability": {
+        "title": "7. Limitación de responsabilidad",
+        "description": "Bridgely se proporciona \"tal cual\" sin garantías de ningún tipo. No seremos responsables por daños indirectos, incidentales o consecuentes derivados del uso de nuestros servicios."
+      },
+
+      "termination": {
+        "title": "8. Terminación",
+        "description": "Podemos suspender o cancelar tu acceso al servicio en cualquier momento por violación de estos términos o por cualquier otra razón a nuestra discreción. Puedes cancelar tu cuenta en cualquier momento desde la configuración de tu perfil."
+      },
+
+      "modifications": {
+        "title": "9. Modificaciones",
+        "description": "Nos reservamos el derecho de modificar estos términos en cualquier momento. Te notificaremos sobre cambios significativos por correo electrónico o mediante un aviso en la plataforma."
+      },
+
+      "contact": {
+        "title": "10. Contacto",
+        "description": "Para preguntas relacionadas con estos términos, contáctanos en:",
+        "email": "legal@bridgely.com"
+      }
+    }
+  },
+  "transform": {},
+  "footer": {
+    "branding": "Simplifica la migración de productos entre marketplaces y plataformas de ecommerce.",
+    "columns": {
+      "product": {
+        "title": "Producto",
+        "links": [
+          { "label": "Características", "to": "/features" },
+          { "label": "Precios", "to": "/pricing" },
+          { "label": "Integraciones", "to": "/integrations" }
+        ]
+      },
+      "resources": {
+        "title": "Recursos",
+        "links": [
+          { "label": "Tutoriales", "to": "/" },
+          { "label": "Documentación", "to": "/" },
+          { "label": "Blog", "to": "/" },
+          { "label": "Soporte", "to": "/contact" }
+        ]
+      },
+      "company": {
+        "title": "Empresa",
+        "links": [
+          { "label": "Sobre nosotros", "to": "/about" },
+          { "label": "Contacto", "to": "/contact" },
+          { "label": "Privacidad", "to": "/privacy" },
+          { "label": "Términos", "to": "/terms" }
+        ]
+      }
+    },
+    "copyright": "{{year}} Bridgely by Noctis."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "Lo sentimos, la página que buscas no existe o ha sido movida. Verifica la URL o regresa al inicio.",
+    "actionButtons": {
+      "home": "Ir al inicio",
+      "back": "Volver atrás"
+    },
+    "quickLinks": {
+      "title": "¿Necesitas ayuda? Prueba estos enlaces:",
+      "links": [
+        { "to": "/features", "label": "Características" },
+        { "to": "/pricing", "label": "Precios" },
+        { "to": "/contact", "label": "Contacto" },
+        { "to": "/about", "label": "Nosotros" }
+      ]
+    }
+  }
+}

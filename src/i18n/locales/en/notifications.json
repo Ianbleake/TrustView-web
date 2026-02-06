@@ -1,0 +1,34 @@
+{
+  "common": {
+    "errors": {
+      "SERVER_ERROR": "There was a problem with the server. Please try again later.",
+      "NETWORK_ERROR": "Unable to connect to the server.",
+      "CLIENT_ERROR": "An unexpected error occurred.",
+      "HTTP_ERROR": "Request error.",
+      "UNAUTHORIZED": "You are not authorized to perform this action.",
+      "FORBIDDEN": "Access denied.",
+      "NOT_FOUND": "The requested resource was not found.",
+      "UNDEFINED": "Oops, something went wrong."
+    }
+  },
+  "auth": {
+    "register": {
+      "success": {
+        "default": "User registration successful"
+      },
+      "errors": {
+        "BAD_REQUEST": "Please review the provided information.",
+        "CONFLICT": "The email is already registered."
+      }
+    },
+    "login": {
+      "success": {
+        "default": "Successfully signed in!"
+      },
+      "errors": {
+        "BAD_REQUEST": "Oops! It looks like your credentials are incorrect."
+      }
+    },
+    "password": {}
+  }
+}

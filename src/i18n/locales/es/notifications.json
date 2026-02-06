@@ -1,0 +1,34 @@
+{
+  "common": {
+    "errors": {
+      "SERVER_ERROR": "Ocurrió un problema con el servidor. Intenta más tarde.",
+      "NETWORK_ERROR": "No se pudo conectar con el servidor.",
+      "CLIENT_ERROR": "Ocurrió un error inesperado.",
+      "HTTP_ERROR": "Error en la solicitud.",
+      "UNAUTHORIZED": "No tienes autorización para realizar esta acción.",
+      "FORBIDDEN": "Acceso denegado.",
+      "NOT_FOUND": "El recurso no fue encontrado.",
+      "UNDEFINED": "Ups, algo salió mal."
+    }
+  },
+  "auth": {
+    "register": {
+      "success": {
+        "default": "Registro de usuario exitoso"
+      },
+      "errors": {
+        "BAD_REQUEST": "Revisa los datos proporcionados.",
+        "CONFLICT": "El email ya se encuentra registrado."
+      }
+    },
+    "login": {
+      "success": {
+        "default": "Inicio de session exitoso!"
+      },
+      "errors": {
+        "BAD_REQUEST": "Uy! Parece que tus credenciales son erroneas."
+      }
+    },
+    "password": {}
+  }
+}
