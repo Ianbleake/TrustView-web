@@ -28,7 +28,7 @@ export const Brand = ({
   return (
     <div className={merge("flex flex-row items-center justify-center gap-2",brandStyles.position,className)}>
 
-      <div className={merge('flex items-center justify-center rounded-md gradient-bg shadow-lg shadow-amber-200',brandStyles.size.container)} style={{ animation: 'pulse-glow 3s ease-in-out infinite' }}>
+      <div className={merge('flex items-center justify-center rounded-md gradient-bg shadow-amber-200',brandStyles.size.container)} style={{ animation: 'pulse-glow 3s ease-in-out infinite' }}>
         <Star className={merge(' text-white fill-white ',brandStyles.size.icon)}/>
       </div>
 
