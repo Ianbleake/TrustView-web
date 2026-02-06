@@ -12,7 +12,7 @@ export const AuthRouter = (): React.ReactElement => {
       element={<AuthLayout />}
     >
       <Route
-        path="login"
+        index
         element={<Login />}
       />
 
