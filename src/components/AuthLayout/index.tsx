@@ -1,7 +1,10 @@
-import React from 'react'
+import type React from "react";
+import { Outlet } from "react-router-dom";
 
-export const AuthLayout = ():React.ReactElement => {
+export const AuthLayout = (): React.ReactElement => {
   return (
-    <div>AuthLayout</div>
-  )
-}
+    <div>
+      <Outlet />
+    </div>
+  );
+};
