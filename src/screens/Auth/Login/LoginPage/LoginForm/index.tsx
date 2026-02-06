@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { ArrowRight, Eye, EyeClosed } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type LoginValues = {
   email: string;
@@ -101,6 +101,12 @@ export const LoginForm = ():React.ReactElement => {
             )
           }
         </Button>
+        <Link
+          to={"/auth/forgot-password"}
+          className='text-sm text-right text-amber-600'
+        >
+          Olvidaste tu Contraseña?
+        </Link>
       </form>
     </Card>
   )
