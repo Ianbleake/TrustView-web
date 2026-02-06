@@ -7,14 +7,13 @@ import {
 } from "@/components/ui/sidebar";
 import { useSidebar } from "@/components/ui/sidebar";
 import { merge } from "@/utils/mergeStyles";
-import { Grid } from "lucide-react";
+import { ChartPie, Star } from "lucide-react";
 import type React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const platformMenu = [
-  { label: "item 1", to: "/", icon: Grid },
-  { label: "item 2", to: "/", icon: Grid },
-  { label: "item 3", to: "/", icon: Grid },
+  { label: "Dashboard", to: "/platform", icon: ChartPie },
+  { label: "Reseñas", to: "/platform/reviews", icon: Star },
 ]
 
 export const AppbarMenu = (): React.ReactElement => {
@@ -24,6 +23,7 @@ export const AppbarMenu = (): React.ReactElement => {
   const { setOpenMobile } = useSidebar();
 
   const featureSlug = pathname.split("/")[2];
+
 
   return (
     <SidebarGroup>
@@ -37,9 +37,9 @@ export const AppbarMenu = (): React.ReactElement => {
               <SidebarMenuItem key={item.label}>
                 <SidebarMenuButton
                   className={merge(
-                    "cursor-pointer hover:bg-blue-50",
+                    "cursor-pointer transition-all duration-300",
                     isActive
-                      ? "bg-blue-100 text-blue-600 hover:bg-blue-200 hover:text-blue-600"
+                      ? "bg-amber-300/20 hover:bg-amber-300/40 text-orange-600 hover:text-amber-600"
                       : "",
                   )}
                   onClick={() => {

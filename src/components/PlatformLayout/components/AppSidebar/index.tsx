@@ -6,7 +6,7 @@ import { AppbarMenu } from "./components/AppbarMenu";
 
 export const AppSidebar = (): React.ReactElement => {
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" >
       <AppbarHeader />
 
       <SidebarContent>

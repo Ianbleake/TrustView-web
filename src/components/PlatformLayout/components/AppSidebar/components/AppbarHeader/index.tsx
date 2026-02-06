@@ -1,3 +1,4 @@
+import { Brand } from "@/components/Brand";
 import { SidebarGroup, SidebarHeader, SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { merge } from "@/utils/mergeStyles";
 import type React from "react";
@@ -7,8 +8,9 @@ export const AppbarHeader = (): React.ReactElement => {
 
   return (
     <SidebarHeader>
-      <SidebarGroup className="flex flex-row items-center gap-2 border-b border-gray-200 pl-2">
-        <SidebarTrigger size={"icon"} />
+      <SidebarGroup className="flex flex-row items-center gap-2 border-b border-gray-200 pl-1">
+
+        <SidebarTrigger size={"icon"} className="hover:bg-gray-200/50" />
 
         <div
           className={merge(
@@ -16,8 +18,9 @@ export const AppbarHeader = (): React.ReactElement => {
             open ? "opacity-100 translate-x-0 w-auto" : "opacity-0 -translate-x-2 w-0",
           )}
         >
-          <h1 className="text-2xl font-semibold bg-linear-to-br from-blue-600 via-sky-500 to-teal-500 bg-clip-text text-transparent whitespace-nowrap">
-            Bridgely
+          <Brand icon size="md"/>
+          <h1 className="text-2xl font-semibold whitespace-nowrap">
+            <span className="text-2xl font-semibold gradient-bg bg-clip-text text-transparent whitespace-nowrap">Trust</span>View
           </h1>
         </div>
       </SidebarGroup>

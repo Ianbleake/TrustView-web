@@ -16,7 +16,7 @@ export const PlatformRouter = (): React.ReactElement => {
       />
 
       <Route
-        path="transform"
+        path="/platform/reviews"
         element={<Reviews />}
       />
 

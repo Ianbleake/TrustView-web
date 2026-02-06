@@ -16,7 +16,7 @@ export default function ProfileManager(): React.ReactElement {
 
   return (
     <SidebarMenu>
-      <SidebarMenuItem className="cursor-pointer">
+      <SidebarMenuItem className="cursor-pointer transition-all duration-300">
         <DropdownMenu>
           <ProfileInfo />
 
