@@ -14,19 +14,22 @@ export const AnalyticCard = ({
     const Icon = analytic.icon;
 
   return (
-        <Card className="relative flex flex-row gap-2 min-h-40 items-stretch px-4 py-4 w-1/4 overflow-hidden transition-all duration-300 shadow-glow-hover">
+        <Card className="group relative flex flex-row gap-2 min-h-40 items-stretch px-4 py-4 w-1/4 overflow-hidden transition-all duration-300 hover:shadow-lg ">
 
             <div
-            className={`
+            className="
                 pointer-events-none
-                absolute top-15 -right-15
+                absolute top-10 right-20
                 w-48 h-48
                 bg-orange-400/20
                 rounded-full
                 blur-3xl
-                opacity-100
-            `}
+                opacity-0
+                transition-opacity duration-300
+                group-hover:opacity-100
+            "
             />
+
 
 
             <div className="flex flex-1 flex-col">
@@ -45,7 +48,19 @@ export const AnalyticCard = ({
                 </Badge>
             </div>
 
-            <div className="h-12 w-12 gradient-bg flex items-center justify-center rounded-lg">
+            <div
+                className="
+                    h-12 w-12
+                    gradient-bg
+                    flex items-center justify-center
+                    rounded-lg
+
+                    will-change-transform
+                    [animation:none]
+                    group-hover:[animation:float_3s_ease-in-out_infinite]
+                "
+            >
+
                 <Icon className="h-6 w-6 text-white" />
             </div>
         </Card>
