@@ -16,7 +16,7 @@ export const PlatformLayout = (): React.ReactElement => {
 
       <main className="w-full flex flex-col bg-gray-100">
         <AppHeader />
-        <section className="p-4">
+        <section className="py-4 px-16">
           <Outlet />
         </section>
       </main>
