@@ -1,50 +1,49 @@
-import React from 'react'
-import { AnalyticCard } from './AnalyticCard'
-import { MessageSquare, Star, ThumbsUp, TrendingUp } from 'lucide-react';
+import React from 'react';
+import { AnalyticCard } from './AnalyticCard';
+import { Calendar, MessageSquare, Star, ThumbsUp } from 'lucide-react';
+import { analyticsBase } from '@/content/Analytics';
 
-const analyticsValues:AnalyticValue[] = [
-  {
-    title: 'Total Reseñas',
-    value: 234,
-    percentage: '+12%',
-    icon: MessageSquare,
-    growth: 'positive',
-  },
-  {
-    title: 'Rating Promedio',
-    value: 4.5,
-    percentage: '+3%',
-    icon: Star,
-    growth: 'positive',
-  },
-  {
-    title: 'Tasa Respuesta',
-    value: 87,
-    percentage: '-5%',
-    icon: TrendingUp,
-    growth: 'negative',
-  },
-  {
-    title: 'Positivas',
-    value: 92,
-    percentage: '+2%',
-    icon: ThumbsUp,
-    growth: 'positive',
-  },
-];
+const formatAnalyticsCards = (): AnalyticValue[] => {
+  return [
+    {
+      title: 'Total Reseñas',
+      value: analyticsBase.totalReviews.count,
+      percentage: analyticsBase.totalReviews.trend > 0 ? `+${analyticsBase.totalReviews.trend}%` : `${analyticsBase.totalReviews.trend}%`,
+      icon: MessageSquare,
+      growth: analyticsBase.totalReviews.trend >= 0 ? 'positive' : 'negative',
+    },
+    {
+      title: 'Rating Promedio',
+      value: analyticsBase.rating.average,
+      percentage: analyticsBase.rating.trend > 0 ? `+${analyticsBase.rating.trend}%` : `${analyticsBase.rating.trend}%`,
+      icon: Star,
+      growth: analyticsBase.rating.trend >= 0 ? 'positive' : 'negative',
+    },
+    {
+      title: 'Reseñas del mes',
+      value: analyticsBase.monthlyReviews.count,
+      percentage: `${analyticsBase.monthlyReviews.trend > 0 ? '+' : ''}${analyticsBase.monthlyReviews.trend}%`,
+      icon: Calendar,
+      growth: analyticsBase.monthlyReviews.trend >= 0 ? 'positive' : 'negative',
+    },
+    {
+      title: 'Positivas',
+      value: analyticsBase.positives.percentage,
+      percentage: `${analyticsBase.positives.trend > 0 ? '+' : ''}${analyticsBase.positives.trend}%`,
+      icon: ThumbsUp,
+      growth: analyticsBase.positives.trend >= 0 ? 'positive' : 'negative',
+    },
+  ];
+};
 
-export const Analytics = ():React.ReactElement => {
+export const Analytics = (): React.ReactElement => {
+  const analyticsValues = formatAnalyticsCards();
+
   return (
-    <div className='w-full flex flex-row gap-2 items-center'>
-
-      {
-        analyticsValues.map((analytic) => {
-          return(
-            <AnalyticCard key={analytic.title} analytic={analytic}/>
-          )
-        })
-      }
-
+    <div className="w-full flex flex-row gap-2 items-center">
+      {analyticsValues.map((analytic) => (
+        <AnalyticCard key={analytic.title} analytic={analytic} />
+      ))}
     </div>
-  )
-}
+  );
+};
