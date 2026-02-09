@@ -13,5 +13,7 @@ type Review = {
     content: string,
     product: string,
     date: string,
-    status: "approved" | "pending" | "rejected"
+    status: ReviewState
 }
+
+type ReviewState = "approved" | "pending" | "rejected"
