@@ -17,7 +17,7 @@ export const ReviewCard = ({
     review,
 }:ReviewCardProps ):React.ReactElement => {
   return (
-   <Card className='group relative flex flex-col p-4 hover:shadow-lg transition-all duration-300 overflow-hidden'>
+   <Card className='group relative flex flex-col p-4 hover:shadow-lg transition-all duration-300 overflow-hidden h-fit'>
 
         <div
             className="
