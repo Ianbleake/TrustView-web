@@ -14,9 +14,9 @@ export const PlatformLayout = (): React.ReactElement => {
         <AppSidebar />
       </div>
 
-      <main className="w-full flex flex-col bg-gray-100">
+      <main className="w-full flex flex-col bg-gray-100 min-h-screen">
         <AppHeader />
-        <section className="py-4 px-16">
+        <section className="py-4 px-16 flex-1">
           <Outlet />
         </section>
       </main>

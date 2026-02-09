@@ -1,20 +1,30 @@
 import React, { useState } from 'react'
 import { ReviewsGrid } from './ReviewsGrid'
 import { RecentReviewsData } from '@/content/RecentReviews'
-import { Check, EyeClosed, Hourglass, Star } from 'lucide-react'
+import { Check, EyeClosed, Hourglass, Search, Star } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Input } from '@/components/ui/input'
+import { EmptyReviews } from './EmptyReviews'
 
 export const Reviews = ():React.ReactElement => {
 
-  const [filter, setFilter] = useState<"all" | ReviewState >("all");
+  const [filter, setFilter] = useState<"all" | ReviewState>("all");
+  const [search, setSearch] = useState("");
 
-  const filteredReviews =
-    filter === "all"
-      ? RecentReviewsData
-      : RecentReviewsData.filter(r => r.status === filter);
+  const filteredReviews = RecentReviewsData
+    .filter(r => filter === "all" || r.status === filter)
+    .filter(r => {
+      if (!search) return true;
+      const q = search.toLowerCase();
+      return (
+        r.author.toLowerCase().includes(q) ||
+        r.content.toLowerCase().includes(q) ||
+        r.product.toLowerCase().includes(q)
+      );
+    });
   
   return (
-    <Tabs value={filter} onValueChange={(v) => setFilter(v as "all" | ReviewState)} className='flex flex-col gap-6'>
+    <Tabs value={filter} onValueChange={(v) => setFilter(v as "all" | ReviewState)} className="flex flex-col gap-6 min-h-full">
 
       <div className='flex flex-col items-start justify-start gap-1'>
         <h1 className='font-heading font-semibold text-2xl text-gray-900'>Reseñas</h1>
@@ -47,14 +57,28 @@ export const Reviews = ():React.ReactElement => {
 
         </TabsList>
 
-        <div id='search'>
-
+        <div className="relative">
+          <Input
+            type="search"
+            placeholder="Buscar por autor, producto..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="pl-12"
+            size={30}
+          />
+          <Search className="text-orange-600 absolute top-1 left-3 opacity-80" />
         </div>
 
       </div>
 
-      <TabsContent value={filter}>
-        <ReviewsGrid reviews={filteredReviews} />
+      <TabsContent value={filter} className="flex flex-1">
+        {
+          filteredReviews.length <= 0 ? (
+            <EmptyReviews/>
+          ) : (
+            <ReviewsGrid reviews={filteredReviews} />
+          ) 
+        }
       </TabsContent>
 
     </Tabs>
