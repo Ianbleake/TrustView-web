@@ -39,7 +39,7 @@ export const NotFound = ():React.ReactElement => {
             </Button>
 
             <Button asChild variant="outline">
-              <Link to="/dashboard">
+              <Link to="/platform">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Dashboard
               </Link>

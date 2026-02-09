@@ -6,7 +6,7 @@ import { analyticsBase } from '@/content/Analytics'
 
 export const ReviewsChart = ():React.ReactElement => {
   return (
-    <Card className='flex flex-col px-4 py-6'>
+    <Card className='flex flex-col px-4 py-6 animate-fade-in'>
 
       <div className='flex flex-row items-center justify-between'>
 

@@ -3,6 +3,7 @@ import { AnalyticCard } from './AnalyticCard';
 import { Calendar, MessageSquare, Star, ThumbsUp } from 'lucide-react';
 import { analyticsBase } from '@/content/Analytics';
 
+//TODO: Refactor move this formating to the hook where fetch the data, and save it on a storage formatted for UI.
 const formatAnalyticsCards = (): AnalyticValue[] => {
   return [
     {
@@ -40,7 +41,7 @@ export const Analytics = (): React.ReactElement => {
   const analyticsValues = formatAnalyticsCards();
 
   return (
-    <div className="w-full flex flex-row gap-2 items-center">
+    <div className="w-full flex flex-row gap-2 items-center animate-fade-in">
       {analyticsValues.map((analytic) => (
         <AnalyticCard key={analytic.title} analytic={analytic} />
       ))}
