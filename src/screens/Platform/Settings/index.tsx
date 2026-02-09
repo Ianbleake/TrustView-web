@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Bell, CircleUser, CreditCard, Shield } from 'lucide-react'
+import { Bell, CircleUser, CreditCard } from 'lucide-react'
 import React from 'react'
 import { ProfileConfig } from './components/ProfileConfig'
 import { NotificationsConfig } from './components/NotificationsConfig'
