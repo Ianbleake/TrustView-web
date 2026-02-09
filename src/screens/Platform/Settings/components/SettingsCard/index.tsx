@@ -22,6 +22,7 @@ export const SettingsCard = ({
   actionIcon,
   children,
 }: SettingsCardProps): React.ReactElement => {
+  
   const Icon = icon;
   const ActionIcon = actionIcon;
 

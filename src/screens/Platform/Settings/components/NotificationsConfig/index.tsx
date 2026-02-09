@@ -1,6 +1,7 @@
 import React from 'react'
 import { SettingsCard } from '../SettingsCard'
 import { Mail } from 'lucide-react'
+import { SettingSwitch } from '../SettingSwitch'
 
 export const NotificationsConfig = ():React.ReactElement => {
   return (
@@ -11,7 +12,9 @@ export const NotificationsConfig = ():React.ReactElement => {
         title="Notificaciones por email"
         description="Configura qué emails quieres recibir"
       >
-        <div></div>
+        <div className='flex flex-col gap-2'>
+          <SettingSwitch title='Nuevas reseñas' subtitle='Recibir email cuando llega una reseña nueva'/>
+        </div>
       </SettingsCard>
       
     </section>
