@@ -56,8 +56,8 @@ export const AnalyticCard = ({
                     rounded-lg
 
                     will-change-transform
-                    [animation:none]
-                    group-hover:[animation:float_3s_ease-in-out_infinite]
+                    animate:none
+                    group-hover:animate-[float_3s_ease-in-out_infinite]
                 "
             >
 
