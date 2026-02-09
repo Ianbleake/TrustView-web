@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card'
 import React from 'react'
-import { StarsCount } from './StarsCount'
+import { StarsCount } from '../../../../../components/StarsCount'
 import { StarRating } from './StarRating'
 import { analyticsBase } from '@/content/Analytics'
 

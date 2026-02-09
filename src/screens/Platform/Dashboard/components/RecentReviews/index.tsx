@@ -1,7 +1,7 @@
-import { ArrowRight } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ReviewCard } from './ReviewCard'
+import { ArrowRight } from 'lucide-react'
+import { ReviewCard } from '@/components/ReviewCard'
 import { RecentReviewsData } from '@/content/RecentReviews'
 
 export const RecentReviews = ():React.ReactElement => {

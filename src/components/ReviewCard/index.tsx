@@ -1,8 +1,11 @@
-import { Badge } from '@/components/ui/badge'
-import { Card } from '@/components/ui/card'
-
 import React from 'react'
-import { StarsCount } from '../../ReviewsChart/StarsCount'
+import { StarsCount } from '../StarsCount'
+import { Card } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '../ui/button'
+import { Check, EyeClosed } from 'lucide-react'
+
+
 
 
 
@@ -14,7 +17,22 @@ export const ReviewCard = ({
     review,
 }:ReviewCardProps ):React.ReactElement => {
   return (
-   <Card className='flex flex-col p-4'>
+   <Card className='group relative flex flex-col p-4 hover:shadow-lg transition-all duration-300 overflow-hidden'>
+
+        <div
+            className="
+                pointer-events-none
+                absolute -top-20 right-25
+                w-48 h-48
+                bg-orange-400/20
+                rounded-full
+                blur-3xl
+                opacity-0
+                transition-opacity duration-300
+                group-hover:opacity-100
+            "
+        />
+
         <div className='flex flex-row items-center justify-between w-full'>
 
             <div className='flex flex-row items-start justify-start gap-4'>
@@ -41,8 +59,27 @@ export const ReviewCard = ({
             </p>
         </div>
 
-        <div className='border-t border-gray-200 pt-4'>
+        <div className='border-t border-gray-200 pt-4 flex flex-row items-center justify-between'>
             <p className='text-sm font-medium text-gray-500'>Producto: <span className='text-orange-600'>{review.product}</span></p>
+            {
+                review.status === "approved" ? (
+                <Button
+                    size={"sm"}
+                    variant={"ghost"}
+                >
+                    Ocultar
+                    <EyeClosed/>
+                </Button>
+                ) : (
+                <Button
+                    size={"sm"}
+                    variant={"gradient"}
+                >
+                    Aprobar
+                    <Check/>
+                </Button>
+                )
+            }
         </div>
    </Card>
   )
