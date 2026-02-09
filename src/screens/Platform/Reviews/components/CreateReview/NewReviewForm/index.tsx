@@ -21,6 +21,7 @@ type NewReviewFormProps = {
 export const NewReviewForm = ({
   onClose,
 }: NewReviewFormProps): React.ReactElement => {
+  
   const { register, handleSubmit, control, formState: { errors } } = useForm<NewReviewValues>({
     defaultValues: {
       author: '',

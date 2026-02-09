@@ -28,7 +28,7 @@ export const ImportReviews = ():React.ReactElement => {
           </DialogDescription>
         </DialogHeader>
 
-        <ImportForm/>
+        <ImportForm onClose={() => setOpen(false)}/>
 
       </DialogContent>
 
