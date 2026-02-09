@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { ReviewsGrid } from './ReviewsGrid'
+import { ReviewsGrid } from './components/ReviewsGrid'
 import { RecentReviewsData } from '@/content/RecentReviews'
 import { Check, EyeClosed, Hourglass, Search, Star } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Input } from '@/components/ui/input'
-import { EmptyReviews } from './EmptyReviews'
+import { EmptyReviews } from './components/EmptyReviews'
+import { ImportReviews } from './components/ImportReviews'
+import { CreateReview } from './components/CreateReview'
 
 export const Reviews = ():React.ReactElement => {
 
@@ -26,12 +28,25 @@ export const Reviews = ():React.ReactElement => {
   return (
     <Tabs value={filter} onValueChange={(v) => setFilter(v as "all" | ReviewState)} className="flex flex-col gap-6 min-h-full">
 
-      <div className='flex flex-col items-start justify-start gap-1'>
-        <h1 className='font-heading font-semibold text-2xl text-gray-900'>Reseñas</h1>
-        <p className='font-normal text-sm text-gray-400'>Gestioná todas las reseñas de tu tienda</p>
+      <div className='flex flex-row items-center justify-between animate-fade-in'>
+
+        <div className='flex flex-col items-start justify-start gap-1'>
+          <h1 className='font-heading font-semibold text-2xl text-gray-900'>Reseñas</h1>
+          <p className='font-normal text-sm text-gray-400'>Gestioná todas las reseñas de tu tienda</p>
+        </div>
+
+        <div className='flex flex-row gap-2 items-center'>
+
+          <ImportReviews/>
+
+          <CreateReview />
+
+        </div>
+
+
       </div>
 
-      <div className='flex flex-row items-center justify-between'>
+      <div className='flex flex-row items-center justify-between animate-fade-in'>
 
         <TabsList className='bg-gray-200/50 w-full md:w-2/3 h-auto grid grid-cols-2 gap-2 md:flex shadow-sm' >
 

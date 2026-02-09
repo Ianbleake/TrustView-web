@@ -9,7 +9,7 @@ export const ReviewsGrid = ({
   reviews,
 }:ReviewsGrid ):React.ReactElement => {
   return (
-    <div className='grid grid-cols-2 gap-4'>
+    <div className='grid grid-cols-2 gap-4 animate-fade-in'>
       {
         reviews.map((review) => {
           return(
