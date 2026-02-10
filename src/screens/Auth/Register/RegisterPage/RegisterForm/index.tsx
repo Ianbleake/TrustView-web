@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { useForm } from "react-hook-form";
 import { Label } from "@/components/ui/label";
@@ -19,6 +19,7 @@ type RegisterValues = {
 };
 
 export const RegisterForm = (): React.ReactElement => {
+
   const [showPass, setShowPass] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -66,6 +67,14 @@ export const RegisterForm = (): React.ReactElement => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!storeId) {
+      navigate("/auth", { replace: true });
+    }
+  }, [storeId, navigate]);
+
+  if (!storeId) return <></>;
 
   return (
     <Card className="flex flex-col py-6 px-8 min-w-md gap-4">

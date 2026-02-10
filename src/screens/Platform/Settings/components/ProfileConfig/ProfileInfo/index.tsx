@@ -28,7 +28,7 @@ export const ProfileInfo = (): React.ReactElement => {
         ></div>
       </div>
 
-      <div id="profileInfo" className="flex flex-row items-center justify-end pl-24 bg-green-200" >
+      <div id="profileInfo" className="flex flex-row items-center justify-end pl-58 bg-green-200" >
 
         <div className="bg-amber-100 h-42 flex flex-row flex-1">
 
