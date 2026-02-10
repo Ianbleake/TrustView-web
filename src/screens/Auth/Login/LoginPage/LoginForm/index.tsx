@@ -7,7 +7,8 @@ import { Input } from '@/components/ui/input';
 import { ArrowRight, Eye, EyeClosed } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import useLogin from '@/hooks/auth/useLogin';
 
 type LoginValues = {
   email: string;
@@ -15,9 +16,9 @@ type LoginValues = {
 }
 
 export const LoginForm = ():React.ReactElement => {
-
+  
+  const { mutate: login, isPending } = useLogin();
   const [ showPass, setShowPass ] = useState<boolean>(false);
-  const [ isLoading, setLoading ] = useState<boolean>(false);
   const { register, handleSubmit, formState:{ errors } } = useForm<LoginValues>({
     defaultValues: {
       email: '',
@@ -25,15 +26,9 @@ export const LoginForm = ():React.ReactElement => {
     }
   });
 
-  const navigate = useNavigate();
 
   const onSubmit = ( data:LoginValues ):void => {
-    setLoading(true);
-    setTimeout(() => {
-      console.log(data);
-      setLoading(false);
-      navigate("/platform");
-    }, 3000);
+    login(data);
   };
   
   return (
@@ -91,7 +86,7 @@ export const LoginForm = ():React.ReactElement => {
           className='select-none'
         >
           {
-            isLoading ? (
+            isPending ? (
               <Spinner className="size-6" />
             ) : (
               <>

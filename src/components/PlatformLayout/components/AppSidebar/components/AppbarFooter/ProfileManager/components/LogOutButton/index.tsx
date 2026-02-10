@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const LogOutButton = (): React.ReactElement => {
   return (
     <Link
-      to="/auth/login"
+      to="/auth"
       className="cursor-pointer flex flex-row items-center flex-1"
     >
       <LogOut className="mr-2 h-4 w-4" />

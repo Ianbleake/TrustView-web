@@ -1,12 +1,26 @@
 import type React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { SidebarProvider } from "../ui/sidebar";
+import { useSessionStorage } from "@/storage/authStorage";
 import { AppSidebar } from "./components/AppSidebar";
 import { AppHeader } from "./components/AppHeader";
 import { MobileSidebar } from "./components/AppSidebar/components/MobileSidebar";
 
 
 export const PlatformLayout = (): React.ReactElement => {
+
+  const { session } = useSessionStorage();
+  const location = useLocation();
+
+  if (!session) {
+    return (
+      <Navigate
+        to="/auth"
+        replace
+        state={{ from: location.pathname }}
+      />
+    );
+  }
 
   return (
     <SidebarProvider>
