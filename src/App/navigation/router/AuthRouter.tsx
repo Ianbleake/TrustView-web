@@ -22,7 +22,7 @@ export const AuthRouter = (): React.ReactElement => {
       />
 
       <Route
-        path="register"
+        path="onboarding"
         element={<Register />}
       />
     </Route>

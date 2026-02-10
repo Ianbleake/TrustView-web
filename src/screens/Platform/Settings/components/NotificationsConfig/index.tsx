@@ -14,6 +14,8 @@ export const NotificationsConfig = ():React.ReactElement => {
       >
         <div className='flex flex-col gap-2'>
           <SettingSwitch title='Nuevas reseñas' subtitle='Recibir email cuando llega una reseña nueva'/>
+          <SettingSwitch title='Reseñas negativas' subtitle='Alerta cuando una reseña tiene menos de 3 estrellas'/>
+          <SettingSwitch title='Reporte semanal' subtitle='Resumen semanal por email con métricas'/>
         </div>
       </SettingsCard>
       
