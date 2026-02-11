@@ -46,8 +46,8 @@ export const ReviewCard = ({
                 </div>
             </div>
 
-            <Badge variant={review.status === "approved" ? "success" : review.status === "pending" ? "warning" : "error"}>
-                {review.status}
+            <Badge variant={review.status === "approved" ? "success" : review.status === "pending" ? "warning" : "ghost"}>
+                {review.status === "approved" ? "Aprobada" : review.status === "pending" ? "Pendiente" : "Oculta"}
             </Badge>
         </div>
 
