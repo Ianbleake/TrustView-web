@@ -17,14 +17,18 @@ export default function useLogin(): UseMutationResult<
     mutationKey: ["auth", "login"],
     mutationFn: signIn,
 
-    onSuccess: async ({ user, session }) => {
+    onSuccess: ({ user, session, profile, store }) => {
       setSession({
         user,
         session,
+        profile,
+        store,
       });
+    
       toast.success("Bienvenido");
       navigate("/platform");
     },
+    
 
     onError: () => {
       toast.error("Hubo un error al iniciar sesion")

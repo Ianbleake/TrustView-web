@@ -7,4 +7,6 @@ type LoginPayload = {
 type LoginResponse = {
   user: User | null;
   session: Session | null;
+  profile: Profile ;
+  store: Store;
 }
