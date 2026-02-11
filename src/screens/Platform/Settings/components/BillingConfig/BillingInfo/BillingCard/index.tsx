@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { merge } from '@/utils/mergeStyles';
-import { Crown, Rewind, RotateCw, Star, type LucideIcon } from 'lucide-react';
+import { Crown, RotateCw, Star, type LucideIcon } from 'lucide-react';
 import React from 'react'
 
 type BillingCardProps = {
@@ -18,7 +18,7 @@ type BillingConfig = Record<Billing, {
   icon: LucideIcon;
 }>
 
-const billingCardConfig = {
+const billingCardConfig:BillingConfig = {
   free: {
     title: "Gratuito",
     description: "Ideal para comenzar y probar la plataforma.",
