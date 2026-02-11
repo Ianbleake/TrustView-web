@@ -35,6 +35,7 @@ export const RegisterForm = (): React.ReactElement => {
   } = useForm<RegisterValues>();
 
   const onSubmit = async (data: RegisterValues): Promise<void> => {
+    
     if (!storeId) {
       setErrorMsg("Store inválido o expirado");
       return;
@@ -78,6 +79,7 @@ export const RegisterForm = (): React.ReactElement => {
 
   return (
     <Card className="flex flex-col py-6 px-8 min-w-md gap-4">
+
       <div className="flex flex-col gap-1">
         <h2 className="font-semibold text-2xl text-gray-800">
           Crear cuenta
