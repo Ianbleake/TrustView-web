@@ -11,7 +11,7 @@ const badgeVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
         secondary:
-          "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+          "bg-secondary text-orange-600 [a&]:hover:bg-secondary/90",
         destructive:
           "bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
@@ -26,6 +26,7 @@ const badgeVariants = cva(
 
         error:
           "bg-red-500/15 text-red-600 ring-1 ring-red-600/20 transition-colors [a&]:hover:bg-red-500/25",
+        gradientShine: "gradient-bg text-white shadow-glow"
       
 
       },

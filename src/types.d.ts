@@ -7,10 +7,11 @@ type Profile = {
   last_name: string;
   email: string;
   billing: Billing;
-  avatar_url: string;
-  banner_url: string;
+  avatar_url: string | null;
+  banner_url: string | null;
   created_at: Date;
   updated_at: Date;
+  color: string | null;
 }
 
 type Store = {
