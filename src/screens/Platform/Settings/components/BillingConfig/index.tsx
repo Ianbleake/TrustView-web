@@ -1,6 +1,8 @@
 import React from 'react'
 import { SettingsCard } from '../SettingsCard'
 import { CreditCard, Receipt } from 'lucide-react'
+import { BillingInfo } from './BillingInfo'
+import { PaymentMethods } from './PaymentMethods'
 
 export const BillingConfig = ():React.ReactElement => {
   return (
@@ -11,7 +13,7 @@ export const BillingConfig = ():React.ReactElement => {
         title="Plan actual"
         description="Tu suscripción y uso"
       >
-        <div></div>
+        <BillingInfo/>
       </SettingsCard>
 
       <SettingsCard
@@ -19,7 +21,7 @@ export const BillingConfig = ():React.ReactElement => {
         title="Método de pago"
         description="Tarjeta asociada a tu cuenta"
       >
-        <div></div>
+        <PaymentMethods/>
       </SettingsCard>
       
     </section>
