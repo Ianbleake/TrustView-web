@@ -39,7 +39,7 @@ export const Reviews = ():React.ReactElement => {
 
         <div className='flex flex-row gap-2 items-center'>
 
-          <ImportReviews disabled={profile?.billing !== "Pro"} />
+          <ImportReviews disabled={profile?.billing !== "pro"} />
 
           <CreateReview />
 
