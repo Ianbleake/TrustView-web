@@ -7,9 +7,11 @@ import { Input } from '@/components/ui/input'
 import { EmptyReviews } from './components/EmptyReviews'
 import { ImportReviews } from './components/ImportReviews'
 import { CreateReview } from './components/CreateReview'
+import { useSessionStorage } from '@/storage/authStorage'
 
 export const Reviews = ():React.ReactElement => {
 
+  const { profile } = useSessionStorage();
   const [filter, setFilter] = useState<"all" | ReviewState>("all");
   const [search, setSearch] = useState("");
 
@@ -37,7 +39,7 @@ export const Reviews = ():React.ReactElement => {
 
         <div className='flex flex-row gap-2 items-center'>
 
-          <ImportReviews/>
+          <ImportReviews disabled={profile?.billing !== "Pro"} />
 
           <CreateReview />
 

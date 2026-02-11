@@ -19,7 +19,7 @@ export const RecentReviews = ():React.ReactElement => {
         {
           RecentReviewsData.map((review) => {
             return (
-              <ReviewCard review={review} />
+              <ReviewCard key={review.id} review={review} />
             )
           })
         }
