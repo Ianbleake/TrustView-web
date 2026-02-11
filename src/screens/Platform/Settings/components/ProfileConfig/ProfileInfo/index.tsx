@@ -36,7 +36,7 @@ export const ProfileInfo = (): React.ReactElement => {
             </AvatarFallback>
           </Avatar>
 
-          <div className="absolute bottom-0 right-0 h-10 w-10 rounded-full bg-white shadow-xl flex items-center justify-center cursor-pointer">
+          <div className="absolute bottom-0 right-0 h-10 w-10 rounded-full bg-white shadow-xl flex items-center justify-center cursor-pointer hover:bg-gray-100/90 hover:scale-105 transition-all duration-300">
             <Pencil
               className="text-gray-600"
               size={20}
