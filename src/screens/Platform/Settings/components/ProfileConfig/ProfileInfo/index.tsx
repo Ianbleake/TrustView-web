@@ -47,7 +47,7 @@ export const ProfileInfo = (): React.ReactElement => {
         <div id="profileBanner" className="h-full w-full rounded-t-xl bg-linear-to-r from-emerald-500 to-emerald-900" />
 
         <div className="absolute right-4 top-4 flex flex-row gap-4 items-center">
-          <Badge className="h-8 w-fit text-md px-4" variant={profile?.billing === "Pro" ? "gradientShine" : profile?.billing === "base" ? "default" : "secondary"}>
+          <Badge className="h-8 w-fit text-md px-4" variant={profile?.billing === "pro" ? "gradientShine" : profile?.billing === "base" ? "default" : "secondary"}>
             Plan: {profile?.billing ?? "Free"}
           </Badge>
 

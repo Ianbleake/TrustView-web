@@ -1,7 +1,9 @@
-type Billing = "free" | "base" | "Pro"
+type Billing = "free" | "base" | "pro"
+type UserRole = "admin" | "user"
 
 type Profile = {
   id: string;
+  role: UserRole;
   auth_id: string;
   first_name: string;
   last_name: string;

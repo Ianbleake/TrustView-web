@@ -4,6 +4,7 @@ import { useSidebar } from "@/components/ui/sidebar";
 import { Bell, PanelLeft, ShieldQuestionMark } from "lucide-react";
 
 export const AppHeader = (): React.ReactElement => {
+  
   const { setOpenMobile } = useSidebar();
 
   return (

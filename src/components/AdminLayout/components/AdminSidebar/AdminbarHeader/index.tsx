@@ -3,8 +3,8 @@ import { SidebarGroup, SidebarHeader, SidebarTrigger, useSidebar } from "@/compo
 import { merge } from "@/utils/mergeStyles";
 import type React from "react";
 
-export const AppbarHeader = (): React.ReactElement => {
-  
+export const AdminbarHeader = ():React.ReactElement => {
+
   const { open } = useSidebar();
 
   return (
@@ -26,5 +26,5 @@ export const AppbarHeader = (): React.ReactElement => {
         </div>
       </SidebarGroup>
     </SidebarHeader>
-  );
-};
+  )
+}

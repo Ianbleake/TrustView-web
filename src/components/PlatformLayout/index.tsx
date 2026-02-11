@@ -9,7 +9,7 @@ import { MobileSidebar } from "./components/AppSidebar/components/MobileSidebar"
 
 export const PlatformLayout = (): React.ReactElement => {
 
-  const { session } = useSessionStorage();
+  const { session, profile } = useSessionStorage();
   const location = useLocation();
 
   if (!session) {
@@ -20,6 +20,16 @@ export const PlatformLayout = (): React.ReactElement => {
         state={{ from: location.pathname }}
       />
     );
+  }else{
+    if(profile?.role === "admin"){
+      return(
+        <Navigate
+          to="/admin"
+          replace
+          state={{ from: location.pathname }}
+        />
+      )
+    }
   }
 
   return (
