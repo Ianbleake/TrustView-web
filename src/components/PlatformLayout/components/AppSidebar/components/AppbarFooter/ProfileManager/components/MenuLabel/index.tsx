@@ -1,13 +1,11 @@
 import { DropdownMenuLabel } from "@/components/ui/dropdown-menu";
 import type React from "react";
 import { UserImage } from "../ProfileInfo/UserImage";
+import { useSessionStorage } from "@/storage/authStorage";
 
 export const MenuLabel = (): React.ReactElement => {
-  const profile = {
-    first_name: "John",
-    last_name: "Doe",
-    email: "jhonDhoe@bridgely.com",
-  };
+
+  const { profile } = useSessionStorage();
 
   return (
     <DropdownMenuLabel className="p-0 font-normal">

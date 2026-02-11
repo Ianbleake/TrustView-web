@@ -3,13 +3,14 @@ import { SidebarMenuButton } from "@/components/ui/sidebar";
 import { MoreVertical } from "lucide-react";
 import type React from "react";
 import { UserImage } from "./UserImage";
+import { useSessionStorage } from "@/storage/authStorage";
 
 export const ProfileInfo = (): React.ReactElement => {
-  const profile = {
-    username: "johndoe",
-    first_name: "John",
-    last_name: "Doe",
-  };
+
+  const { profile, store } = useSessionStorage();
+
+  const fullName = `${profile?.first_name} ${profile?.last_name}`;
+
   return (
     <DropdownMenuTrigger
       asChild
@@ -22,9 +23,9 @@ export const ProfileInfo = (): React.ReactElement => {
         <UserImage />
 
         <div className="grid flex-1 text-left text-sm leading-tight ml-1">
-          <span className="truncate font-medium">{profile?.username}</span>
+          <span className="truncate font-medium">{fullName}</span>
           <span className="text-muted-foreground truncate text-xs">
-            {profile?.first_name} {profile?.last_name}
+            {store?.store_name}
           </span>
         </div>
 

@@ -2,25 +2,25 @@ type Billing = "free" | "base" | "Pro"
 
 type Profile = {
   id: string;
-  authId: string;
-  firstName: string;
-  lastName: string;
+  auth_id: string;
+  first_name: string;
+  last_name: string;
   email: string;
   billing: Billing;
-  avatarUrl: string;
-  bannerUrl: string;
-  createdAt: Date;
-  updatedAt: Date;
+  avatar_url: string;
+  banner_url: string;
+  created_at: Date;
+  updated_at: Date;
 }
 
 type Store = {
   id: string;
-  profileId: string;
-  tiendaNubeId: string;
-  storeAccessToken: string;
+  profile_id: string;
+  tienda_nube_user_id: string;
+  access_token: string;
   scope: string;
-  storeName: string;
+  store_name: string;
   status: string;
-  createdAt: Date;
-  installedAt: Date;
+  created_at: Date;
+  installed_at: Date;
 }

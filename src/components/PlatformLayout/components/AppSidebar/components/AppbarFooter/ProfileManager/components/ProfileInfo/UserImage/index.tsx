@@ -1,28 +1,28 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useSessionStorage } from "@/storage/authStorage";
 import type React from "react";
 
 export const UserImage = (): React.ReactElement => {
-  const profile = {
-    avatarurl: "",
-    username: "johndoe",
-    color: "#10B981",
-    initials: "JD",
-  };
 
-  const baseStyle = "rounded-lg bg-emerald-600 text-white text-lg";
+  const { profile } = useSessionStorage();
+
+  const initials = profile?.first_name && profile?.last_name
+    ? `${profile.first_name[0]}${profile.last_name[0]}`
+    : "BD";
+
+  const baseStyle = "rounded-lg bg-emerald-600 text-white text-lg gradient-bg";
 
   return (
     <Avatar className="h-8 w-8 rounded-lg ">
       <AvatarImage
-        src={profile?.avatarurl || undefined}
-        alt={profile?.username || "user-profile"}
+        src={profile?.avatar_url || undefined}
+        alt={profile?.first_name || "user-profile"}
       />
 
       <AvatarFallback
         className={baseStyle}
-        style={{ backgroundColor: profile?.color }}
       >
-        {profile?.initials || "BD"}
+        {initials}
       </AvatarFallback>
     </Avatar>
   );
