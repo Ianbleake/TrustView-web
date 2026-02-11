@@ -7,16 +7,14 @@ type ReviewsGrid = {
 
 export const ReviewsGrid = ({
   reviews,
-}:ReviewsGrid ):React.ReactElement => {
+}: ReviewsGrid): React.ReactElement => {
   return (
-    <div className='grid grid-cols-2 gap-4 animate-fade-in'>
-      {
-        reviews.map((review) => {
-          return(
-            <ReviewCard key={review.id} review={review} />
-          )
-        })
-      }
+    <div className="columns-1 md:columns-2 gap-4 animate-fade-in flex-1">
+      {reviews.map((review) => (
+        <div key={review.id} className="mb-4 break-inside-avoid">
+          <ReviewCard review={review} />
+        </div>
+      ))}
     </div>
   )
 }
