@@ -9,6 +9,7 @@ import { CreateReview } from './components/CreateReview'
 import { useSessionStorage } from '@/storage/authStorage'
 import useReviews from '@/hooks/reviews/useReviews'
 import { useReviewStorage } from '@/storage/reviewStorage'
+import { ReviewsSkeleton } from '@/components/skeletons/ReviewsSkeleton'
 
 export const Reviews = ():React.ReactElement => {
 
@@ -32,13 +33,10 @@ export const Reviews = ():React.ReactElement => {
       );
     });
 
-  if(isLoading){
-    return (
-      <div>
-        loading... 
-      </div>
-    )
-  }
+    if (isLoading) {
+      return <ReviewsSkeleton />
+    }
+    
   
   return (
     <Tabs value={filter} onValueChange={(v) => setFilter(v as "all" | ReviewState)} className="flex flex-col gap-6 min-h-full">
