@@ -5,6 +5,7 @@ import { useSessionStorage } from "@/storage/authStorage";
 import { AppSidebar } from "./components/AppSidebar";
 import { AppHeader } from "./components/AppHeader";
 import { MobileSidebar } from "./components/AppSidebar/components/MobileSidebar";
+// import { SkeletonTest } from "../skeletons/SkeletonTest";
 
 
 export const PlatformLayout = (): React.ReactElement => {
@@ -42,6 +43,7 @@ export const PlatformLayout = (): React.ReactElement => {
         <AppHeader />
         <section className="py-4 px-16 flex-1">
           <Outlet />
+          {/* <SkeletonTest/> */}
         </section>
       </main>
 

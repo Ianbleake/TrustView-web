@@ -16,8 +16,6 @@ export const Reviews = ():React.ReactElement => {
   const { isLoading } = useReviews();
   const { reviews } = useReviewStorage();
 
-  console.log("reviews:", reviews)
-
   const { profile } = useSessionStorage();
   const [filter, setFilter] = useState<"all" | ReviewState>("all");
   const [search, setSearch] = useState("");
