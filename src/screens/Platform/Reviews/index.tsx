@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { ReviewsGrid } from './components/ReviewsGrid'
-import { RecentReviewsData } from '@/content/RecentReviews'
 import { Check, EyeClosed, Hourglass, Search, Star } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Input } from '@/components/ui/input'
@@ -8,15 +7,21 @@ import { EmptyReviews } from './components/EmptyReviews'
 import { ImportReviews } from './components/ImportReviews'
 import { CreateReview } from './components/CreateReview'
 import { useSessionStorage } from '@/storage/authStorage'
+import useReviews from '@/hooks/reviews/useReviews'
+import { useReviewStorage } from '@/storage/reviewStorage'
 
 export const Reviews = ():React.ReactElement => {
+
+  const { isLoading } = useReviews();
+  const { reviews } = useReviewStorage();
+
+  console.log("reviews:", reviews)
 
   const { profile } = useSessionStorage();
   const [filter, setFilter] = useState<"all" | ReviewState>("all");
   const [search, setSearch] = useState("");
 
-  const filteredReviews = RecentReviewsData
-    .filter(r => filter === "all" || r.status === filter)
+  const filteredReviews = reviews?.filter(r => filter === "all" || r.status === filter)
     .filter(r => {
       if (!search) return true;
       const q = search.toLowerCase();
@@ -26,6 +31,14 @@ export const Reviews = ():React.ReactElement => {
         r.product.toLowerCase().includes(q)
       );
     });
+
+  if(isLoading){
+    return (
+      <div>
+        loading... 
+      </div>
+    )
+  }
   
   return (
     <Tabs value={filter} onValueChange={(v) => setFilter(v as "all" | ReviewState)} className="flex flex-col gap-6 min-h-full">
@@ -90,7 +103,7 @@ export const Reviews = ():React.ReactElement => {
 
       <TabsContent value={filter} className="flex flex-1">
         {
-          filteredReviews.length <= 0 ? (
+          !filteredReviews || filteredReviews.length <= 0 ? (
             <EmptyReviews/>
           ) : (
             <ReviewsGrid reviews={filteredReviews} />

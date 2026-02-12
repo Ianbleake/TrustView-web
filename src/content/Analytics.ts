@@ -1,3 +1,4 @@
+
 export const analyticsBase = {
   rating: {
     average: 4.5,
