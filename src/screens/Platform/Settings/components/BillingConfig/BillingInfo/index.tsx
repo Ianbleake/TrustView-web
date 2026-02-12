@@ -12,14 +12,17 @@ export const BillingInfo = ():React.ReactElement => {
     <div className='p-4 flex flex-col gap-8'>
       {
         profile?.billing && (
-          <div className='flex flex-row items-center gap-20'>
-            <BillingCard plan={profile.billing} />
-            <Metrics plan={profile.billing}/>
-          </div>
+          <>
+            <div className='flex flex-row items-center gap-20'>
+              <BillingCard plan={profile.billing} />
+              <Metrics plan={profile.billing}/>
+            </div>
+            <BillingFeatures plan={profile.billing}/>
+          </>
         )
       }
 
-      <BillingFeatures/>
+      
       
     </div>
   )
