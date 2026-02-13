@@ -36,3 +36,30 @@ type Store = {
   created_at: Date;
   installed_at: Date;
 }
+
+type StarRating = {
+  stars: number;
+  count: number;
+  percentage: number;
+}
+
+type StoreAnalytics = {
+  rating: {
+    average: number;
+    trend: number;
+  },
+  totalReviews: {
+    count: number;
+    trend: number;
+  },
+  monthlyReviews: {
+    count: number;
+    trend: number;
+  },
+  positives: {
+    count: number;
+    percentage: number;
+    trend: number;
+  },
+  starsRatings: StarRating[];
+}
