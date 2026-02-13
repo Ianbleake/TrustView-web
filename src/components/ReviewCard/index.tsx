@@ -1,8 +1,8 @@
 import React from 'react'
+import { HideReview } from './HideReview'
 import { StarsCount } from '../StarsCount'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { HideReview } from './HideReview'
 import { ApprobeReview } from './ApprobeReview'
 import formatDate from '@/utils/formatDate'
 
