@@ -8,7 +8,7 @@ export const SkeletonTest = ():React.ReactElement => {
   const { isTesting, setTesting} = useSkeleton();
   return (
     <Button
-      className='fixed right-5 bottom-5 rounded-full'
+      className='fixed right-5 bottom-5 rounded-full z-90'
       size={"icon-lg"}
       variant={"gradient"}
       onClick={() => setTesting(!isTesting)}

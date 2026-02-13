@@ -13,7 +13,7 @@ type Review = {
     content: string,
     productId: string,
     product: string,
-    date: string,
+    date: Date,
     status: ReviewState
 }
 

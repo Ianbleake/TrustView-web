@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { HideReview } from './HideReview'
 import { ApprobeReview } from './ApprobeReview'
+import formatDate from '@/utils/formatDate'
 
 type ReviewCardProps = {
     review: Review
@@ -38,7 +39,7 @@ export const ReviewCard = ({
 
                 <div className='flex flex-col items-start justify-start'>
                     <h4 className='text-lg font-heading font-semibold text-gray-900'>{review.author}</h4>
-                    <span className='text-sm text-gray-500 font-normal' >{review.date}</span>
+                    <span className='text-sm text-gray-500 font-normal' >{formatDate(review.date)}</span>
                 </div>
             </div>
 
@@ -64,8 +65,8 @@ export const ReviewCard = ({
                     <ApprobeReview reviewId={review.id}/>
                 ) : review.status === "pending" && (
                     <div className='flex flex-row items-center justify-start gap-2'>
-                        <ApprobeReview reviewId={review.id}/>
                         <HideReview reviewId={review.id}/>
+                        <ApprobeReview reviewId={review.id}/>
                     </div>
                 )
             }

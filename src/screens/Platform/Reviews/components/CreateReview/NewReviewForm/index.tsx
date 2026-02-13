@@ -1,15 +1,15 @@
-import { Button } from '@/components/ui/button';
+import React from 'react';
+import formatDate from '@/utils/formatDate';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 import { Textarea } from '@/components/ui/textarea';
-import useCreateReview from '@/hooks/reviews/useCreateReview';
-import { useSessionStorage } from '@/storage/authStorage';
-import { Ban, Calendar, Eye, PackageSearch, Save, Star, TextAlignJustify, User } from 'lucide-react';
-
-import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { useSessionStorage } from '@/storage/authStorage';
+import useCreateReview from '@/hooks/reviews/useCreateReview';
+import { Ban, Calendar, Eye, PackageSearch, Save, Star, TextAlignJustify, User } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 type NewReviewValues = {
   author: string;
@@ -30,6 +30,8 @@ export const NewReviewForm = ({
 
   const { store } = useSessionStorage();
   const { mutate:createReview, isPending } = useCreateReview();
+
+  const creationDate = new Date();
   
   const { register, handleSubmit, control, formState: { errors } } = useForm<NewReviewValues>({
     defaultValues: {
@@ -166,7 +168,7 @@ export const NewReviewForm = ({
           disabled
         >
           <Calendar className="absolute left-2 top-2 h-5 w-5 text-orange-600" />
-          { new Date().toLocaleDateString() }
+          { formatDate(creationDate,true) }
         </Button>
       </div>
 
@@ -195,6 +197,7 @@ export const NewReviewForm = ({
         <Button
          type="submit"
          disabled={isPending}
+         className='min-w-24'
         >
           {
             isPending ? (

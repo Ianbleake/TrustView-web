@@ -1,6 +1,14 @@
 type Billing = "free" | "base" | "pro"
 type UserRole = "admin" | "user"
 
+type Settings = {
+  notifications: {
+    newReviews: boolean;
+    badReviews: boolean;
+    weeklySummary: boolean;
+  }
+}
+
 type Profile = {
   id: string;
   role: UserRole;
@@ -14,6 +22,7 @@ type Profile = {
   created_at: Date;
   updated_at: Date;
   color: string | null;
+  settings: Settings;
 }
 
 type Store = {
