@@ -5,7 +5,7 @@ import { Slot } from "radix-ui"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
@@ -16,7 +16,7 @@ const buttonVariants = cva(
           "border bg-background text-orange-600 shadow-xs hover:bg-bg-gray-100/20 hover:opacity:80 hover:text-orange-600 dark:bg-bg-gray-100/30 dark:border-input dark:hover:bg-gray-100/50",
         secondary: "bg-transparent border-2 border-orange-600 text-orange-600 hover:bg-secondary/50",
         ghost:
-          " hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+          "border border-gray-200 hover:bg-orange-100/70 hover:text-orange-600 dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
         gradient: "bg-gradient-to-r from-orange-500 via-orange-500 to-amber-400 text-white hover:scale-105"
       },
@@ -47,7 +47,7 @@ function Button({
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
-  }) {
+  }): React.ReactElement {
   const Comp = asChild ? Slot.Root : "button"
 
   return (

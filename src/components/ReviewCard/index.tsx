@@ -2,12 +2,8 @@ import React from 'react'
 import { StarsCount } from '../StarsCount'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '../ui/button'
-import { Check, EyeClosed } from 'lucide-react'
-
-
-
-
+import { HideReview } from './HideReview'
+import { ApprobeReview } from './ApprobeReview'
 
 type ReviewCardProps = {
     review: Review
@@ -63,21 +59,9 @@ export const ReviewCard = ({
             <p className='text-sm font-medium text-gray-500'>Producto: <span className='text-orange-600'>{review.product}</span></p>
             {
                 review.status === "approved" ? (
-                <Button
-                    size={"sm"}
-                    variant={"ghost"}
-                >
-                    Ocultar
-                    <EyeClosed/>
-                </Button>
+                    <HideReview reviewId={review.id}/>
                 ) : (
-                <Button
-                    size={"sm"}
-                    variant={"gradient"}
-                >
-                    Aprobar
-                    <Check/>
-                </Button>
+                    <ApprobeReview reviewId={review.id}/>
                 )
             }
         </div>

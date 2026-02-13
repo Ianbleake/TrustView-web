@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { useSkeleton } from '@/storage/skeletonTest'
-import { Skull } from 'lucide-react'
+import { FlaskConical } from 'lucide-react'
 import React from 'react'
 
 export const SkeletonTest = ():React.ReactElement => {
@@ -13,7 +13,7 @@ export const SkeletonTest = ():React.ReactElement => {
       variant={"gradient"}
       onClick={() => setTesting(!isTesting)}
     >
-      <Skull/>
+      <FlaskConical/>
     </Button>
   )
 }
