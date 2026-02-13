@@ -20,14 +20,21 @@ export const Reviews = ():React.ReactElement => {
   const [filter, setFilter] = useState<"all" | ReviewState>("all");
   const [search, setSearch] = useState("");
 
-  const filteredReviews = reviews?.filter(r => filter === "all" || r.status === filter)
+  const filteredReviews = (reviews ?? [])
+    .filter(r => filter === "all" || r.status === filter)
     .filter(r => {
       if (!search) return true;
+
       const q = search.toLowerCase();
+
+      const author = r.author?.toLowerCase() ?? "";
+      const content = r.content?.toLowerCase() ?? "";
+      const product = r.product?.toLowerCase() ?? "";
+
       return (
-        r.author.toLowerCase().includes(q) ||
-        r.content.toLowerCase().includes(q) ||
-        r.product.toLowerCase().includes(q)
+        author.includes(q) ||
+        content.includes(q) ||
+        product.includes(q)
       );
     });
 
