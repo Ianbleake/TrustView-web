@@ -60,8 +60,13 @@ export const ReviewCard = ({
             {
                 review.status === "approved" ? (
                     <HideReview reviewId={review.id}/>
-                ) : (
+                ) : review.status === "rejected" ? (
                     <ApprobeReview reviewId={review.id}/>
+                ) : review.status === "pending" && (
+                    <div className='flex flex-row items-center justify-start gap-2'>
+                        <ApprobeReview reviewId={review.id}/>
+                        <HideReview reviewId={review.id}/>
+                    </div>
                 )
             }
         </div>
