@@ -11,6 +11,7 @@ type Review = {
     author: string,
     rating: number,
     content: string,
+    productId: string,
     product: string,
     date: string,
     status: ReviewState

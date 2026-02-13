@@ -9,6 +9,7 @@ type ReviewStorage = {
   setLastReviews: (reviews: Review[]) => void;
   updateReview: (updatedReview: Partial<Review> & { id: string }) => void;
   clearReviews: () => void;
+  addReview: (newReview: Review) => void;
 };
 
 export const useReviewStorage = create<ReviewStorage>()(
@@ -24,6 +25,18 @@ export const useReviewStorage = create<ReviewStorage>()(
 
       setLastReviews: (lastReviews: Review[]): void => {
         set({ lastReviews });
+      },
+
+      addReview: (newReview: Review): void => {
+        set((state): Pick<ReviewStorage, "reviews" | "lastReviews"> => {
+          const updatedReviews = state.reviews ? [newReview, ...state.reviews] : [newReview];
+          const updatedLastReviews = state.lastReviews ? [newReview, ...state.lastReviews] : [newReview];
+
+          return {
+            reviews: updatedReviews,
+            lastReviews: updatedLastReviews,
+          };
+        });
       },
 
       updateReview: (updatedReview: Partial<Review> & { id: string }): void => {

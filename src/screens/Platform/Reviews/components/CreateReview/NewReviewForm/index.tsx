@@ -1,17 +1,23 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Spinner } from '@/components/ui/spinner';
 import { Textarea } from '@/components/ui/textarea';
-import { Calendar, Eye, PackageSearch, Star, TextAlignJustify, User } from 'lucide-react';
-import { Calendar as DayPicker } from "@/components/ui/calendar"
+import useCreateReview from '@/hooks/reviews/useCreateReview';
+import { useSessionStorage } from '@/storage/authStorage';
+import { Ban, Calendar, Eye, PackageSearch, Save, Star, TextAlignJustify, User } from 'lucide-react';
 
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
-type NewReviewValues = Omit<Review, "id"> & {
+type NewReviewValues = {
+  author: string;
+  rating: number;
+  content: string;
   productId: string;
+  product: string;
+  status: ReviewState;
 };
 
 type NewReviewFormProps = {
@@ -21,6 +27,9 @@ type NewReviewFormProps = {
 export const NewReviewForm = ({
   onClose,
 }: NewReviewFormProps): React.ReactElement => {
+
+  const { store } = useSessionStorage();
+  const { mutate:createReview, isPending } = useCreateReview();
   
   const { register, handleSubmit, control, formState: { errors } } = useForm<NewReviewValues>({
     defaultValues: {
@@ -29,13 +38,29 @@ export const NewReviewForm = ({
       content: '',
       product: '',
       productId: '',
-      status: 'pending',
-      date: ''
+      status: "pending",
     }
   });
 
   const onSubmit = (data: NewReviewValues): void => {
-    console.log(data);
+
+    const formattedData:NewReviewPayload = {
+      store_id: store?.id,
+      product_id: data.productId,
+      product_name: data.product,
+      author_name: data.author,
+      rating: data.rating,
+      approved: data.status === "approved" ? true : data.status === "rejected" ? false : null,
+      content: data.content,
+      image_url: null,
+    }
+
+    createReview(formattedData, {
+      onSuccess: () => {
+        onClose();
+      }
+    })
+
   };
 
   return (
@@ -123,9 +148,9 @@ export const NewReviewForm = ({
               </SelectTrigger>
 
               <SelectContent>
-                <SelectItem value='approved'>Aprobada</SelectItem>
-                <SelectItem value='pending'>Pendiente</SelectItem>
-                <SelectItem value='rejected'>Rechazada</SelectItem>
+                <SelectItem value={"approved"}>Aprobada</SelectItem>
+                <SelectItem value={"pending"}>Pendiente</SelectItem>
+                <SelectItem value={"rejected"}>Rechazada</SelectItem>
               </SelectContent>
             </Select>
           )}
@@ -135,37 +160,14 @@ export const NewReviewForm = ({
       
       <div className='flex flex-col items-start gap-2'>
         <Label>Fecha:</Label>
-        <Controller
-          control={control}
-          name="date"
-          render={({ field }) => (
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="pl-10 w-52 relative text-left font-normal"
-                >
-                  <Calendar className="absolute left-2 top-2 h-5 w-5 text-orange-600" />
-                  {field.value
-                    ? new Date(field.value).toLocaleDateString()
-                    : "Selecciona fecha"}
-                </Button>
-              </PopoverTrigger>
-
-              <PopoverContent className="p-0" align="start">
-                <DayPicker
-                  mode="single"
-                  selected={field.value ? new Date(field.value) : undefined}
-                  onSelect={(date) =>
-                    field.onChange(date ? date.toISOString() : '')
-                  }
-                  
-                />
-              </PopoverContent>
-            </Popover>
-          )}
-        />
-
+        <Button
+          variant="outline"
+          className="pl-10 w-52 relative text-left font-normal select-none"
+          disabled
+        >
+          <Calendar className="absolute left-2 top-2 h-5 w-5 text-orange-600" />
+          { new Date().toLocaleDateString() }
+        </Button>
       </div>
 
       
@@ -188,9 +190,22 @@ export const NewReviewForm = ({
           onClick={onClose}
         >
           Cancelar
+          <Ban/>
         </Button>
-        <Button type="submit">
-          Crear
+        <Button
+         type="submit"
+         disabled={isPending}
+        >
+          {
+            isPending ? (
+              <Spinner/>
+            ) : (
+              <>
+                Crear
+                <Save/>
+              </>
+            )
+          }
         </Button>
       </div>
 
