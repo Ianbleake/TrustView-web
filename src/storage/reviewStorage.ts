@@ -10,6 +10,7 @@ type ReviewStorage = {
   updateReview: (updatedReview: Partial<Review> & { id: string }) => void;
   clearReviews: () => void;
   addReview: (newReview: Review) => void;
+  deleteReview: (reviewId: string) => void;
 };
 
 export const useReviewStorage = create<ReviewStorage>()(
@@ -64,6 +65,23 @@ export const useReviewStorage = create<ReviewStorage>()(
           lastReviews: null,
         });
       },
+
+      deleteReview: (reviewId: string): void => {
+        set((state): Pick<ReviewStorage, "reviews" | "lastReviews"> => {
+          const filterList = (list: Review[] | null): Review[] | null => {
+            if (!list) return list;
+
+            return list.filter((review) => review.id !== reviewId);
+          };
+
+          return {
+            reviews: filterList(state.reviews),
+            lastReviews: filterList(state.lastReviews),
+          };
+        });
+      },
+
+      
     }),
     {
       name: "reviews-storage",

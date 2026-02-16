@@ -22,10 +22,7 @@ export const Metrics = ({
       : `${usedReviews}/${reviewsLimit[plan]}`;
 
   const percentage = plan === "pro" ? 100 : (usedReviews/reviewsLimit[plan])*100;
-
-  console.log("percentage",percentage)
   
-
   return (
     <div className='flex flex-col items-start justify-start gap-3 min-w-xs'>
 

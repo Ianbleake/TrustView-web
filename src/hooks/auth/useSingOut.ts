@@ -1,27 +1,29 @@
 
 import signOut from "@/services/auth/singOut";
+import { useAnalyticsStorage } from "@/storage/analyticsStorage";
 import { useSessionStorage } from "@/storage/authStorage";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useReviewStorage } from "@/storage/reviewStorage";
+import { useMutation, useQueryClient, type UseMutationResult } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-export default function useLogout() {
+export default function useLogout():UseMutationResult<void, Error, void, unknown> {
+
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const clearSession = useSessionStorage((s) => s.clearSession);
+  const { clearAnalytics} = useAnalyticsStorage();
+  const { clearReviews } = useReviewStorage();
 
   return useMutation({
     mutationKey: ["auth", "logout"],
     mutationFn: signOut,
 
     onSuccess: () => {
-      // 1️⃣ limpiar estado global
       clearSession();
-
-      // 2️⃣ limpiar cache de React Query
       queryClient.clear();
-
-      // 3️⃣ feedback + redirect
+      clearAnalytics();
+      clearReviews();
       toast.success("Sesión cerrada");
       navigate("/login");
     },

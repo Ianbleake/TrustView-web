@@ -13,11 +13,11 @@ export const useAnalyticsStorage = create<AnalyticsStorage>()(
     (set) => ({
       analytics: null,
 
-      setAnalytics: (analytics: StoreAnalytics) => {
+      setAnalytics: (analytics: StoreAnalytics):void => {
         set({ analytics });
       },
 
-      clearAnalytics: () => {
+      clearAnalytics: ():void => {
         set({ analytics: null });
       },
     }),

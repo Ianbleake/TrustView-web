@@ -36,3 +36,9 @@ type NewReviewResponse = {
 	data: Review;
 	meta: null;
 };
+
+type RemoveReviewResponse = {
+	success: boolean;
+	data: Pick<Review, "id">;
+	meta: null;
+}

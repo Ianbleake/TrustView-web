@@ -18,6 +18,8 @@ type RegisterValues = {
   password: string;
 };
 
+//TODO: Move Register Logic to a hook and a service
+
 export const RegisterForm = (): React.ReactElement => {
 
   const [showPass, setShowPass] = useState(false);
