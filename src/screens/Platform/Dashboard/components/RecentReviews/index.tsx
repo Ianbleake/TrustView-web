@@ -5,6 +5,7 @@ import { ReviewCard } from '@/components/ReviewCard'
 import { useReviewStorage } from '@/storage/reviewStorage'
 import useLastReviews from '@/hooks/reviews/useLastReviews'
 import { LastReviewsSkeleton } from '@/components/skeletons/LastReviewsSkeleton'
+import { EmptyReviews } from '@/screens/Platform/Reviews/components/EmptyReviews'
 
 export const RecentReviews = ():React.ReactElement => {
 
@@ -29,11 +30,17 @@ export const RecentReviews = ():React.ReactElement => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {
-          lastReviews && lastReviews.map((review) => {
-            return (
-              <ReviewCard key={review.id} review={review} />
-            )
-          })
+          lastReviews && lastReviews.length > 0 ? (
+            lastReviews.map((review) => {
+              return (
+                <ReviewCard key={review.id} review={review} />
+              )
+            })
+          ) : (
+            <div className='flex flex-1 col-span-2 mb-20 mt-10'>
+              <EmptyReviews/>
+            </div>
+          )
         }
       </div>
 
