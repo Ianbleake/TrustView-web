@@ -8,7 +8,7 @@ import { toast } from "sonner";
 export default function useReviews (): { isLoading: boolean } {
 
   const { store } = useSessionStorage();
-  const { setReviews } = useReviewStorage();
+  const { reviews, setReviews } = useReviewStorage();
 
   const getReviewsQuery = useQuery<GetReviewsResponse>({
     queryKey: ["reviews","all", store?.id],
@@ -26,11 +26,11 @@ export default function useReviews (): { isLoading: boolean } {
   },[getReviewsQuery.isError])
 
   useEffect(() => {
-    if(getReviewsQuery.data){
+    if(getReviewsQuery.data && !reviews){
       setReviews(getReviewsQuery.data.data)
-    }    
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[getReviewsQuery.data])
+  },[getReviewsQuery.data, reviews])
 
   return {
     isLoading: getReviewsQuery.isLoading
