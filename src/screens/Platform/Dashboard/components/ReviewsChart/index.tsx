@@ -1,6 +1,8 @@
 import React from 'react'
 import { StarRating } from './StarRating'
 import { Card } from '@/components/ui/card'
+import { Nodata } from '@/components/NoData'
+import { RefreshCw, TrendingUp } from 'lucide-react'
 import { useAnalyticsStorage } from '@/storage/analyticsStorage'
 import { StarsCount } from '../../../../../components/StarsCount'
 
@@ -8,10 +10,9 @@ export const ReviewsChart = ():React.ReactElement => {
 
   const { analytics } = useAnalyticsStorage();
 
-  //TODO: Add a Empty state in case of no analytics data or error fetching it
   if(!analytics){
     return(
-      <div>No data</div>
+      <Nodata title='Sin datos' description='Hubo un problema al carcar los datos.' icon={TrendingUp} action={() => window.location.reload()} actionLabel='Volver a cargar' actionIcon={RefreshCw} />
     )
   }
 

@@ -4,22 +4,20 @@ import { Analytics } from './components/Analytics'
 import { ReviewsChart } from './components/ReviewsChart'
 import { RecentReviews } from './components/RecentReviews'
 import useStoreAnalytics from '@/hooks/analytics/useStoreAnalytics'
+import { AnalyticsSkeleton } from '@/components/skeletons/AnalyticsSkeleton'
 
 export const Dashboard = ():React.ReactElement => {
 
   const { isLoading } = useStoreAnalytics();
 
-  //TODO: Create a Dashboard skeleton to show while the analytics data is loading
   if(isLoading){
     return(
-      <div>
-        loading...
-      </div>
+      <AnalyticsSkeleton/>
     )
   }
 
   return (
-    <div className='flex flex-col gap-8 animate'>
+    <div className='flex flex-col gap-8'>
       <Header/>
       <Analytics/>
       <ReviewsChart/>
