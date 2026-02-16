@@ -132,7 +132,7 @@ export const Reviews = ():React.ReactElement => {
 
         </TabsList>
 
-        <div className="flex items-center bg-white border rounded-xl shadow-sm overflow-hidden">
+        <div className="flex items-center bg-white border rounded-lg shadow-sm overflow-hidden w-85">
 
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-600 opacity-80" size={18} />
@@ -145,10 +145,8 @@ export const Reviews = ():React.ReactElement => {
             />
           </div>
 
-          {/* Divider */}
           <div className="h-8 w-px bg-gray-200" />
 
-          {/* SORT */}
           <div>
             <Select
               value={sortBy}
