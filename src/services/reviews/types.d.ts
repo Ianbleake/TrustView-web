@@ -42,3 +42,30 @@ type RemoveReviewResponse = {
 	data: Pick<Review, "id">;
 	meta: null;
 }
+
+type ImportPayload = {
+	file: File;
+	store_id: string;
+}
+
+type ImportError = {
+	row: number;
+	error: string;
+}
+
+type ImportResponse = {
+	success: boolean;
+	data: {
+		total: number,
+		inserted: {
+			count: number,
+			reviews: Review[],
+		},
+		failed: {
+			count: number,
+			reviews: Review[],
+		},
+		errors: ImportError[],
+	};
+	meta: null;
+}

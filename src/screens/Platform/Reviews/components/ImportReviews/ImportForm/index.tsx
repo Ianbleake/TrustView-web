@@ -3,6 +3,9 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { ImportDropzone } from './ImportDropzone';
 import { Ban, Download, Import } from 'lucide-react';
+import { handleDownloadTemplate } from '@/utils/handleDownloadTemplate';
+import { useSessionStorage } from '@/storage/authStorage';
+import useImportReviews from '@/hooks/reviews/useImportReviews';
 
 
 type ImportFormValues = {
@@ -17,14 +20,24 @@ export const ImportForm = ({
   onClose,
 }: ImportFormProps): React.ReactElement => {
 
+  const { store } = useSessionStorage();
+
   const { handleSubmit, control, formState: { errors } } = useForm<ImportFormValues>({
     defaultValues: {
       file: null,
     },
   });
 
+  const { mutate: importReviews } = useImportReviews();
+
   const onSubmit = (data: ImportFormValues): void => {
-    console.log('Archivo:', data.file);
+
+    const importPayload = {
+      file: data.file as File,
+      store_id: store?.id || "",
+    }
+
+    importReviews(importPayload);
   };
 
   return (
@@ -56,6 +69,7 @@ export const ImportForm = ({
         <Button
           variant={"link"}
           type="button"
+          onClick={handleDownloadTemplate}
         >
           Descargar plantilla
           <Download/>
