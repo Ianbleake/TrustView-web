@@ -1,6 +1,6 @@
 type AnalyticValue = {
     title: string;
-    value: number;
+    value: string | number;
     percentage: string;
     icon: LucideIcon;
     growth: 'positive' | 'negative';

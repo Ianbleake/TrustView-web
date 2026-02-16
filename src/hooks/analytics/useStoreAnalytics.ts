@@ -1,13 +1,15 @@
-import { getStoreAnalytics } from "@/services/analytics/getStoreAnalytics";
-import { useSessionStorage } from "@/storage/authStorage";
-import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
 import { toast } from "sonner";
+import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useSessionStorage } from "@/storage/authStorage";
+import { useAnalyticsStorage } from "@/storage/analyticsStorage";
+import { getStoreAnalytics } from "@/services/analytics/getStoreAnalytics";
 
 export default function useStoreAnalytics(): { isLoading: boolean } {
 
   const { store } = useSessionStorage();
-  
+  const { setAnalytics } = useAnalyticsStorage();
+
   const storeAnalyticsQuery = useQuery({
     queryKey: ["store-analytics", store?.id],
     queryFn: ({ queryKey }) => getStoreAnalytics(queryKey[1] as string),
@@ -25,7 +27,7 @@ export default function useStoreAnalytics(): { isLoading: boolean } {
 
   useEffect(() => {
     if(storeAnalyticsQuery.data){
-      toast.success("Store analytics loaded successfully");
+      setAnalytics(storeAnalyticsQuery.data.data)
     }    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[storeAnalyticsQuery.data]);
@@ -34,5 +36,3 @@ export default function useStoreAnalytics(): { isLoading: boolean } {
     isLoading: storeAnalyticsQuery.isLoading
   };
 }
-
-//TODO: Create a storage for the store analytics and set the data on the useEffect
