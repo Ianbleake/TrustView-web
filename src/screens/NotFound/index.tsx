@@ -31,14 +31,14 @@ export const NotFound = ():React.ReactElement => {
 
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
 
-            <Button asChild variant={"gradient"} className="gradient-primary w-full sm:w-auto">
+            <Button asChild variant={"link"} className="gradient-primary w-full sm:w-auto">
               <Link to="/">
                 <Home className="mr-2 h-4 w-4" />
                 Ir al inicio
               </Link>
             </Button>
 
-            <Button asChild variant="outline">
+            <Button asChild variant="gradient">
               <Link to="/platform">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Dashboard

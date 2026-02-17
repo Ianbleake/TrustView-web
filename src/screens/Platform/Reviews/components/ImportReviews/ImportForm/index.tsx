@@ -92,7 +92,7 @@ export const ImportForm = ({
           </Button>
           <Button
            type="submit"
-           variant={"default"}
+           variant={"gradient"}
             disabled={isPending}
             className='min-w-24'
           >
