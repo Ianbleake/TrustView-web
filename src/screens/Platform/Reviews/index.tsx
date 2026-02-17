@@ -27,6 +27,8 @@ const sortConfig: Record<SortState, { label: string; icon: React.ElementType }> 
   author_az: { label: "Autor A-Z", icon: ArrowUpDown },
 };
 
+//TODO: Si recargo la pagina no se actualizan las reseñas, pedo en react query cache. Tambien el profile, si se hacen cambios no se actualiza.
+
 export const Reviews = ():React.ReactElement => {
 
   const { isLoading } = useReviews();
