@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   Select,
   SelectContent,
@@ -12,14 +12,14 @@ import { EmptyReviews } from './components/EmptyReviews'
 import { CreateReview } from './components/CreateReview'
 import { useSessionStorage } from '@/storage/authStorage'
 import { ImportReviews } from './components/ImportReviews'
-import { useReviewStorage } from '@/storage/reviewStorage'
 import { ReviewsSkeleton } from '@/components/skeletons/ReviewsSkeleton'
-import { Check, EyeClosed, Hourglass, Search, Star, ArrowUpDown, ArrowUp, ArrowDown, HeartMinus, HeartPlus } from 'lucide-react'
+import { Check, EyeClosed, Hourglass, Search, Star, ArrowUpDown, ArrowUp, ArrowDown, HeartMinus, HeartPlus, type LucideIcon } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { useReviewStore } from '@/storage/reviewStorage';
 
 type SortState = | "newest" | "oldest" | "rating_high" | "rating_low" | "author_az";
 
-const sortConfig: Record<SortState, { label: string; icon: React.ElementType }> = {
+const sortConfig: Record<SortState, { label: string; icon: LucideIcon }> = {
   newest: { label: "Más recientes", icon: ArrowDown },
   oldest: { label: "Más antiguas", icon: ArrowUp },
   rating_high: { label: "Mayor calificación", icon: HeartPlus },
@@ -27,20 +27,12 @@ const sortConfig: Record<SortState, { label: string; icon: React.ElementType }> 
   author_az: { label: "Autor A-Z", icon: ArrowUpDown },
 };
 
-//TODO: Si recargo la pagina no se actualizan las reseñas, pedo en react query cache. Tambien el profile, si se hacen cambios no se actualiza.
-
 export const Reviews = ():React.ReactElement => {
 
-  const { isLoading } = useReviews();
-  const { reviews } = useReviewStorage();
-
-  console.log(reviews)
+  const { isLoading, reviews } = useReviews();
 
   const { profile } = useSessionStorage();
-  const [filter, setFilter] = useState<"all" | ReviewState>("all");
-  const [sortBy, setSortBy] = useState<SortState>("newest");
-
-  const [search, setSearch] = useState("");
+  const { filter, setFilter, sortBy, setSortBy, search, setSearch } = useReviewStore();
 
   const filteredReviews = React.useMemo(() => {
     const base = (reviews ?? [])
@@ -88,7 +80,7 @@ export const Reviews = ():React.ReactElement => {
     return <ReviewsSkeleton />
   }
   
-  const SortIcon = sortConfig[sortBy].icon;
+  const SortIcon = sortConfig[sortBy].icon as LucideIcon;
 
   return (
     <Tabs value={filter} onValueChange={(v) => setFilter(v as "all" | ReviewState)} className="flex flex-col gap-6 min-h-full">

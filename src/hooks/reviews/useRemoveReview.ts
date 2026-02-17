@@ -1,18 +1,33 @@
 import { removeReview } from "@/services/reviews/removeReview";
-import { useReviewStorage } from "@/storage/reviewStorage";
-import { useMutation, type UseMutationResult } from "@tanstack/react-query";
+import { useSessionStorage } from "@/storage/authStorage";
+import { useMutation, useQueryClient, type UseMutationResult } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 export default function useRemoveReview(): UseMutationResult<RemoveReviewResponse,AppError,string> {
   
-  const { deleteReview } = useReviewStorage();
+  const queryClient = useQueryClient();
+  const { store } = useSessionStorage();
 
   const removeReviewMutation = useMutation<RemoveReviewResponse,AppError,string>({
     mutationKey: ["removeReview"],
     mutationFn: removeReview,
     onSuccess: (removedReview) => {
+      
+      queryClient.setQueryData<GetReviewsResponse>(
+        ["reviews", store?.id],
+        (old) => {
+          if (!old) return old;
+
+          return {
+            ...old,
+            data: old.data.filter(
+              r => r.id !== removedReview.data.id
+            ),
+          };
+        }
+      );
+
       toast.success("Reseña eliminada correctamente");
-      deleteReview(removedReview.data.id);
     },
     onError: () => {
       toast.error("Error al eliminar la reseña");

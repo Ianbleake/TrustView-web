@@ -1,107 +1,37 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
 
-type ReviewStorage = {
-  reviews: Review[] | null;
-  lastReviews: Review[] | null;
+type SortState =
+  | "newest"
+  | "oldest"
+  | "rating_high"
+  | "rating_low"
+  | "author_az";
 
-  setReviews: (reviews: Review[]) => void;
-  setLastReviews: (reviews: Review[]) => void;
-  updateReview: (updatedReview: Partial<Review> & { id: string }) => void;
-  clearReviews: () => void;
-  addReview: (newReview: Review) => void;
-  addReviews: (reviews: Review[]) => void;
-  deleteReview: (reviewId: string) => void;
+type ReviewUIStore = {
+  filter: "all" | ReviewState;
+  sortBy: SortState;
+  search: string;
+
+  setFilter: (value: "all" | ReviewState) => void;
+  setSortBy: (value: SortState) => void;
+  setSearch: (value: string) => void;
+
+  reset: () => void;
 };
 
-export const useReviewStorage = create<ReviewStorage>()(
-  persist(
-    (set) => ({
-      
-      reviews: null,
-      lastReviews: null,
+export const useReviewStore = create<ReviewUIStore>((set) => ({
+  filter: "all",
+  sortBy: "newest",
+  search: "",
 
-      setReviews: (reviews: Review[]): void => {
-        set({ reviews });
-      },
+  setFilter: (filter): void => set({ filter }),
+  setSortBy: (sortBy): void => set({ sortBy }),
+  setSearch: (search): void => set({ search }),
 
-      setLastReviews: (lastReviews: Review[]): void => {
-        set({ lastReviews });
-      },
-
-      addReview: (newReview: Review): void => {
-        set((state): Pick<ReviewStorage, "reviews" | "lastReviews"> => {
-          const updatedReviews = state.reviews ? [newReview, ...state.reviews] : [newReview];
-          const updatedLastReviews = state.lastReviews ? [newReview, ...state.lastReviews] : [newReview];
-
-          return {
-            reviews: updatedReviews,
-            lastReviews: updatedLastReviews,
-          };
-        });
-      },
-
-      addReviews: (newReviews: Review[]): void => {
-        set((state) => {
-
-          const current = state.reviews ?? [];
-          const map = new Map<string, Review>();
-          current.forEach((r) => map.set(r.id, r));
-          newReviews.forEach((r) => map.set(r.id, r));
-          const merged = Array.from(map.values());
-          return {
-            reviews: merged,
-            lastReviews: merged,
-          };
-        });
-      },      
-
-      updateReview: (updatedReview: Partial<Review> & { id: string }): void => {
-        set((state): Pick<ReviewStorage, "reviews" | "lastReviews"> => {
-          const updateList = (list: Review[] | null): Review[] | null => {
-            if (!list) return list;
-
-            return list.map((review) =>
-              review.id === updatedReview.id
-                ? { ...review, ...updatedReview }
-                : review
-            );
-          };
-
-          return {
-            reviews: updateList(state.reviews),
-            lastReviews: updateList(state.lastReviews),
-          };
-        });
-      },
-
-      clearReviews: (): void => {
-        set({
-          reviews: null,
-          lastReviews: null,
-        });
-      },
-
-      //TODO: revisar tambien
-      deleteReview: (reviewId: string): void => {
-        set((state): Pick<ReviewStorage, "reviews" | "lastReviews"> => {
-          const filterList = (list: Review[] | null): Review[] | null => {
-            if (!list) return list;
-
-            return list.filter((review) => review.id !== reviewId);
-          };
-
-          return {
-            reviews: filterList(state.reviews),
-            lastReviews: filterList(state.lastReviews),
-          };
-        });
-      },
-
-      
+  reset: ():void =>
+    set({
+      filter: "all",
+      sortBy: "newest",
+      search: "",
     }),
-    {
-      name: "reviews-storage",
-    }
-  )
-);
+}));

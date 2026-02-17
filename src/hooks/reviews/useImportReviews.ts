@@ -1,19 +1,40 @@
 import { importReviews } from "@/services/reviews/importReviews";
-import { useReviewStorage } from "@/storage/reviewStorage";
-import { useMutation, type UseMutationResult } from "@tanstack/react-query";
+import { useSessionStorage } from "@/storage/authStorage";
+import { useMutation, useQueryClient, type UseMutationResult } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 export default function useImportReviews():UseMutationResult<ImportResponse, AppError, ImportPayload>{
 
-  const { addReviews } = useReviewStorage(); 
+  const queryClient = useQueryClient();
+  const { store } = useSessionStorage();
   
   const importMutation = useMutation<ImportResponse,AppError,ImportPayload>({
     mutationKey: ["importReviews"],
     mutationFn: importReviews,
-    onSuccess: (importedReviews:ImportResponse) => {
-      console.log("imported reviews response:",importedReviews);
-      addReviews(importedReviews.data.inserted.reviews)
-      toast.success(`${importedReviews.data.inserted.count} reseñas importadas exitosamente!`);
+    onSuccess: (response) => {
+      queryClient.setQueryData<GetReviewsResponse>(
+        ["reviews", store?.id],
+        (old) => {
+          if (!old) return old;
+
+          const existing = new Map(
+            old.data.map(r => [r.id, r])
+          );
+
+          response.data.inserted.reviews.forEach(r => {
+            existing.set(r.id, r);
+          });
+
+          return {
+            ...old,
+            data: Array.from(existing.values()),
+          };
+        }
+      );
+
+      toast.success(
+        `${response.data.inserted.count} reseñas importadas exitosamente`
+      );
     },
     onError: (error:AppError) => {
       {

@@ -2,15 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { ReviewCard } from '@/components/ReviewCard'
-import { useReviewStorage } from '@/storage/reviewStorage'
 import useLastReviews from '@/hooks/reviews/useLastReviews'
 import { LastReviewsSkeleton } from '@/components/skeletons/LastReviewsSkeleton'
 import { EmptyReviews } from '@/screens/Platform/Reviews/components/EmptyReviews'
 
 export const RecentReviews = ():React.ReactElement => {
 
-  const { isLoading } = useLastReviews();
-  const { lastReviews } = useReviewStorage();
+  const { isLoading, lastReviews } = useLastReviews();
 
   if(isLoading){
     return(
