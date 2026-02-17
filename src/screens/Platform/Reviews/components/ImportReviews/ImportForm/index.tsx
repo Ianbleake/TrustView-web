@@ -94,6 +94,7 @@ export const ImportForm = ({
            type="submit"
            variant={"default"}
             disabled={isPending}
+            className='min-w-24'
           >
             {
               isPending ? (

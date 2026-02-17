@@ -13,7 +13,7 @@ export default function useImportReviews():UseMutationResult<ImportResponse, App
     mutationFn: importReviews,
     onSuccess: (response) => {
       queryClient.setQueryData<GetReviewsResponse>(
-        ["reviews", store?.id],
+        ["reviews","all", store?.id],
         (old) => {
           if (!old) return old;
 

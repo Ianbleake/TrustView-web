@@ -14,7 +14,7 @@ export default function useRemoveReview(): UseMutationResult<RemoveReviewRespons
     onSuccess: (removedReview) => {
       
       queryClient.setQueryData<GetReviewsResponse>(
-        ["reviews", store?.id],
+        ["reviews","all", store?.id],
         (old) => {
           if (!old) return old;
 

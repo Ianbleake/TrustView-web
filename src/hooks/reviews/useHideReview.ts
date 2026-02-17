@@ -14,7 +14,7 @@ export default function useHideReview():UseMutationResult<approbeReviewResponse,
     mutationFn: hideReview,
     onSuccess: (updatedReview) => {
       queryClient.setQueryData<GetReviewsResponse>(
-        ["reviews", store?.id],
+        ["reviews","all", store?.id],
         (old) => {
           if (!old) return old;
     

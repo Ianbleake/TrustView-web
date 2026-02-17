@@ -13,7 +13,7 @@ export default function useCreateReview():UseMutationResult<NewReviewResponse, A
     mutationFn: createReview,
     onSuccess: (response) => {
       queryClient.setQueryData<GetReviewsResponse>(
-        ["reviews", store?.id],
+        ["reviews","all", store?.id],
         (old) => {
           if (!old) return old;
 

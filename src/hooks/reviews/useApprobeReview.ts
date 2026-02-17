@@ -13,7 +13,7 @@ export default function useApprobeReview(): UseMutationResult<approbeReviewRespo
     mutationFn: approbeReview,
     onSuccess: (updatedReview) => {
       queryClient.setQueryData<GetReviewsResponse>(
-        ["reviews", store?.id],
+        ["reviews","all", store?.id],
         (old) => {
           if (!old) return old;
     
