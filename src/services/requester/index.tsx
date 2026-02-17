@@ -17,7 +17,11 @@ export const requester = async <TResponse, TPayload = unknown>({
   token,
   params,
 }: RequesterArgs<TPayload>): Promise<TResponse> => {
+
   try {
+
+    const isFormData = payload instanceof FormData;
+
     const response = await axiosClient.request<TResponse>({
       url: endpoint,
       method,
@@ -25,6 +29,7 @@ export const requester = async <TResponse, TPayload = unknown>({
       params,
       headers: {
         ...(token && { Authorization: `Bearer ${token}` }),
+        ...(isFormData && { "Content-Type": "multipart/form-data" }),
       },
     });
 

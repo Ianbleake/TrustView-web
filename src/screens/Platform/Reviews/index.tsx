@@ -34,6 +34,8 @@ export const Reviews = ():React.ReactElement => {
   const { isLoading } = useReviews();
   const { reviews } = useReviewStorage();
 
+  console.log(reviews)
+
   const { profile } = useSessionStorage();
   const [filter, setFilter] = useState<"all" | ReviewState>("all");
   const [sortBy, setSortBy] = useState<SortState>("newest");

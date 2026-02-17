@@ -10,6 +10,7 @@ type ReviewStorage = {
   updateReview: (updatedReview: Partial<Review> & { id: string }) => void;
   clearReviews: () => void;
   addReview: (newReview: Review) => void;
+  addReviews: (reviews: Review[]) => void;
   deleteReview: (reviewId: string) => void;
 };
 
@@ -40,6 +41,21 @@ export const useReviewStorage = create<ReviewStorage>()(
         });
       },
 
+      addReviews: (newReviews: Review[]): void => {
+        set((state) => {
+
+          const current = state.reviews ?? [];
+          const map = new Map<string, Review>();
+          current.forEach((r) => map.set(r.id, r));
+          newReviews.forEach((r) => map.set(r.id, r));
+          const merged = Array.from(map.values());
+          return {
+            reviews: merged,
+            lastReviews: merged,
+          };
+        });
+      },      
+
       updateReview: (updatedReview: Partial<Review> & { id: string }): void => {
         set((state): Pick<ReviewStorage, "reviews" | "lastReviews"> => {
           const updateList = (list: Review[] | null): Review[] | null => {
@@ -66,6 +82,7 @@ export const useReviewStorage = create<ReviewStorage>()(
         });
       },
 
+      //TODO: revisar tambien
       deleteReview: (reviewId: string): void => {
         set((state): Pick<ReviewStorage, "reviews" | "lastReviews"> => {
           const filterList = (list: Review[] | null): Review[] | null => {

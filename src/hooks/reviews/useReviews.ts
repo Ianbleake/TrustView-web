@@ -26,7 +26,7 @@ export default function useReviews (): { isLoading: boolean } {
   },[getReviewsQuery.isError])
 
   useEffect(() => {
-    if(getReviewsQuery.data && !reviews){
+    if(getReviewsQuery.data && !reviews || ( getReviewsQuery.data && getReviewsQuery.data.data.length !== reviews?.length)){
       setReviews(getReviewsQuery.data.data)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

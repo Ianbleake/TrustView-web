@@ -1,0 +1,3 @@
+**TO-DO
+--Revisar todas las notificaciones que sean correspondientes al error sucedido, igual en el back que este retorne un error especifico por cada cosa que pudo haber fallado.
+--Revisar la actualizacion del estado del auth, si la suscripcion caduca o algun cambio en profile, el front debe reflejarlo, si se recarga la pagina. revisar los casos persist

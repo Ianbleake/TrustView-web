@@ -13,8 +13,8 @@ export const AnalyticsSkeleton = ():React.ReactElement => {
       <div className="w-full flex flex-row gap-2 items-center">
         
         {
-          [1, 2, 3, 4].map(() => (
-            <Card className='flex flex-row gap-2 min-h-40 items-stretch px-4 py-4 w-1/4 rounded-lg opacity-50 bg-gray-50/30 border-gray-200'>
+          [1, 2, 3, 4].map((index) => (
+            <Card key={index} className='flex flex-row gap-2 min-h-40 items-stretch px-4 py-4 w-1/4 rounded-lg opacity-50 bg-gray-50/30 border-gray-200'>
 
               <div className="flex flex-1 flex-col">
     

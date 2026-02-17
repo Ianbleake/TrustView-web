@@ -6,6 +6,7 @@ import { Ban, Download, Import } from 'lucide-react';
 import { handleDownloadTemplate } from '@/utils/handleDownloadTemplate';
 import { useSessionStorage } from '@/storage/authStorage';
 import useImportReviews from '@/hooks/reviews/useImportReviews';
+import { Spinner } from '@/components/ui/spinner';
 
 
 type ImportFormValues = {
@@ -28,7 +29,7 @@ export const ImportForm = ({
     },
   });
 
-  const { mutate: importReviews } = useImportReviews();
+  const { mutate: importReviews, isPending } = useImportReviews();
 
   const onSubmit = (data: ImportFormValues): void => {
 
@@ -37,7 +38,11 @@ export const ImportForm = ({
       store_id: store?.id || "",
     }
 
-    importReviews(importPayload);
+    importReviews(importPayload,{
+      onSuccess: () => {
+        onClose();
+      }
+    });
   };
 
   return (
@@ -85,9 +90,21 @@ export const ImportForm = ({
             Cancelar
             <Ban/>
           </Button>
-          <Button type="submit">
-            Importar
-            <Import/>
+          <Button
+           type="submit"
+           variant={"default"}
+            disabled={isPending}
+          >
+            {
+              isPending ? (
+                <Spinner/>
+              ) : (
+                <>
+                  Importar
+                  <Import/>
+                </>
+              )
+            }
           </Button>
         </div>
       </div>
