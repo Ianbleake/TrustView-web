@@ -7,13 +7,14 @@ import {
 } from "@/components/ui/sidebar";
 import { useSidebar } from "@/components/ui/sidebar";
 import { merge } from "@/utils/mergeStyles";
-import { ChartPie, Star } from "lucide-react";
+import { ChartPie, MessageCircleHeart, Star } from "lucide-react";
 import type React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const platformMenu = [
   { label: "Dashboard", to: "/platform", icon: ChartPie },
   { label: "Reseñas", to: "/platform/reviews", icon: Star },
+  { label: "Widget", to: "/platform/widget", icon: MessageCircleHeart },
 ]
 
 export const AppbarMenu = (): React.ReactElement => {

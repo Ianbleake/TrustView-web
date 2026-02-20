@@ -18,3 +18,19 @@ type Review = {
 }
 
 type ReviewState = "approved" | "pending" | "rejected"
+
+type WidgetStyles = {
+    border: "sm" | "md" | "lg" | "none",
+    background: string,
+    avatarGradient: boolean;
+    avatarBackground: string;
+    titleColor: string;
+    dateColor: string;
+    contentColor: string;
+    productColor: string;
+    starBodyColor: string;
+    starFillColor: string;
+    emptyStarColor: string;
+    showCount: boolean;
+    starsSize: 'sm' | 'md' | 'lg';
+  }

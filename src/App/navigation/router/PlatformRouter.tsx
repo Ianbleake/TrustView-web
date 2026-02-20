@@ -4,6 +4,7 @@ import { Reviews } from "@/screens/Platform/Reviews";
 import { Dashboard } from "@/screens/Platform/Dashboard";
 import { PlatformLayout } from "@/components/PlatformLayout";
 import { Settings } from "@/screens/Platform/Settings";
+import { Widget } from "@/screens/Platform/Widget";
 
 export const PlatformRouter = (): React.ReactElement => {
   return (
@@ -24,6 +25,11 @@ export const PlatformRouter = (): React.ReactElement => {
       <Route
         path="/platform/settings"
         element={<Settings />}
+      />
+
+      <Route
+        path="/platform/widget"
+        element={<Widget />}
       />
 
     </Route>
