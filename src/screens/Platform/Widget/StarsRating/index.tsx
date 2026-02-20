@@ -37,36 +37,24 @@ export const StarsRating = ({
     <div className="flex items-center gap-1">
       {Array.from({ length: maxStars }, (_, i) => {
         const isFull = i < Math.floor(count);
-        const isHalf = i < count && !isFull;
 
         return (
           <Star
             key={i}
-            className={merge(
-              sizes[size],
-              bodyColor,
-              isFull
-                ? merge("fill-current", fillColor || "text-yellow-500")
-                : isHalf
-                ? merge(
-                    "fill-current opacity-50",
-                    fillColor || "text-yellow-500"
-                  )
-                : merge(
-                    "fill-transparent",
-                    emptyColor || "text-gray-300"
-                  )
-            )}
+            className={sizes[size]}
+            style={{
+              color: isFull ? fillColor : emptyColor,
+              fill: isFull ? fillColor : "transparent",
+              stroke: bodyColor || (isFull ? fillColor : emptyColor),
+            }}
           />
         );
       })}
 
       {showCount && (
         <span
-          className={merge(
-            "ml-1 font-medium text-muted-foreground",
-            textSizes[size]
-          )}
+          className={merge("ml-1 font-medium", textSizes[size])}
+          style={{ color: bodyColor }}
         >
           {count.toFixed(1)}
         </span>

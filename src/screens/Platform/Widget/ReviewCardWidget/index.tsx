@@ -23,35 +23,34 @@ export const ReviewCardWidget = ({
     <div
       className={merge(
         "w-full shadow-md flex flex-col p-4 hover:shadow-lg transition-all duration-300 overflow-hidden gap-4",
-        borderRadius[config.border],
-        config.background
+        borderRadius[config.border]
       )}
+      style={{ backgroundColor: config.background }}
     >
       {/* Header */}
       <div className="flex items-center gap-4">
         <div
-          className={merge(
-            "flex items-center justify-center h-12 w-12 rounded-full text-white font-semibold",
-            config.avatarBackground
-          )}
+          className="flex items-center justify-center h-12 w-12 rounded-full text-white font-semibold"
+          style={{
+            background: config.avatarGradient
+              ? `linear-gradient(135deg, ${config.avatarBackground}, ${config.titleColor})`
+              : config.avatarBackground,
+          }}
         >
           {review.author.charAt(0).toUpperCase()}
         </div>
 
         <div className="flex flex-col">
           <h4
-            className={merge(
-              "text-lg font-semibold",
-              config.titleColor
-            )}
+            className="text-lg font-semibold"
+            style={{ color: config.titleColor }}
           >
             {review.author}
           </h4>
+
           <span
-            className={merge(
-              "text-sm",
-              config.dateColor
-            )}
+            className="text-sm"
+            style={{ color: config.dateColor }}
           >
             {formatDate(review.date)}
           </span>
@@ -70,10 +69,8 @@ export const ReviewCardWidget = ({
         />
 
         <p
-          className={merge(
-            "text-md text-justify",
-            config.contentColor
-          )}
+          className="text-md text-justify"
+          style={{ color: config.contentColor }}
         >
           {review.content}
         </p>
@@ -83,7 +80,7 @@ export const ReviewCardWidget = ({
       <div className="border-t pt-4">
         <p className="text-sm font-medium text-gray-500">
           Producto:{" "}
-          <span className={config.productColor}>
+          <span style={{ color: config.productColor }}>
             {review.product}
           </span>
         </p>
