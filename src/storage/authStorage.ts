@@ -18,6 +18,7 @@ type SessionStorage = {
   updateProfile: (profile: Profile) => void;
   updateStore: (store: Store) => void;
   clearSession: () => void;
+  updateWidgetConfig: (widgetConfig: WidgetStyles) => void;
 };
 
 export const useSessionStorage = create<SessionStorage>()(
@@ -39,6 +40,13 @@ export const useSessionStorage = create<SessionStorage>()(
       updateProfile: (profile):void => void set({ profile }),
 
       updateStore: (store):void => void set({ store }),
+
+      updateWidgetConfig: (widgetConfig: WidgetStyles):void => void
+        set((state) => ({
+          store: state.store
+            ? { ...state.store, widget_config: widgetConfig }
+            : null,
+        })),
 
       clearSession: () :void => void
         set({

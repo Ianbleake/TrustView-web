@@ -35,6 +35,7 @@ type Store = {
   status: string;
   created_at: Date;
   installed_at: Date;
+  widget_config: WidgetStyles;
 }
 
 type StarRating = {

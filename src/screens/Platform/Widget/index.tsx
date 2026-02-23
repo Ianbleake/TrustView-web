@@ -13,67 +13,79 @@ import { Input } from "@/components/ui/input";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { merge } from "@/utils/mergeStyles";
 import { getTextStyleClasses } from "@/utils/getTextStyleClasses";
+import { useSessionStorage } from "@/storage/authStorage";
+import useUpdateWidget from "@/hooks/widget/useUpdateWidget";
+import { Spinner } from "@/components/ui/spinner";
 
 export const Widget = (): React.ReactElement => {
 
   const [edit, setEdit] = useState(false);
   const { lastReviews } = useLastReviews();
 
-  const { register, handleSubmit, setValue, watch } =
-  useForm<WidgetStyles>({
+  const { store } = useSessionStorage();
+
+  const { register, handleSubmit, setValue, watch } = useForm<WidgetStyles>({
     defaultValues: {
-      sectionTitle: "Reseñas de nuestros clientes",
+      sectionTitle: store?.widget_config.sectionTitle,
       sectionTitleStyle: {
-        bold: true,
-        italic: false,
-        underline: false,
+        bold: store?.widget_config.sectionTitleStyle.bold,
+        italic: store?.widget_config.sectionTitleStyle.italic,
+        underline: store?.widget_config.sectionTitleStyle.underline,
       },
 
-      border: "lg",
-      background: "#ffffff",
+      border: store?.widget_config.border || "md",
+      background: store?.widget_config.background || "#ffffff",
 
-      avatarGradient: false,
-      avatarBackground: "#f97316",
-      avatarTextColor: "#ffffff",
-      avatarContrastColor: "#fbbf24",
+      avatarGradient: store?.widget_config.avatarGradient || false,
+      avatarBackground: store?.widget_config.avatarBackground || "#fbbf24",
+      avatarTextColor: store?.widget_config.avatarTextColor || "#111827",
+      avatarContrastColor: store?.widget_config.avatarContrastColor || "#f59e0b",
 
-      titleColor: "#111827",
+      titleColor: store?.widget_config.titleColor || "#111827",
       titleStyle: {
-        bold: true,
-        italic: false,
-        underline: false,
+        bold: store?.widget_config.titleStyle.bold || false,
+        italic: store?.widget_config.titleStyle.italic || false,
+        underline: store?.widget_config.titleStyle.underline || false,
       },
 
-      dateColor: "#6b7280",
+      dateColor: store?.widget_config.dateColor || "#6b7280",
 
-      contentColor: "#111827",
+      contentColor: store?.widget_config.contentColor || "#374151",
       contentStyle: {
-        bold: false,
-        italic: false,
-        underline: false,
+        bold: store?.widget_config.contentStyle.bold || false,
+        italic: store?.widget_config.contentStyle.italic || false,
+        underline: store?.widget_config.contentStyle.underline || false,
       },
 
-      productColor: "#f97316",
+      productColor: store?.widget_config.productColor || "#1f2937",
 
-      starBodyColor: "#facc15",
-      starFillColor: "#facc15",
-      emptyStarColor: "#d1d5db",
+      starBodyColor: store?.widget_config.starBodyColor || "#fbbf24",
+      starFillColor: store?.widget_config.starFillColor || "#f59e0b",
+      emptyStarColor: store?.widget_config.emptyStarColor || "#e5e7eb",
 
-      showCount: true,
-      starsSize: "md",
+      showCount: store?.widget_config.showCount || false,
+      starsSize: store?.widget_config.starsSize || "md",
     },
   });
 
-  const widgetConfig = watch(); 
+  const widgetConfig = watch();
+
+  const { mutate:UpdateWidgetConfig, isPending } = useUpdateWidget();
 
   const onSubmit = (data: WidgetStyles):void => {
-    console.log("Guardar config:", data);
-    setEdit(false);
+    UpdateWidgetConfig({
+      store_id: store?.id || "",
+      widget_config: data,
+    },{
+      onSuccess: () => {
+        setEdit(false);
+      }
+    })
   };
 
   return (
     <div className="flex flex-col gap-6 w-full">
-      {/* Header */}
+      
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-foreground">
@@ -87,11 +99,21 @@ export const Widget = (): React.ReactElement => {
         <Button
           variant="gradient"
           size="sm"
-          className="flex items-center gap-3"
+          className="flex items-center gap-3 min-w-45"
           onClick={() => (edit ? handleSubmit(onSubmit)() : setEdit(true))}
+          disabled={isPending}
+
         >
-          {edit ? "Guardar Cambios" : "Editar Widget"}
-          {edit ? <Save /> : <Pencil />}
+          {
+            isPending ? (
+              <Spinner/>
+            ) : (
+              <>
+                {edit ? "Guardar Cambios" : "Editar Widget"}
+                {edit ? <Save /> : <Pencil />}
+              </>
+            )
+          }
         </Button>
       </div>
 
@@ -410,6 +432,7 @@ export const Widget = (): React.ReactElement => {
           ))}
         </div>
       </div>
+
     </div>
   );
 };
