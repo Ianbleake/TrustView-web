@@ -84,9 +84,10 @@ export const Widget = (): React.ReactElement => {
   };
 
   return (
-    <div className="flex flex-col gap-6 w-full">
+    <div className="flex flex-col gap-6 w-full animate-fade-in">
       
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        
         <div>
           <h1 className="text-2xl font-bold text-foreground">
             Configuración Widget
@@ -132,7 +133,7 @@ export const Widget = (): React.ReactElement => {
       </div>
 
       {edit && (
-        <Card className="p-6">
+        <Card className="p-6 animate-fade-in">
           <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             <div className="flex flex-row items-center justify-between gap-2">
