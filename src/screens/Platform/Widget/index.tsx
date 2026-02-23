@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card } from "@/components/ui/card";
-import { Bold, Italic, Pencil, Save, Underline } from "lucide-react";
+import { Ban, Bold, Italic, Pencil, Save, Underline } from "lucide-react";
 import { ColorPicker } from "./ColorPicker";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -96,25 +96,39 @@ export const Widget = (): React.ReactElement => {
           </p>
         </div>
 
-        <Button
-          variant="gradient"
-          size="sm"
-          className="flex items-center gap-3 min-w-45"
-          onClick={() => (edit ? handleSubmit(onSubmit)() : setEdit(true))}
-          disabled={isPending}
+        <div className="flex flex-row-reverse gap-4">
+          <Button
+            variant="gradient"
+            size="sm"
+            className="flex items-center gap-3 min-w-45"
+            onClick={() => (edit ? handleSubmit(onSubmit)() : setEdit(true))}
+            disabled={isPending}
 
-        >
+          >
+            {
+              isPending ? (
+                <Spinner/>
+              ) : (
+                <>
+                  {edit ? "Guardar Cambios" : "Editar Widget"}
+                  {edit ? <Save /> : <Pencil />}
+                </>
+              )
+            }
+          </Button>
           {
-            isPending ? (
-              <Spinner/>
-            ) : (
-              <>
-                {edit ? "Guardar Cambios" : "Editar Widget"}
-                {edit ? <Save /> : <Pencil />}
-              </>
+            edit && (
+              <Button
+                variant={"secondary"}
+                size={"sm"}
+                onClick={() => setEdit(false)}
+              >
+                Cancelar
+                <Ban/>
+              </Button>
             )
           }
-        </Button>
+        </div>
       </div>
 
       {edit && (
