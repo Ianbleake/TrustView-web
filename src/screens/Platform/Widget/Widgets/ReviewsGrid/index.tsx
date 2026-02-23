@@ -27,22 +27,20 @@ export const ReviewsGrid = ({
 
   <div className="grid md:grid-cols-2 gap-12 items-start">
     
-    {/* Imagen */}
+    
     <div className="rounded-2xl border border-gray-200 bg-gray-50 flex items-center justify-center h-120">
       <Shirt className="h-32 w-32 text-gray-300" />
     </div>
 
-    {/* Info */}
+    
     <div className="flex flex-col gap-6">
       
-      {/* Título */}
       <div>
         <h1 className="text-3xl font-semibold text-gray-900">
           Producto
         </h1>
       </div>
 
-      {/* Precio */}
       <div>
         <span className="text-3xl font-bold text-gray-900">
           $49.99
@@ -54,7 +52,6 @@ export const ReviewsGrid = ({
 
       <StarsRating count={4} bodyColor={widgetConfig.starBodyColor} fillColor={widgetConfig.starFillColor} emptyColor={widgetConfig.emptyStarColor}/>
 
-      {/* Descripción */}
       <div>
         <h2 className="text-lg font-medium text-gray-900 mb-2">
           Descripción

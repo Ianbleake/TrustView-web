@@ -1,24 +1,25 @@
+import { Widgets } from "./Widgets";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card } from "@/components/ui/card";
-import { Ban, Bold, Italic, Pencil, Save, Underline } from "lucide-react";
 import { ColorPicker } from "./ColorPicker";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { DisabledSave } from "./DisabledSave";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Spinner } from "@/components/ui/spinner";
 import { useSessionStorage } from "@/storage/authStorage";
 import useUpdateWidget from "@/hooks/widget/useUpdateWidget";
-import { Spinner } from "@/components/ui/spinner";
-import { Widgets } from "./Widgets";
+import { Ban, Bold, Italic, Pencil, Save, Underline } from "lucide-react";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export const Widget = (): React.ReactElement => {
 
   const [edit, setEdit] = useState(false);
 
-  const { store } = useSessionStorage();
+  const { store, profile } = useSessionStorage();
 
   const { register, handleSubmit, setValue, watch } = useForm<WidgetStyles>({
     defaultValues: {
@@ -79,6 +80,9 @@ export const Widget = (): React.ReactElement => {
     })
   };
 
+  const isPro = profile?.billing === "pro";
+  const isEditing = edit;
+
   return (
     <div className="flex flex-col gap-6 w-full animate-fade-in">
       
@@ -94,37 +98,54 @@ export const Widget = (): React.ReactElement => {
         </div>
 
         <div className="flex flex-row-reverse gap-4">
-          <Button
-            variant="gradient"
-            size="sm"
-            className="flex items-center gap-3 min-w-45"
-            onClick={() => (edit ? handleSubmit(onSubmit)() : setEdit(true))}
-            disabled={isPending}
 
-          >
-            {
-              isPending ? (
-                <Spinner/>
-              ) : (
-                <>
-                  {edit ? "Guardar Cambios" : "Editar Widget"}
-                  {edit ? <Save /> : <Pencil />}
-                </>
-              )
-            }
-          </Button>
-          {
-            edit && (
+          {!isEditing && (
+            <Button
+              variant="gradient"
+              size="sm"
+              className="flex items-center gap-3 min-w-45"
+              onClick={() => setEdit(true)}
+            >
+              Editar Widget
+              <Pencil />
+            </Button>
+          )}
+
+          {isEditing && (
+            isPro ? (
               <Button
-                variant={"secondary"}
-                size={"sm"}
-                onClick={() => setEdit(false)}
+                variant="gradient"
+                size="sm"
+                className="flex items-center gap-3 min-w-45"
+                onClick={handleSubmit(onSubmit)}
+                disabled={isPending}
               >
-                Cancelar
-                <Ban/>
+                {isPending ? (
+                  <Spinner />
+                ) : (
+                  <>
+                    Guardar Cambios
+                    <Save />
+                  </>
+                )}
               </Button>
+            ) : (
+              <DisabledSave />
             )
-          }
+          )}
+
+          
+          {isEditing && (
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => setEdit(false)}
+            >
+              Cancelar
+              <Ban />
+            </Button>
+          )}
+
         </div>
       </div>
 
