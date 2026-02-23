@@ -6,21 +6,17 @@ import { ColorPicker } from "./ColorPicker";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { ReviewCardWidget } from "./ReviewCardWidget";
-import useLastReviews from "@/hooks/reviews/useLastReviews";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { merge } from "@/utils/mergeStyles";
-import { getTextStyleClasses } from "@/utils/getTextStyleClasses";
 import { useSessionStorage } from "@/storage/authStorage";
 import useUpdateWidget from "@/hooks/widget/useUpdateWidget";
 import { Spinner } from "@/components/ui/spinner";
+import { Widgets } from "./Widgets";
 
 export const Widget = (): React.ReactElement => {
 
   const [edit, setEdit] = useState(false);
-  const { lastReviews } = useLastReviews();
 
   const { store } = useSessionStorage();
 
@@ -87,7 +83,7 @@ export const Widget = (): React.ReactElement => {
     <div className="flex flex-col gap-6 w-full animate-fade-in">
       
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        
+
         <div>
           <h1 className="text-2xl font-bold text-foreground">
             Configuración Widget
@@ -424,29 +420,8 @@ export const Widget = (): React.ReactElement => {
         </Card>
       )}
 
-      <div className="flex flex-col gap-8">
 
-        <div className="">
-        <h1
-          className={merge(
-            "text-2xl",
-            getTextStyleClasses(widgetConfig.sectionTitleStyle)
-          )}
-        >
-            { widgetConfig.sectionTitle }
-          </h1>
-        </div>
-
-        <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {lastReviews?.map((review) => (
-            <ReviewCardWidget
-              key={review.id}
-              review={review}
-              config={widgetConfig}
-            />
-          ))}
-        </div>
-      </div>
+      <Widgets widgetConfig={widgetConfig}/>
 
     </div>
   );
