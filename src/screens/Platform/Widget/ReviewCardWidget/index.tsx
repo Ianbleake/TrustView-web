@@ -2,16 +2,20 @@ import formatDate from "@/utils/formatDate";
 import React from "react";
 import { merge } from "@/utils/mergeStyles";
 import { StarsRating } from "../StarsRating";
+import { getTextStyleClasses } from "@/utils/getTextStyleClasses";
 
 type ReviewCardWidgetProps = {
   review: Review;
   config: WidgetStyles;
+  showProduct?: boolean;
 };
 
 export const ReviewCardWidget = ({
   review,
   config,
+  showProduct = true,
 }: ReviewCardWidgetProps): React.ReactElement => {
+
   const borderRadius = {
     none: "rounded-none",
     sm: "rounded-sm",
@@ -27,24 +31,28 @@ export const ReviewCardWidget = ({
       )}
       style={{ backgroundColor: config.background }}
     >
-      {/* Header */}
+      
       <div className="flex items-center gap-4">
         <div
           className="flex items-center justify-center h-12 w-12 rounded-full text-white font-semibold"
           style={{
             background: config.avatarGradient
-              ? `linear-gradient(135deg, ${config.avatarBackground}, ${config.titleColor})`
+              ? `linear-gradient(135deg, ${config.avatarBackground}, ${config.avatarContrastColor})`
               : config.avatarBackground,
+            color: config.avatarTextColor
           }}
         >
           {review.author.charAt(0).toUpperCase()}
         </div>
 
         <div className="flex flex-col">
-          <h4
-            className="text-lg font-semibold"
-            style={{ color: config.titleColor }}
-          >
+        <h4
+          className={merge(
+            "text-lg",
+            getTextStyleClasses(config.titleStyle)
+          )}
+          style={{ color: config.titleColor }}
+        >
             {review.author}
           </h4>
 
@@ -57,7 +65,6 @@ export const ReviewCardWidget = ({
         </div>
       </div>
 
-      {/* Content */}
       <div className="flex flex-col gap-2">
         <StarsRating
           count={review.rating}
@@ -69,22 +76,29 @@ export const ReviewCardWidget = ({
         />
 
         <p
-          className="text-md text-justify"
+          className={merge(
+            "text-md text-justify",
+            getTextStyleClasses(config.contentStyle)
+          )}
           style={{ color: config.contentColor }}
         >
           {review.content}
         </p>
       </div>
 
-      {/* Footer */}
-      <div className="border-t pt-4">
-        <p className="text-sm font-medium text-gray-500">
-          Producto:{" "}
-          <span style={{ color: config.productColor }}>
-            {review.product}
-          </span>
-        </p>
-      </div>
+      {
+        showProduct && (
+          <div className="border-t pt-4">
+            <p className="text-sm text-gray-500">
+              <span className="font-medium">Producto: </span>
+              <span style={{ color: config.productColor }}>
+                {review.product}
+              </span>
+            </p>
+          </div>
+        )
+      }
+
     </div>
   );
 };

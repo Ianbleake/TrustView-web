@@ -45,7 +45,7 @@ export const StarsRating = ({
             style={{
               color: isFull ? fillColor : emptyColor,
               fill: isFull ? fillColor : "transparent",
-              stroke: bodyColor || (isFull ? fillColor : emptyColor),
+              stroke: (isFull ? bodyColor : emptyColor),
             }}
           />
         );

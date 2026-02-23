@@ -57,11 +57,12 @@ export const ColorPicker = ({
       </DialogTrigger>
 
       <DialogContent className="max-w-3xl">
+
         <DialogHeader>
           <DialogTitle>{label}</DialogTitle>
         </DialogHeader>
 
-        <div className="max-h-125 overflow-y-auto pr-2 space-y-4">
+        <div className="max-h-125 overflow-y-auto p-4 pr-0 space-y-5 border rounded-lg border-gray-200 shadow-inner bg-white">
           {colors.map(({ name, shades }) => (
             <div key={name} className="flex items-center gap-4">
               
@@ -80,10 +81,10 @@ export const ColorPicker = ({
                       key={shadeKey}
                       type="button"
                       onClick={() => handleSelect(shadeValue)}
-                      className={`h-8 w-8 rounded-md border-2 transition ${
+                      className={`h-8 w-8 rounded-md border-2 transition-all duration-300 ${
                         selected
                           ? "border-black scale-110"
-                          : "border-transparent hover:scale-105"
+                          : "border-gray-200 hover:scale-110"
                       }`}
                       style={{ backgroundColor: shadeValue }}
                       title={`${name}-${shadeKey}`}
