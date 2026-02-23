@@ -11,7 +11,7 @@ export default function useUpdateWidget (): UseMutationResult<UpdateWidgetRespon
     mutationKey: ["updateWidget"],
     mutationFn: updateWidget,
     onSuccess: (updatedConfig: UpdateWidgetResponse) => {
-      updateWidgetConfig(updatedConfig.data);
+      updateWidgetConfig(updatedConfig.data.widget_config);
       toast.success("Los estilos del widget se actualizaron correctamente.", {
         position: "bottom-right",
       }) ;
