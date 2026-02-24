@@ -9,10 +9,12 @@ export const ReviewsGrid = ({
   reviews,
 }: ReviewsGrid): React.ReactElement => {
   return (
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in flex-1">
-    {reviews.map((review) => (
-      <ReviewCard key={review.id} review={review} />
-    ))}
-  </div>
+<div className="columns-1 md:columns-2 gap-4 animate-fade-in flex-1">
+  {reviews.map((review) => (
+    <div className="mb-4 break-inside-avoid" key={review.id}>
+      <ReviewCard review={review} />
+    </div>
+  ))}
+</div>
   )
 }

@@ -21,6 +21,8 @@ export const Widget = (): React.ReactElement => {
 
   const { store, profile } = useSessionStorage();
 
+  console.log("Store in Widget:", store);
+
   const { register, handleSubmit, setValue, watch } = useForm<WidgetStyles>({
     defaultValues: {
       sectionTitle: store?.widget_config.sectionTitle,

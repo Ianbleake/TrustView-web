@@ -14,7 +14,7 @@ export const RemoveReview = ({
 
   return (
     <ContextMenu>
-      <ContextMenuTrigger>
+      <ContextMenuTrigger className='w-full h-full'>
         {children}
       </ContextMenuTrigger>
 
