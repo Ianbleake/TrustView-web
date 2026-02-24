@@ -1,11 +1,11 @@
 import type React from "react";
-import { Mail, Pencil, UserCircle } from "lucide-react";
+import { EditMedia } from "./EditMedia";
 import { Card } from "@/components/ui/card";
-import { useSessionStorage } from "@/storage/authStorage";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { EditMedia } from "./EditMedia";
+import { Mail, Pencil, UserCircle } from "lucide-react";
+import { useSessionStorage } from "@/storage/authStorage";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const ProfileInfo = (): React.ReactElement => {
 
@@ -16,6 +16,8 @@ export const ProfileInfo = (): React.ReactElement => {
   : "BD";
 
   const baseStyle = "rounded-lg text-white text-6xl gradient-bg";
+
+  const gradientStyle = profile?.accentColor ? `linear-gradient(135deg, ${profile.color}, ${profile.accentColor})` : profile?.color || "";
   
   return (
     <Card className="p-0 gap-0" >
@@ -32,6 +34,7 @@ export const ProfileInfo = (): React.ReactElement => {
 
             <AvatarFallback
               className={baseStyle}
+              style={{ background: gradientStyle }}
             >
               {initials}
             </AvatarFallback>

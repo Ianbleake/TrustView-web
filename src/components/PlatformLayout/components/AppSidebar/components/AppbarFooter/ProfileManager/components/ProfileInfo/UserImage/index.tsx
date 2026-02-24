@@ -12,6 +12,8 @@ export const UserImage = (): React.ReactElement => {
 
   const baseStyle = "rounded-lg bg-emerald-600 text-white text-lg gradient-bg";
 
+  const gradientStyle = profile?.accentColor ? `linear-gradient(135deg, ${profile.color}, ${profile.accentColor})` : profile?.color || "";
+
   return (
     <Avatar className="h-8 w-8 rounded-lg ">
       <AvatarImage
@@ -21,6 +23,7 @@ export const UserImage = (): React.ReactElement => {
 
       <AvatarFallback
         className={baseStyle}
+        style={{ background: gradientStyle }}
       >
         {initials}
       </AvatarFallback>

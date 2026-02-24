@@ -12,9 +12,10 @@ import React, { useMemo, useState } from "react";
 export const AvatarEditForm = (): React.ReactElement => {
 
   const { profile } = useSessionStorage();
-  const [colorValue, setColor] = useState<string>("#f97316"); 
-  const [accentColor, setAccentColor] = useState<string>("#fbbf24"); 
-  const [gradientEnabled, setGradientEnabled] = useState<boolean>(false);
+  const haveAccent = !!profile?.accentColor;
+  const [colorValue, setColor] = useState<string>(profile?.color || "#f97316"); 
+  const [accentColor, setAccentColor] = useState<string>(profile?.accentColor || "#fbbf24"); 
+  const [gradientEnabled, setGradientEnabled] = useState<boolean>(haveAccent);
   const [activePicker, setActivePicker] = useState<"base" | "accent">("base");
 
   const initials =
@@ -109,7 +110,7 @@ export const AvatarEditForm = (): React.ReactElement => {
                         if (activePicker === "base") {
                           setColor(shadeValue);
                         } else {
-                          if (shadeValue === colorValue) return; // evita mismo color
+                          if (shadeValue === colorValue) return;
                           setAccentColor(shadeValue);
                         }
                       }}

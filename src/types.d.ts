@@ -22,6 +22,7 @@ type Profile = {
   created_at: Date;
   updated_at: Date;
   color: string | null;
+  accentColor: string | null;
   settings: Settings;
 }
 
