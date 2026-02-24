@@ -18,6 +18,8 @@ export const ProfileInfo = (): React.ReactElement => {
   const baseStyle = "rounded-lg text-white text-6xl gradient-bg";
 
   const gradientStyle = profile?.accentColor ? `linear-gradient(135deg, ${profile.color}, ${profile.accentColor})` : profile?.color || "";
+
+  const bannerStyle = profile?.bannerAccentColor ? `linear-gradient(135deg, ${profile.banner}, ${profile.bannerAccentColor})` : profile?.banner || "";
   
   return (
     <Card className="p-0 gap-0" >
@@ -43,7 +45,7 @@ export const ProfileInfo = (): React.ReactElement => {
           <EditMedia/>
         </div>
 
-        <div id="profileBanner" className="h-full w-full rounded-t-xl gradient-bg" />
+        <div id="profileBanner" className="h-full w-full rounded-t-xl gradient-bg" style={{ background: bannerStyle}} />
 
         <div className="absolute right-4 top-4 flex flex-row gap-4 items-center">
           <Badge className="h-8 w-fit text-md px-4" variant={profile?.billing === "pro" ? "gradientShine" : profile?.billing === "base" ? "default" : "secondary"}>
