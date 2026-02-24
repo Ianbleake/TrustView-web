@@ -180,6 +180,7 @@ export const ProfileInfo = (): React.ReactElement => {
                       type="email"
                       {...register("email", { required: true })}
                       className="flex-1"
+                      disabled
                     />
                     { errors.email && <span className="text-red-500 text-sm">El email es requerido</span>}
                   </div>

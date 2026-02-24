@@ -7,6 +7,8 @@ export default function useUpdateProfile(): UseMutationResult<UpdateProfileInfoR
 
   const { profile, updateProfile:updateProfileStorage } = useSessionStorage();
 
+  //TODO: hay que manejar el refresh de session al cambiar el email
+
   const updateProfileMutation = useMutation<UpdateProfileInfoResponde, AppError, UpdateProfileInfoPayload>({
     mutationKey: ["updateProfile"],
     mutationFn: updateProfile,
@@ -17,7 +19,6 @@ export default function useUpdateProfile(): UseMutationResult<UpdateProfileInfoR
         ...profile,
         first_name: updatedProfile.data.first_name,
         last_name: updatedProfile.data.last_name,
-        email: updatedProfile.data.email,
       } as Profile
 
       updateProfileStorage(updated);
