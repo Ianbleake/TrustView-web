@@ -46,3 +46,17 @@ type UpdateProfileInfoResponde = {
   },
   meta: undefined;
 }
+
+type UpdateSettingsPayload = {
+  user_id: string;
+  settings: Settings;
+};
+
+type UpdateSettingsResponse = {
+  success: boolean;
+  data: {
+    id: string;
+    settings: Settings;
+  },
+  meta: undefined;
+}

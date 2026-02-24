@@ -7,11 +7,9 @@ export default function errorHandler(
   let code: AppErrorCode = "UNDEFINED";
   let message = "Ocurrió un error inesperado";
 
-  // 📦 Backend respondió algo
   if (error.response) {
     const { status, data } = error.response;
 
-    // Si el backend mandó un error bien formado
     if (data?.error) {
       message = data.error.message;
 

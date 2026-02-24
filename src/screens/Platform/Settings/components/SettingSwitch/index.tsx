@@ -4,11 +4,15 @@ import React from 'react'
 type SettingsSwitchProps = {
   title: string;
   subtitle: string;
+  onChange: (checked: boolean) => void;
+  switchState: boolean;
 }
 
 export const SettingSwitch = ({
   title,
   subtitle,
+  onChange,
+  switchState,
 }:SettingsSwitchProps ):React.ReactElement => {
   return (
     <div className='flex flex-row items-center justify-between px-4'>
@@ -18,7 +22,7 @@ export const SettingSwitch = ({
           <p className='text-sm font-normal text-gray-500'>{subtitle}</p>
       </div>
 
-      <Switch size='lg'/>
+      <Switch checked={switchState} onCheckedChange={onChange} size='lg'/>
 
     </div>
   )
