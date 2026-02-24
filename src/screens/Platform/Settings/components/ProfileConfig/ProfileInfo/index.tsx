@@ -10,6 +10,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { merge } from "@/utils/mergeStyles";
+import useUpdateProfile from "@/hooks/profile/useUpdateProfile";
+import { Spinner } from "@/components/ui/spinner";
 
 //TODO: Componetizar componente
 
@@ -43,9 +45,22 @@ export const ProfileInfo = (): React.ReactElement => {
     }
   })
 
+  const { mutate:updateProfile, isPending } = useUpdateProfile();
+
   const onSubmit = (data: ProfileInfoValues): void => {
-    console.log(data);
-    setEdit(false);
+    
+    const updateProfilePayload = {
+      user_id: profile?.id || "",
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+    }
+
+    updateProfile(updateProfilePayload,{
+      onSuccess: () => {
+        setEdit(false);
+      }
+    })
   };
    
   return (
@@ -79,7 +94,7 @@ export const ProfileInfo = (): React.ReactElement => {
           <Badge className={merge("h-8 w-fit text-md px-4", edit && "mr-14 mt-1")} variant={profile?.billing === "pro" ? "gradientShine" : profile?.billing === "base" ? "default" : "secondary"}>
             Plan: {profile?.billing ?? "Free"}
           </Badge>
-          
+
           {
             !edit && (
               <Button
@@ -176,8 +191,15 @@ export const ProfileInfo = (): React.ReactElement => {
                   variant="gradient"
                   className="rounded-full absolute right-4 -top-26"
                   size="icon-lg"
+                  disabled={isPending}
                 >
-                  <Save />
+                  {
+                    isPending ? (
+                      <Spinner/>
+                    ) : (
+                      <Save />
+                    )
+                  }
                 </Button>
 
             </form>

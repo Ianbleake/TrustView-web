@@ -30,3 +30,21 @@ type UpdateBannerResponde = {
   },
   meta: undefined;
 }
+
+type UpdateProfileInfoPayload = {
+  user_id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+}
+
+type UpdateProfileInfoResponde = {
+  success: boolean;
+  data: {
+    id: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+  },
+  meta: undefined;
+}
