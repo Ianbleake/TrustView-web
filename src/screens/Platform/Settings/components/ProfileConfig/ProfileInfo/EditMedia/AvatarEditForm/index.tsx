@@ -70,6 +70,7 @@ export const AvatarEditForm = ({
 
   return (
     <div className="flex flex-col gap-4">
+
       <div className="flex flex-row items-center justify-between border border-gray-200 shadow-inner">
         
         <div className="w-1/2 py-6 flex items-center justify-center">
@@ -153,9 +154,9 @@ export const AvatarEditForm = ({
             </div>
           ))}
         </div>
+
       </div>
 
-      {/* Footer */}
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center gap-2">
           <p>Gradiente</p>
@@ -187,6 +188,7 @@ export const AvatarEditForm = ({
           </Button>
         </div>
       </div>
+      
     </div>
   );
 };

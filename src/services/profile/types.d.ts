@@ -14,3 +14,19 @@ type UpdateAvatarResponde = {
   },
   meta: undefined;
 }
+
+type UpdateBannerPayload = {
+  user_id: string;
+  banner: string;
+  banner_accent_color: string | null;
+}
+
+type UpdateBannerResponde = {
+  success: boolean;
+  data: {
+    id: string;
+    banner: string;
+    banner_accent_color: string | null;
+  },
+  meta: undefined;
+}

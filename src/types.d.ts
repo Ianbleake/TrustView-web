@@ -23,6 +23,8 @@ type Profile = {
   updated_at: Date;
   color: string | null;
   accentColor: string | null;
+  banner: string | null;
+  bannerAccentColor: string | null;
   settings: Settings;
 }
 

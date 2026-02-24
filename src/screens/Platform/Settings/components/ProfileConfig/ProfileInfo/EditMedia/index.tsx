@@ -46,7 +46,7 @@ export const EditMedia = ():React.ReactElement => {
           </TabsContent>
 
           <TabsContent value="profileBanner">
-            <BannerEditForm/>
+            <BannerEditForm onClose={()=>setOpen(false)} />
           </TabsContent>
 
 
