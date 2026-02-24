@@ -26,7 +26,7 @@ export const EditMedia = ():React.ReactElement => {
       <DialogContent>
 
         <DialogHeader>
-            <h2 className="text-xl font-heading font-bold">Editar medios</h2>
+            Editar medios
         </DialogHeader>
 
         <Tabs defaultValue='avatar'>

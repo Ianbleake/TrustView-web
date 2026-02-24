@@ -88,6 +88,7 @@ export const BannerEditForm = ({
         {gradientEnabled && (
           <div className="flex gap-2 justify-around pb-2">
             <Button
+              type="button"
               size="sm"
               variant={activePicker === "base" ? "gradient" : "outline"}
               onClick={() => setActivePicker("base")}
@@ -96,6 +97,7 @@ export const BannerEditForm = ({
             </Button>
 
             <Button
+              type="button"
               size="sm"
               variant={activePicker === "accent" ? "gradient" : "outline"}
               onClick={() => setActivePicker("accent")}
@@ -162,13 +164,14 @@ export const BannerEditForm = ({
 
         <div className="flex flex-row gap-2">
           <DialogClose asChild>
-            <Button variant="secondary">
+            <Button type="button" variant="secondary">
               Cancelar
               <Ban />
             </Button>
           </DialogClose>
 
           <Button
+            type="button"
             variant="gradient"
             className="min-w-45"
             onClick={handleSubmit}

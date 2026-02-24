@@ -92,6 +92,7 @@ export const AvatarEditForm = ({
           {gradientEnabled && (
             <div className="flex gap-2 justify-around pb-2">
               <Button
+                type="button"
                 size="sm"
                 variant={activePicker === "base" ? "gradient" : "outline"}
                 onClick={() => setActivePicker("base")}
@@ -100,6 +101,7 @@ export const AvatarEditForm = ({
               </Button>
 
               <Button
+                type="button"
                 size="sm"
                 variant={activePicker === "accent" ? "gradient" : "outline"}
                 onClick={() => setActivePicker("accent")}
@@ -168,13 +170,13 @@ export const AvatarEditForm = ({
 
         <div className="flex flex-row gap-2">
           <DialogClose asChild>
-            <Button variant="secondary">
+            <Button type="button" variant="secondary">
               Cancelar
               <Ban />
             </Button>
           </DialogClose>
 
-          <Button variant="gradient" className="min-w-45" onClick={handleSubmit} disabled={isPending}>
+          <Button type="button" variant="gradient" className="min-w-45" onClick={handleSubmit} disabled={isPending}>
             {
               isPending ? (
                 <Spinner/>
