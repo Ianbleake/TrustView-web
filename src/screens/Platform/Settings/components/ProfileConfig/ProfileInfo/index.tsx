@@ -5,6 +5,7 @@ import { useSessionStorage } from "@/storage/authStorage";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { EditMedia } from "./EditMedia";
 
 export const ProfileInfo = (): React.ReactElement => {
 
@@ -14,7 +15,7 @@ export const ProfileInfo = (): React.ReactElement => {
   ? `${profile.first_name[0]}${profile.last_name[0]}`
   : "BD";
 
-  const baseStyle = "rounded-lg bg-emerald-600 text-white text-6xl gradient-bg";
+  const baseStyle = "rounded-lg text-white text-6xl gradient-bg";
   
   return (
     <Card className="p-0 gap-0" >
@@ -36,15 +37,10 @@ export const ProfileInfo = (): React.ReactElement => {
             </AvatarFallback>
           </Avatar>
 
-          <div className="absolute bottom-0 right-0 h-10 w-10 rounded-full bg-white shadow-xl flex items-center justify-center cursor-pointer hover:bg-gray-100/90 hover:scale-105 transition-all duration-300">
-            <Pencil
-              className="text-gray-600"
-              size={20}
-            />
-          </div>
+          <EditMedia/>
         </div>
 
-        <div id="profileBanner" className="h-full w-full rounded-t-xl bg-linear-to-r from-emerald-500 to-emerald-900" />
+        <div id="profileBanner" className="h-full w-full rounded-t-xl gradient-bg" />
 
         <div className="absolute right-4 top-4 flex flex-row gap-4 items-center">
           <Badge className="h-8 w-fit text-md px-4" variant={profile?.billing === "pro" ? "gradientShine" : profile?.billing === "base" ? "default" : "secondary"}>
