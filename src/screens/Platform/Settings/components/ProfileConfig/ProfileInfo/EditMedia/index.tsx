@@ -3,13 +3,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Pencil } from 'lucide-react'
 
 
-import React from 'react'
+import React, { useState } from 'react'
 import { AvatarEditForm } from './AvatarEditForm'
 import { BannerEditForm } from './BannerEditForm'
 
 export const EditMedia = ():React.ReactElement => {
+
+  const [ open, setOpen ] = useState<boolean>(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
 
       <DialogTrigger>
           <div className="absolute bottom-0 right-0 h-10 w-10 rounded-full bg-white shadow-xl flex items-center justify-center cursor-pointer hover:bg-gray-100/90 hover:scale-105 transition-all duration-300">
@@ -39,7 +42,7 @@ export const EditMedia = ():React.ReactElement => {
           </TabsList>
 
           <TabsContent value="avatar">
-            <AvatarEditForm/>
+            <AvatarEditForm onClose={()=>setOpen(false)}/>
           </TabsContent>
 
           <TabsContent value="profileBanner">

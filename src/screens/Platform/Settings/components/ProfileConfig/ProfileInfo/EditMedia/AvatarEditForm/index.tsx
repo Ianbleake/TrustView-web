@@ -1,15 +1,23 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { DialogClose } from "@/components/ui/dialog";
+import { Spinner } from "@/components/ui/spinner";
 import { Switch } from "@/components/ui/switch";
+import useUpdateAvatar from "@/hooks/profile/useUpdateAvatar";
 
 import { useSessionStorage } from "@/storage/authStorage";
 import { twTheme } from "@/utils/twTheme";
-import { Ban } from "lucide-react";
+import { Ban, Save } from "lucide-react";
 
 import React, { useMemo, useState } from "react";
 
-export const AvatarEditForm = (): React.ReactElement => {
+type AvatarEditFormProps = {
+  onClose: () => void;
+}
+
+export const AvatarEditForm = ({
+  onClose,
+}:AvatarEditFormProps): React.ReactElement => {
 
   const { profile } = useSessionStorage();
   const haveAccent = !!profile?.accentColor;
@@ -42,6 +50,23 @@ export const AvatarEditForm = (): React.ReactElement => {
     gradientEnabled && colorValue && accentColor
       ? `linear-gradient(135deg, ${colorValue}, ${accentColor})`
       : colorValue;
+
+  const { mutate:updateAvatar, isPending } = useUpdateAvatar();
+
+  const handleSubmit = ():void => {
+    
+    const formattedPayload: UpdateAvatarPayload = {
+      user_id: profile?.id || "",
+      color: colorValue,
+      accent_color: gradientEnabled ? accentColor : null,
+    }
+
+    updateAvatar(formattedPayload,{
+      onSuccess: () => {
+        onClose();
+      }
+    });
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -148,7 +173,18 @@ export const AvatarEditForm = (): React.ReactElement => {
             </Button>
           </DialogClose>
 
-          <Button variant="gradient">Guardar cambios</Button>
+          <Button variant="gradient" className="min-w-45" onClick={handleSubmit} disabled={isPending}>
+            {
+              isPending ? (
+                <Spinner/>
+              ) : (
+                <>
+                  Guardar cambios
+                  <Save/>
+                </>
+              )
+            }
+          </Button>
         </div>
       </div>
     </div>
