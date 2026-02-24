@@ -16,7 +16,7 @@ export default function useUpdateAvatar ():UseMutationResult<UpdateAvatarRespond
       const updatedProfile = {
         ...profile,
         color: updatedAvatar.data.color,
-        accentColor: updatedAvatar.data.accent_color,
+        accent_color: updatedAvatar.data.accent_color,
       } as Profile;
 
       updateProfile(updatedProfile);

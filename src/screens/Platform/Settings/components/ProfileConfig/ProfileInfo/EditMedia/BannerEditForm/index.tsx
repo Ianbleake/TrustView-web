@@ -17,14 +17,14 @@ export const BannerEditForm = ({
 }: BannerEditFormProps): React.ReactElement => {
   const { profile } = useSessionStorage();
 
-  const haveAccent = !!profile?.bannerAccentColor;
+  const haveAccent = !!profile?.banner_accent_color;
 
   const [colorValue, setColor] = useState<string>(
     profile?.banner || "#f97316"
   );
 
   const [accentColor, setAccentColor] = useState<string>(
-    profile?.bannerAccentColor || "#fbbf24"
+    profile?.banner_accent_color || "#fbbf24"
   );
 
   const [gradientEnabled, setGradientEnabled] =

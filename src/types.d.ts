@@ -22,9 +22,9 @@ type Profile = {
   created_at: Date;
   updated_at: Date;
   color: string | null;
-  accentColor: string | null;
+  accent_color: string | null;
   banner: string | null;
-  bannerAccentColor: string | null;
+  banner_accent_color: string | null;
   settings: Settings;
 }
 

@@ -25,6 +25,8 @@ export const ProfileInfo = (): React.ReactElement => {
 
   const { profile } = useSessionStorage()
 
+  console.log("profile", profile)
+
   const [ edit, setEdit ] = useState<boolean>(false);
 
   const initials = profile?.first_name && profile?.last_name
@@ -33,9 +35,9 @@ export const ProfileInfo = (): React.ReactElement => {
 
   const baseStyle = "rounded-lg text-white text-6xl gradient-bg";
 
-  const gradientStyle = profile?.accentColor ? `linear-gradient(135deg, ${profile.color}, ${profile.accentColor})` : profile?.color || "";
+  const gradientStyle = profile?.accent_color ? `linear-gradient(135deg, ${profile.color}, ${profile.accent_color})` : profile?.color || "";
 
-  const bannerStyle = profile?.bannerAccentColor ? `linear-gradient(135deg, ${profile.banner}, ${profile.bannerAccentColor})` : profile?.banner || "";
+  const bannerStyle = profile?.banner_accent_color ? `linear-gradient(135deg, ${profile.banner}, ${profile.banner_accent_color})` : profile?.banner || "";
 
   const { register, handleSubmit, formState: { errors } } = useForm<ProfileInfoValues>({
     defaultValues: {

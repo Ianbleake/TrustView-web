@@ -16,7 +16,7 @@ export default function useUpdateBanner(): UseMutationResult<UpdateBannerRespond
       const updatedProfile = {
         ...profile,
         banner: updatedBanner.data.banner,
-        bannerAccentColor: updatedBanner.data.banner_accent_color
+        banner_accent_color: updatedBanner.data.banner_accent_color
       } as Profile;
 
       updateProfile(updatedProfile);

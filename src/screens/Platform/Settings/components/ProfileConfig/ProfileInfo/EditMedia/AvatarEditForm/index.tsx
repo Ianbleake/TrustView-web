@@ -20,9 +20,9 @@ export const AvatarEditForm = ({
 }:AvatarEditFormProps): React.ReactElement => {
 
   const { profile } = useSessionStorage();
-  const haveAccent = !!profile?.accentColor;
+  const haveAccent = !!profile?.accent_color;
   const [colorValue, setColor] = useState<string>(profile?.color || "#f97316"); 
-  const [accentColor, setAccentColor] = useState<string>(profile?.accentColor || "#fbbf24"); 
+  const [accentColor, setAccentColor] = useState<string>(profile?.accent_color || "#fbbf24"); 
   const [gradientEnabled, setGradientEnabled] = useState<boolean>(haveAccent);
   const [activePicker, setActivePicker] = useState<"base" | "accent">("base");
 
