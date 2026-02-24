@@ -4,7 +4,7 @@ export async function updateProfile(payload: UpdateProfileInfoPayload): Promise<
 
   return requester({
     method: "post",
-    endpoint: "/profile/update",
+    endpoint: "/profile/updateInfo",
     payload,
   })
 }
