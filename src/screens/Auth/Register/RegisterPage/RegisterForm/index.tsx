@@ -93,7 +93,6 @@ export const RegisterForm = (): React.ReactElement => {
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
 
-        {/* Nombre */}
         <div className="flex flex-col gap-1">
           <Label>Nombre</Label>
           <Input
@@ -108,7 +107,6 @@ export const RegisterForm = (): React.ReactElement => {
           )}
         </div>
 
-        {/* Apellido */}
         <div className="flex flex-col gap-1">
           <Label>Apellido</Label>
           <Input
@@ -123,7 +121,6 @@ export const RegisterForm = (): React.ReactElement => {
           )}
         </div>
 
-        {/* Store */}
         <div className="flex flex-col gap-1">
           <Label>Nombre de la tienda</Label>
           <Input
@@ -138,7 +135,6 @@ export const RegisterForm = (): React.ReactElement => {
           )}
         </div>
 
-        {/* Email */}
         <div className="flex flex-col gap-1">
           <Label>Email</Label>
           <Input
@@ -154,7 +150,6 @@ export const RegisterForm = (): React.ReactElement => {
           )}
         </div>
 
-        {/* Password */}
         <div className="flex flex-col gap-1">
           <Label>Contraseña</Label>
           <div className="relative">
@@ -182,7 +177,6 @@ export const RegisterForm = (): React.ReactElement => {
           )}
         </div>
 
-        {/* Error backend */}
         {errorMsg && (
           <span className="text-sm text-red-600 font-medium">
             {errorMsg}

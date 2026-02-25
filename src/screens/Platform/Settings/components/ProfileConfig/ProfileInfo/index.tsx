@@ -25,8 +25,6 @@ export const ProfileInfo = (): React.ReactElement => {
 
   const { profile } = useSessionStorage()
 
-  console.log("profile", profile)
-
   const [ edit, setEdit ] = useState<boolean>(false);
 
   const initials = profile?.first_name && profile?.last_name
@@ -207,11 +205,10 @@ export const ProfileInfo = (): React.ReactElement => {
 
             </form>
           )
-        }
-
-        
+        }        
 
       </div>
+      
     </Card>
   );
 };
