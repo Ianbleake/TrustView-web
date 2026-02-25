@@ -15,7 +15,7 @@ export const NotificationsConfig = ():React.ReactElement => {
     weeklySummary: false,
   };
 
-  const { mutate: updateSettings } = useUpdateProfileSettings();
+  const { mutate: updateSettings, isPending } = useUpdateProfileSettings();
 
   const handleToggle = (key: keyof typeof notifications) => 
     (checked: boolean):void => {
@@ -45,6 +45,7 @@ export const NotificationsConfig = ():React.ReactElement => {
           onChange={handleToggle('newReviews')}
           title="Nuevas reseñas"
           subtitle="Recibir email cuando llega una reseña nueva"
+          disabled={isPending}
         />
 
         <SettingSwitch
@@ -52,6 +53,7 @@ export const NotificationsConfig = ():React.ReactElement => {
           onChange={handleToggle('badReviews')}
           title="Reseñas negativas"
           subtitle="Alerta cuando una reseña tiene menos de 3 estrellas"
+          disabled={isPending}
         />
 
         <SettingSwitch
@@ -59,6 +61,7 @@ export const NotificationsConfig = ():React.ReactElement => {
           onChange={handleToggle('weeklySummary')}
           title="Reporte semanal"
           subtitle="Resumen semanal por email con métricas"
+          disabled={isPending}
         />
         </div>
       </SettingsCard>

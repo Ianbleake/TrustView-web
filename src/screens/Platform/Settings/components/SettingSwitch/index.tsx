@@ -6,6 +6,7 @@ type SettingsSwitchProps = {
   subtitle: string;
   onChange: (checked: boolean) => void;
   switchState: boolean;
+  disabled?: boolean;
 }
 
 export const SettingSwitch = ({
@@ -13,6 +14,7 @@ export const SettingSwitch = ({
   subtitle,
   onChange,
   switchState,
+  disabled = false,
 }:SettingsSwitchProps ):React.ReactElement => {
   return (
     <div className='flex flex-row items-center justify-between px-4'>
@@ -22,7 +24,7 @@ export const SettingSwitch = ({
           <p className='text-sm font-normal text-gray-500'>{subtitle}</p>
       </div>
 
-      <Switch checked={switchState} onCheckedChange={onChange} size='lg'/>
+      <Switch disabled={disabled} checked={switchState} onCheckedChange={onChange} size='lg'/>
 
     </div>
   )
