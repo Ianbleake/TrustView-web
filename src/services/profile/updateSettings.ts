@@ -2,7 +2,7 @@ import { requester } from "../requester";
 
 export async function updateSettings (payload:UpdateSettingsPayload): Promise<UpdateSettingsResponse> {
   return requester({
-    method: "post",
+    method: "patch",
     endpoint: "/settings/notifications",
     payload,
   })
