@@ -59,7 +59,13 @@ export const ReviewCard = ({
             </div>
 
             <div className='border-t border-gray-200 pt-4 flex flex-row items-center justify-between'>
-                <p className='text-sm font-medium text-gray-500'>Producto: <a href={review.productUrl ?? "#"} className='text-orange-600'>{review.product}</a></p>
+                {
+                    review.productUrl ? (
+                        <p className='text-sm font-medium text-gray-500'>Producto: <a href={review.productUrl ?? "#"} target='_blank' className='text-orange-600'>{review.product}</a></p>
+                    ) : (
+                        <p className='text-sm font-medium text-gray-500'>Producto: <span className='text-orange-600'>{review.product}</span></p>
+                    )
+                }
                 {
                     review.status === "approved" ? (
                         <HideReview reviewId={review.id}/>

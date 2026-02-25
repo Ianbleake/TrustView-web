@@ -91,9 +91,20 @@ export const ReviewCardWidget = ({
           <div className="border-t pt-4">
             <p className="text-sm text-gray-500">
               <span className="font-medium">Producto: </span>
-              <a href={review.productUrl ?? "#"} style={{ color: config.productColor }}>
-                {review.product}
-              </a>
+
+              {
+                review.productUrl ? (
+                  <a href={review.productUrl} target='_blank' style={{ color: config.productColor }}>
+                    {review.product}
+                  </a>
+                ) : (
+                  <span style={{ color: config.productColor }}>
+                    {review.product}
+                  </span>
+                )
+              }
+
+
             </p>
           </div>
         )
