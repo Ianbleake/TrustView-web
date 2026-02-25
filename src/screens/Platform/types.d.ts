@@ -7,14 +7,15 @@ type AnalyticValue = {
 }
 
 type Review = {
-    id: string, 
-    author: string,
-    rating: number,
-    content: string,
-    productId: string,
-    product: string,
-    date: Date,
-    status: ReviewState
+    id: string;
+    author: string;
+    rating: number;
+    content: string;
+    productId: string;
+    product: string;
+    date: Date;
+    status: ReviewState;
+    productUrl: string;
 }
 
 type ReviewState = "approved" | "pending" | "rejected"
