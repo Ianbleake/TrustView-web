@@ -1,4 +1,5 @@
 import { UploadCloud, FileSpreadsheet } from 'lucide-react';
+import { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 type ImportDropzoneProps = {
@@ -13,18 +14,48 @@ export const ImportDropzone = ({
   error,
 }: ImportDropzoneProps): React.ReactElement => {
 
+  const MAX_FILE_SIZE = 5 * 1024 * 1024;
+  const [fileError, setFileError] = useState<string | null>(null);
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     multiple: false,
+    maxSize: MAX_FILE_SIZE,
     accept: {
       'text/csv': ['.csv'],
       'application/vnd.ms-excel': ['.xls'],
       'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx'],
     },
-    onDrop: (files) => {
-      onChange(files[0] ?? null);
+    onDrop: (files, fileRejections) => {
+  
+      if (fileRejections.length > 0) {
+        onChange(null);
+        return;
+      }
+  
+      const file = files[0];
+  
+      if (!file) {
+        onChange(null);
+        return;
+      }
+  
+      // Validación extra manual
+      if (file.size > MAX_FILE_SIZE) {
+        onChange(null);
+        return;
+      }
+
+      if (fileRejections.length > 0) {
+        setFileError('El archivo no puede ser mayor a 5MB');
+        onChange(null);
+        return;
+      }
+      
+      setFileError(null);
+  
+      onChange(file);
     },
   });
-
   const isActive = isDragActive || Boolean(value);
 
 
@@ -58,9 +89,13 @@ export const ImportDropzone = ({
             Arrastra tu archivo aquí o haz click
           </p>
           <p className="text-xs text-gray-500">
-            CSV o Excel (.csv, .xls, .xlsx)
+            CSV o Excel (.csv, .xls, .xlsx) – Máximo 5MB
           </p>
         </>
+      )}
+
+      {fileError && (
+        <p className="text-xs text-red-500 mt-2">{fileError}</p>
       )}
     </div>
   );
