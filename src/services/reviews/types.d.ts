@@ -26,9 +26,11 @@ type NewReviewPayload = {
   product_name?: string | null;
   author_name: string;
   rating: number;
-  approved?: boolean | null;
   content?: string;
   image_url?: string | null;
+  approved?: boolean | null;
+	tienda_nube_user_id: string;
+	product_url: string;
 };
 
 type NewReviewResponse = {

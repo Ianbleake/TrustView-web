@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useForm, Controller } from 'react-hook-form';
 import { useSessionStorage } from '@/storage/authStorage';
 import useCreateReview from '@/hooks/reviews/useCreateReview';
-import { Ban, Calendar, Eye, PackageSearch, Save, Star, TextAlignJustify, User } from 'lucide-react';
+import { Ban, Calendar, Eye, Link, PackageSearch, Save, Star, TextAlignJustify, User } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 type NewReviewValues = {
@@ -18,6 +18,7 @@ type NewReviewValues = {
   productId: string;
   product: string;
   status: ReviewState;
+  productUrl: string;
 };
 
 type NewReviewFormProps = {
@@ -41,6 +42,7 @@ export const NewReviewForm = ({
       product: '',
       productId: '',
       status: "pending",
+      productUrl: '',
     }
   });
 
@@ -55,6 +57,8 @@ export const NewReviewForm = ({
       approved: data.status === "approved" ? true : data.status === "rejected" ? false : null,
       content: data.content,
       image_url: null,
+      product_url: data.productUrl,
+      tienda_nube_user_id: store?.tienda_nube_user_id || ""
     }
 
     createReview(formattedData, {
@@ -136,6 +140,19 @@ export const NewReviewForm = ({
         {errors.product && <span className='text-red-500 text-sm'>Este campo es obligatorio</span>}
       </div>
 
+      <div className='flex flex-col col-span-2 gap-2'>
+          <Label>Url producto:</Label>
+          <div className='relative'>
+            <Input
+              className='pl-10 w-md'
+              {
+                ...register("productUrl")
+              }
+            />
+            <Link className='absolute top-2 left-2 text-orange-600 h-5 w-5' />
+          </div>
+      </div>
+
       
       <div className='flex flex-col items-start gap-2'>
         <Label>Estado:</Label>
@@ -171,6 +188,8 @@ export const NewReviewForm = ({
           { formatDate(creationDate,true) }
         </Button>
       </div>
+
+
 
       
       <div className='flex flex-col col-span-2 gap-2'>
