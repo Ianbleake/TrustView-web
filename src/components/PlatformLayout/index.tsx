@@ -39,7 +39,7 @@ export const PlatformLayout = (): React.ReactElement => {
       </div>
 
       <main className="w-full flex flex-col bg-gray-100 min-h-screen">
-        <section className="py-4 px-16 flex-1">
+        <section className="py-4 px-16 flex-1 relative">
           <Outlet />
           {/* <SkeletonTest/> */}
         </section>

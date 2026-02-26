@@ -11,17 +11,17 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { useSessionStorage } from "@/storage/authStorage";
 import useUpdateWidget from "@/hooks/widget/useUpdateWidget";
-import { Ban, Bold, Italic, Pencil, Save, Underline } from "lucide-react";
+import { Ban, Bold, Italic, Pencil, Save, Sidebar, Underline } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { merge } from "@/utils/mergeStyles";
 
 export const Widget = (): React.ReactElement => {
 
   const [edit, setEdit] = useState(false);
+  const [ popup, setPopup ] = useState(false);
 
   const { store, profile } = useSessionStorage();
-
-  console.log("Store in Widget:", store);
 
   const { register, handleSubmit, setValue, watch } = useForm<WidgetStyles>({
     defaultValues: {
@@ -86,7 +86,7 @@ export const Widget = (): React.ReactElement => {
   const isEditing = edit;
 
   return (
-    <div className="flex flex-col gap-6 w-full animate-fade-in">
+    <div className={merge("flex flex-col gap-6 w-full animate-fade-in", popup ? "relative" : "")}>
       
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
@@ -152,17 +152,35 @@ export const Widget = (): React.ReactElement => {
       </div>
 
       {edit && (
-        <Card className="p-6 animate-fade-in">
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <div className="flex flex-row items-center justify-between gap-2">
+        <Card
+          className={merge(
+            "p-6 animate-fade-in transition-all duration-300",
+            popup
+              ? "sticky top-3 left-0 w-120 h-180 z-50 shadow-2xl pt-20 -mt-180"
+              : ""
+          )}
+        >
+
+          <div className={merge("", popup ? "flex flex-1 py-3 fixed top-2" : "")}> 
+            <button
+              onClick={() => setPopup(!popup)}
+              className={merge("h-10 w-10 border border-gray-200 flex items-center justify-center rounded-lg shadow-amber-600", popup ? "shadow-inner" : "shadow")}
+            >
+              <Sidebar className="text-orange-600 cursor-pointer"/>
+            </button>
+          </div>
+
+          <form className={merge("", popup ? "flex flex-col gap-6 overflow-y-auto" : "grid grid-cols-1  gap-6 md:grid-cols-2")}>
+
+            <div className={"flex flex-row items-center justify-between gap-2"}>
 
               <div className="flex flex-col gap-2">
                 <Label>
                   Título de Widget
                 </Label>
                 <Input
-                  className="w-80"
+                  className={ popup ? "w-70" : "w-80"}
                   placeholder="Título de Widget"
                   {...register("sectionTitle")}
                 />
@@ -198,7 +216,7 @@ export const Widget = (): React.ReactElement => {
 
             </div>
 
-            <div className="flex flex-row items-center gap-4">
+            <div className={merge("flex  gap-4", popup ? "flex-col" : "flex-row items-center")}>
 
               <div className="flex flex-col gap-3">
                 <Label>Redondeado de las tarjetas</Label>
@@ -278,7 +296,6 @@ export const Widget = (): React.ReactElement => {
               />
             </div>
 
-
             <div>
               <Label className="block mb-2">Borde de estrella</Label>
               <ColorPicker
@@ -286,8 +303,7 @@ export const Widget = (): React.ReactElement => {
                 onChange={(color) => setValue("starBodyColor", color)}
               />
             </div>
-
-            
+    
             <div>
               <Label className="block mb-2">Estrella vacia</Label>
               <ColorPicker
@@ -427,8 +443,6 @@ export const Widget = (): React.ReactElement => {
               </ToggleGroup>
             </div>
 
-
-
             <div>
               <Label className="block mb-2">Color de nombre de producto</Label>
               <ColorPicker
@@ -437,9 +451,8 @@ export const Widget = (): React.ReactElement => {
               />
             </div>
 
-
-
           </form>
+
         </Card>
       )}
 
