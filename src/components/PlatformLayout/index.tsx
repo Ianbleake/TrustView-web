@@ -1,6 +1,5 @@
 import type React from "react";
 import { SidebarProvider } from "../ui/sidebar";
-import { AppHeader } from "./components/AppHeader";
 import { AppSidebar } from "./components/AppSidebar";
 //import { SkeletonTest } from "../skeletons/SkeletonTest";
 import { useSessionStorage } from "@/storage/authStorage";
@@ -40,7 +39,6 @@ export const PlatformLayout = (): React.ReactElement => {
       </div>
 
       <main className="w-full flex flex-col bg-gray-100 min-h-screen">
-        <AppHeader />
         <section className="py-4 px-16 flex-1">
           <Outlet />
           {/* <SkeletonTest/> */}

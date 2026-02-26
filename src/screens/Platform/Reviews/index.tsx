@@ -112,7 +112,7 @@ export const Reviews = ():React.ReactElement => {
           </TabsTrigger>
 
           <TabsTrigger value='approved' className="cursor-pointer shadow-inner flex flex-row items-center justify-center gap-3 data-[state=active]:shadow-amber-500 data-[state=active]:text-amber-600" >
-            Aprovadas
+            Aprobadas
             <Check/>
           </TabsTrigger>
 
