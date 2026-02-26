@@ -172,7 +172,7 @@ export const Widget = (): React.ReactElement => {
             </button>
 
             {
-              popup ? ( 
+              !popup ? ( 
                 <></>
               ) : (
                 <button
