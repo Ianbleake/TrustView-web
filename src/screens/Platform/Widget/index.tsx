@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { useSessionStorage } from "@/storage/authStorage";
 import useUpdateWidget from "@/hooks/widget/useUpdateWidget";
-import { Ban, Bold, Italic, Pencil, Save, Sidebar, Underline } from "lucide-react";
+import { ArrowLeft, ArrowRight, Ban, Bold, Italic, Pencil, Save, Sidebar, Underline } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { merge } from "@/utils/mergeStyles";
@@ -20,6 +20,7 @@ export const Widget = (): React.ReactElement => {
 
   const [edit, setEdit] = useState(false);
   const [ popup, setPopup ] = useState(false);
+  const [ popPosition, setPopPosition] = useState(false)
 
   const { store, profile } = useSessionStorage();
 
@@ -157,18 +158,37 @@ export const Widget = (): React.ReactElement => {
           className={merge(
             "p-6 animate-fade-in transition-all duration-300",
             popup
-              ? "sticky top-3 left-0 w-120 h-180 z-50 shadow-2xl pt-20 -mt-180"
+              ? "sticky top-3 right-0 w-120 h-180 z-50 shadow-2xl pt-20 -mt-180"
               : ""
           )}
         >
 
-          <div className={merge("", popup ? "flex flex-1 py-3 fixed top-2" : "")}> 
+          <div className={merge("", popup ? "flex w-full items-center justify-between pr-12 py-3 fixed top-2" : "")}> 
             <button
               onClick={() => setPopup(!popup)}
               className={merge("h-10 w-10 border border-gray-200 flex items-center justify-center rounded-lg shadow-amber-600", popup ? "shadow-inner" : "shadow")}
             >
               <Sidebar className="text-orange-600 cursor-pointer"/>
             </button>
+
+            {
+              popup ? ( 
+                <></>
+              ) : (
+                <button
+                  onClick={() => setPopPosition(!popPosition)}
+                  className={merge("h-10 w-10 border border-gray-200 flex items-center justify-center rounded-lg shadow-amber-600", popup ? "shadow-inner" : "shadow")}
+                >
+                  {
+                    popPosition ? (
+                      <ArrowLeft className="text-orange-600 cursor-pointer"/>
+                    ) : (
+                      <ArrowRight className="text-orange-600 cursor-pointer"/>
+                    )
+                  }
+                </button>
+              )
+            }
           </div>
 
           <form className={merge("", popup ? "flex flex-col gap-6 overflow-y-auto" : "grid grid-cols-1  gap-6 md:grid-cols-2")}>
