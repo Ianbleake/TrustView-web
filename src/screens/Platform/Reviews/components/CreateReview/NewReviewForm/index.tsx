@@ -8,8 +8,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { useForm, Controller } from 'react-hook-form';
 import { useSessionStorage } from '@/storage/authStorage';
 import useCreateReview from '@/hooks/reviews/useCreateReview';
-import { Ban, Calendar, Eye, Link, PackageSearch, Save, Star, TextAlignJustify, User } from 'lucide-react';
+import { Ban, Calendar, Eye,Link as LinkIcon , PackageSearch, Save, Star, TextAlignJustify, User } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { InfoCard } from '@/components/InfoCard';
+import { Link } from 'react-router-dom';
+
 
 type NewReviewValues = {
   author: string;
@@ -117,12 +120,19 @@ export const NewReviewForm = ({
       
       <div className='flex flex-col items-start gap-2'>
         <Label>ID del producto:</Label>
-        <div className='relative'>
-          <Input
-            className='pl-10 w-52'
-            {...register('productId', { required: true })}
-          />
-          <PackageSearch className='absolute top-2 left-2 text-orange-600 h-5 w-5'/>
+        <div className='flex flex-row items-center justify-between gap-2'>
+          <div className='relative'>
+            <Input
+              className='pl-10 w-45'
+              {...register('productId', { required: true })}
+            />
+            <PackageSearch className='absolute top-2 left-2 text-orange-600 h-5 w-5'/>
+          </div>
+          <InfoCard size="sm">
+            <p className='max-w-30 text-sm font-normal'>
+              Si no sabes donde encontrar este dato, ve como obtenerlo <Link to="/platform/app-use" className='text-orange-600' >Aqui</Link>
+            </p>
+          </InfoCard>
         </div>
         {errors.productId && <span className='text-red-500 text-sm'>Este campo es obligatorio</span>}
       </div>
@@ -149,7 +159,7 @@ export const NewReviewForm = ({
                 ...register("productUrl")
               }
             />
-            <Link className='absolute top-2 left-2 text-orange-600 h-5 w-5' />
+            <LinkIcon className='absolute top-2 left-2 text-orange-600 h-5 w-5' />
           </div>
       </div>
 
