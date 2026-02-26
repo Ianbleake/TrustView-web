@@ -36,6 +36,7 @@ export const ImportForm = ({
     const importPayload = {
       file: data.file as File,
       store_id: store?.id || "",
+      tn_store_id: store?.tienda_nube_user_id || "",
     }
 
     importReviews(importPayload,{

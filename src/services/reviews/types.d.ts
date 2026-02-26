@@ -48,6 +48,7 @@ type RemoveReviewResponse = {
 type ImportPayload = {
 	file: File;
 	store_id: string;
+	tn_store_id: string;
 }
 
 type ImportError = {
