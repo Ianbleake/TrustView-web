@@ -7,6 +7,7 @@ export async function importReviews(
   const formData = new FormData();
   formData.append("file", payload.file);
   formData.append("store_id", payload.store_id);
+  formData.append("tn_store_id",payload.tn_store_id);
 
   return requester({
     method: "post",
