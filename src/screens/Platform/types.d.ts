@@ -55,3 +55,12 @@ type WidgetStyles = {
   showCount: boolean;
   starsSize: "sm" | "md" | "lg";
 };
+
+type Product = {
+  id: string;
+  productName: string;
+  productRating: number;
+  product_external_id: string;
+  productImg?: string;
+  productUrl?: string;
+}

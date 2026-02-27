@@ -7,6 +7,7 @@ import { Settings } from "@/screens/Platform/Settings";
 import { Widget } from "@/screens/Platform/Widget";
 import { Products } from "@/screens/Platform/Products";
 import { Howitworks } from "@/screens/Platform/Howitworks";
+import { ProductDetail } from "@/screens/Platform/Products/ProductDetail";
 
 export const PlatformRouter = (): React.ReactElement => {
   return (
@@ -37,6 +38,11 @@ export const PlatformRouter = (): React.ReactElement => {
       <Route
         path="/platform/products"
         element={<Products/>}
+      />
+
+      <Route
+        path="/platform/products/:id"
+        element={<ProductDetail/>}
       />
 
       <Route
