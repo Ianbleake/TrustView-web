@@ -154,326 +154,329 @@ export const Widget = (): React.ReactElement => {
 
       {edit && (
 
-        <Card
-          className={merge(
-            "p-6 animate-fade-in transition-all duration-300",
-            popup
-              ? "sticky top-3 right-0 w-120 h-180 z-50 shadow-2xl pt-20 -mt-180"
-              : ""
+        <div className={merge(              
+            popup && " sticky top-3 z-50 -mt-180 flex",
+            popup && (popPosition ? "justify-end" : "justify-start")
           )}
         >
 
-          <div className={merge("", popup ? "flex w-full items-center justify-between pr-12 py-3 fixed top-2" : "")}> 
-            <button
-              onClick={() => setPopup(!popup)}
-              className={merge("h-10 w-10 border border-gray-200 flex items-center justify-center rounded-lg shadow-amber-600", popup ? "shadow-inner" : "shadow")}
-            >
-              <Sidebar className="text-orange-600 cursor-pointer"/>
-            </button>
+          <Card
+            className={merge("p-6 animate-fade-in transition-all duration-300", popup ? "pt-20 h-180 w-120 shadow-2xl" : "")}
+          >
 
-            {
-              !popup ? ( 
-                <></>
-              ) : (
-                <button
-                  onClick={() => setPopPosition(!popPosition)}
-                  className={merge("h-10 w-10 border border-gray-200 flex items-center justify-center rounded-lg shadow-amber-600", popup ? "shadow-inner" : "shadow")}
-                >
-                  {
-                    popPosition ? (
-                      <ArrowLeft className="text-orange-600 cursor-pointer"/>
-                    ) : (
-                      <ArrowRight className="text-orange-600 cursor-pointer"/>
-                    )
-                  }
-                </button>
-              )
-            }
-          </div>
+            <div className={merge("", popup ? "flex w-full items-center justify-between pr-12 py-3 fixed top-2" : "")}>
 
-          <form className={merge("", popup ? "flex flex-col gap-6 overflow-y-auto" : "grid grid-cols-1  gap-6 md:grid-cols-2")}>
-
-            <div className={"flex flex-row items-center justify-between gap-2"}>
-
-              <div className="flex flex-col gap-2">
-                <Label>
-                  Título de Widget
-                </Label>
-                <Input
-                  className={ popup ? "w-70" : "w-80"}
-                  placeholder="Título de Widget"
-                  {...register("sectionTitle")}
-                />
-              </div>
-
-              <ToggleGroup
-                type="multiple"
-                variant="outline"
-                className="mt-5"
-                value={[
-                  widgetConfig.sectionTitleStyle.bold && "bold",
-                  widgetConfig.sectionTitleStyle.italic && "italic",
-                  widgetConfig.sectionTitleStyle.underline && "underline",
-                ].filter(Boolean) as string[]}
-                onValueChange={(values) => {
-                  setValue("sectionTitleStyle", {
-                    bold: values.includes("bold"),
-                    italic: values.includes("italic"),
-                    underline: values.includes("underline"),
-                  });
-                }}
+              <button
+                onClick={() => setPopup(!popup)}
+                className={merge("h-10 w-10 border border-gray-200 flex items-center justify-center rounded-lg shadow-amber-600", popup ? "shadow-inner" : "shadow")}
               >
-                <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                  <Bold />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="italic" aria-label="Toggle italic">
-                  <Italic />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="underline" aria-label="Toggle underline">
-                  <Underline />
-                </ToggleGroupItem>
-              </ToggleGroup>
-
-            </div>
-
-            <div className={merge("flex  gap-4", popup ? "flex-col" : "flex-row items-center")}>
-
-              <div className="flex flex-col gap-3">
-                <Label>Redondeado de las tarjetas</Label>
-                <Select
-                  value={widgetConfig.border}
-                  onValueChange={(value) =>
-                    setValue("border", value as WidgetStyles["border"])
-                  }
-                >
-                  <SelectTrigger className="w-60">
-                    <SelectValue placeholder="Redondeado de las tarjetas" />
-                  </SelectTrigger>
-                  <SelectContent position="popper">
-                    <SelectItem value="none">None</SelectItem>
-                    <SelectItem value="sm">Small</SelectItem>
-                    <SelectItem value="md">Medium</SelectItem>
-                    <SelectItem value="lg">Large</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="flex flex-col gap-2 flex-1">
-                <Label>Color de fondo</Label>
-                <ColorPicker
-                  value={widgetConfig.background}
-                  onChange={(color) => setValue("background", color)}
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-1 col-span-2">
-              <h2 className="text-xl font-semibold text-gray-900">Estilos de estrellas de calificacion</h2>
-            </div>
-
-            <div className="flex flex-row items-center gap-4">
-
-              <div className="flex flex-col gap-3">
-                <Label>Tamaño de las estrellas</Label>
-                <Select
-                  value={widgetConfig.starsSize}
-                  onValueChange={(value) =>
-                    setValue("starsSize", value as WidgetStyles["starsSize"])
-                  }
-                >
-
-                  <SelectTrigger className="w-60">
-                    <SelectValue placeholder="Tamaño de las estrellas" />
-                  </SelectTrigger>
-
-                  <SelectContent position="popper">
-        
-                    <SelectItem className='cursor-pointer' value="sm">Small</SelectItem>
-                    <SelectItem className='cursor-pointer' value="md">Medium</SelectItem>
-                    <SelectItem className='cursor-pointer' value="lg">Large</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="flex flex-1 flex-row mt-5 items-center justify-between">
-                <Label>Mostrar conteo de estrellas</Label>
-                <Switch
-                  size="lg"
-                  checked={widgetConfig.showCount}
-                  onCheckedChange={(checked) =>
-                    setValue("showCount", checked)
-                  }
-                />
-              </div>
-
-            </div>
-
-            <div>
-              <Label className="block mb-2">Interior de estrella</Label>
-              <ColorPicker
-                value={widgetConfig.starFillColor}
-                onChange={(color) => setValue("starFillColor", color)}
-              />
-            </div>
-
-            <div>
-              <Label className="block mb-2">Borde de estrella</Label>
-              <ColorPicker
-                value={widgetConfig.starBodyColor}
-                onChange={(color) => setValue("starBodyColor", color)}
-              />
-            </div>
-    
-            <div>
-              <Label className="block mb-2">Estrella vacia</Label>
-              <ColorPicker
-                value={widgetConfig.emptyStarColor}
-                onChange={(color) => setValue("emptyStarColor", color)}
-              />
-            </div>
-
-            <div className="flex flex-1 col-span-2">
-              <h2 className="text-xl font-semibold text-gray-900">Estilos de la tarjeta de reseña</h2>
-            </div>
-
-            <div className="flex flex-row flex-wrap items-center gap-6">
-
-              <div className="flex flex-col justify-center flex-1">
-                <Label className="block mb-2">Color de fondo de avatar</Label>
-                <ColorPicker
-                  value={widgetConfig.avatarBackground}
-                  onChange={(color) => setValue("avatarBackground", color)}
-                />
-              </div>
-
-              <div className="flex flex-row gap-4 items-center justify-center mt-4">
-                <Label>¿Degradado en avatar?</Label>
-                <Switch
-                  size="lg"
-                  onCheckedChange={(checked) =>
-                    setValue("avatarGradient", checked)
-                  }
-                  checked={widgetConfig.avatarGradient}
-                />
-              </div>
+                <Sidebar className="text-orange-600 cursor-pointer"/>
+              </button>
 
               {
-                widgetConfig.avatarGradient && (
-                  <div className="flex flex-col justify-center flex-1">
-                    <Label className="block mb-2">Color de contraste de avatar</Label>
-                    <ColorPicker
-                      value={widgetConfig.avatarContrastColor}
-                      onChange={(color) => setValue("avatarContrastColor", color)}
-                    />
-                  </div>
+                !popup ? ( 
+                  <></>
+                ) : (
+                  <button
+                    onClick={() => setPopPosition(!popPosition)}
+                    className={merge("h-10 w-10 border border-gray-200 flex items-center justify-center rounded-lg shadow-amber-600", popup ? "shadow-inner" : "shadow")}
+                  >
+                    {
+                      popPosition ? (
+                        <ArrowLeft className="text-orange-600 cursor-pointer"/>
+                      ) : (
+                        <ArrowRight className="text-orange-600 cursor-pointer"/>
+                      )
+                    }
+                  </button>
                 )
               }
             </div>
 
-            <div>
-              <Label className="block mb-2">Color de letra interior del avatar</Label>
-              <ColorPicker
-                value={widgetConfig.avatarTextColor}
-                onChange={(color) => setValue("avatarTextColor", color)}
-              />
-            </div>
+            <form className={merge("", popup ? "flex flex-col gap-6 overflow-y-auto" : "grid grid-cols-1  gap-6 md:grid-cols-2")}>
 
-            <div className="flex flex-row items-center justify-between gap-3">
+              <div className={"flex flex-row items-center justify-between gap-2"}>
 
-              <div className="flex flex-col flex-1">
-                <Label className="block mb-2">Color del titulo</Label>
+                <div className="flex flex-col gap-2">
+                  <Label>
+                    Título de Widget
+                  </Label>
+                  <Input
+                    className={ popup ? "w-70" : "w-80"}
+                    placeholder="Título de Widget"
+                    {...register("sectionTitle")}
+                  />
+                </div>
+
+                <ToggleGroup
+                  type="multiple"
+                  variant="outline"
+                  className="mt-5"
+                  value={[
+                    widgetConfig.sectionTitleStyle.bold && "bold",
+                    widgetConfig.sectionTitleStyle.italic && "italic",
+                    widgetConfig.sectionTitleStyle.underline && "underline",
+                  ].filter(Boolean) as string[]}
+                  onValueChange={(values) => {
+                    setValue("sectionTitleStyle", {
+                      bold: values.includes("bold"),
+                      italic: values.includes("italic"),
+                      underline: values.includes("underline"),
+                    });
+                  }}
+                >
+                  <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                    <Bold />
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="italic" aria-label="Toggle italic">
+                    <Italic />
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="underline" aria-label="Toggle underline">
+                    <Underline />
+                  </ToggleGroupItem>
+                </ToggleGroup>
+
+              </div>
+
+              <div className={merge("flex  gap-4", popup ? "flex-col" : "flex-row items-center")}>
+
+                <div className="flex flex-col gap-3">
+                  <Label>Redondeado de las tarjetas</Label>
+                  <Select
+                    value={widgetConfig.border}
+                    onValueChange={(value) =>
+                      setValue("border", value as WidgetStyles["border"])
+                    }
+                  >
+                    <SelectTrigger className="w-60">
+                      <SelectValue placeholder="Redondeado de las tarjetas" />
+                    </SelectTrigger>
+                    <SelectContent position="popper">
+                      <SelectItem value="none">None</SelectItem>
+                      <SelectItem value="sm">Small</SelectItem>
+                      <SelectItem value="md">Medium</SelectItem>
+                      <SelectItem value="lg">Large</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="flex flex-col gap-2 flex-1">
+                  <Label>Color de fondo</Label>
+                  <ColorPicker
+                    value={widgetConfig.background}
+                    onChange={(color) => setValue("background", color)}
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-1 col-span-2">
+                <h2 className="text-xl font-semibold text-gray-900">Estilos de estrellas de calificacion</h2>
+              </div>
+
+              <div className="flex flex-row items-center gap-4">
+
+                <div className="flex flex-col gap-3">
+                  <Label>Tamaño de las estrellas</Label>
+                  <Select
+                    value={widgetConfig.starsSize}
+                    onValueChange={(value) =>
+                      setValue("starsSize", value as WidgetStyles["starsSize"])
+                    }
+                  >
+
+                    <SelectTrigger className="w-60">
+                      <SelectValue placeholder="Tamaño de las estrellas" />
+                    </SelectTrigger>
+
+                    <SelectContent position="popper">
+          
+                      <SelectItem className='cursor-pointer' value="sm">Small</SelectItem>
+                      <SelectItem className='cursor-pointer' value="md">Medium</SelectItem>
+                      <SelectItem className='cursor-pointer' value="lg">Large</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="flex flex-1 flex-row mt-5 items-center justify-between">
+                  <Label>Mostrar conteo de estrellas</Label>
+                  <Switch
+                    size="lg"
+                    checked={widgetConfig.showCount}
+                    onCheckedChange={(checked) =>
+                      setValue("showCount", checked)
+                    }
+                  />
+                </div>
+
+              </div>
+
+              <div>
+                <Label className="block mb-2">Interior de estrella</Label>
                 <ColorPicker
-                  value={widgetConfig.titleColor}
-                  onChange={(color) => setValue("titleColor", color)}
+                  value={widgetConfig.starFillColor}
+                  onChange={(color) => setValue("starFillColor", color)}
                 />
               </div>
 
-              <ToggleGroup
-                type="multiple"
-                className="mt-5"
-                variant="outline"
-                value={[
-                  widgetConfig.titleStyle.bold && "bold",
-                  widgetConfig.titleStyle.italic && "italic",
-                  widgetConfig.titleStyle.underline && "underline",
-                ].filter(Boolean) as string[]}
-                onValueChange={(values) => {
-                  setValue("titleStyle", {
-                    bold: values.includes("bold"),
-                    italic: values.includes("italic"),
-                    underline: values.includes("underline"),
-                  });
-                }}
-              >
-                <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                  <Bold />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="italic" aria-label="Toggle italic">
-                  <Italic />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="underline" aria-label="Toggle underline">
-                  <Underline />
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-
-            <div>
-              <Label className="block mb-2">Color de fecha</Label>
-              <ColorPicker
-                value={widgetConfig.dateColor}
-                onChange={(color) => setValue("dateColor", color)}
-              />
-            </div>
-            
-            <div className="flex flex-row items-center justify-between gap-3">
-              <div className="flex flex-col flex-1">
-                <Label className="block mb-2">Color de contenido</Label>
+              <div>
+                <Label className="block mb-2">Borde de estrella</Label>
                 <ColorPicker
-                  value={widgetConfig.contentColor}
-                  onChange={(color) => setValue("contentColor", color)}
+                  value={widgetConfig.starBodyColor}
+                  onChange={(color) => setValue("starBodyColor", color)}
+                />
+              </div>
+      
+              <div>
+                <Label className="block mb-2">Estrella vacia</Label>
+                <ColorPicker
+                  value={widgetConfig.emptyStarColor}
+                  onChange={(color) => setValue("emptyStarColor", color)}
                 />
               </div>
 
-              <ToggleGroup
-                type="multiple"
-                className="mt-5"
-                variant="outline"
-                value={[
-                  widgetConfig.contentStyle.bold && "bold",
-                  widgetConfig.contentStyle.italic && "italic",
-                  widgetConfig.contentStyle.underline && "underline",
-                ].filter(Boolean) as string[]}
-                onValueChange={(values) => {
-                  setValue("contentStyle", {
-                    bold: values.includes("bold"),
-                    italic: values.includes("italic"),
-                    underline: values.includes("underline"),
-                  });
-                }}
-              >
-                <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                  <Bold />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="italic" aria-label="Toggle italic">
-                  <Italic />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="underline" aria-label="Toggle underline">
-                  <Underline />
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
+              <div className="flex flex-1 col-span-2">
+                <h2 className="text-xl font-semibold text-gray-900">Estilos de la tarjeta de reseña</h2>
+              </div>
 
-            <div>
-              <Label className="block mb-2">Color de nombre de producto</Label>
-              <ColorPicker
-                value={widgetConfig.productColor}
-                onChange={(color) => setValue("productColor", color)}
-              />
-            </div>
+              <div className="flex flex-row flex-wrap items-center gap-6">
 
-          </form>
+                <div className="flex flex-col justify-center flex-1">
+                  <Label className="block mb-2">Color de fondo de avatar</Label>
+                  <ColorPicker
+                    value={widgetConfig.avatarBackground}
+                    onChange={(color) => setValue("avatarBackground", color)}
+                  />
+                </div>
 
-        </Card>
+                <div className="flex flex-row gap-4 items-center justify-center mt-4">
+                  <Label>¿Degradado en avatar?</Label>
+                  <Switch
+                    size="lg"
+                    onCheckedChange={(checked) =>
+                      setValue("avatarGradient", checked)
+                    }
+                    checked={widgetConfig.avatarGradient}
+                  />
+                </div>
+
+                {
+                  widgetConfig.avatarGradient && (
+                    <div className="flex flex-col justify-center flex-1">
+                      <Label className="block mb-2">Color de contraste de avatar</Label>
+                      <ColorPicker
+                        value={widgetConfig.avatarContrastColor}
+                        onChange={(color) => setValue("avatarContrastColor", color)}
+                      />
+                    </div>
+                  )
+                }
+              </div>
+
+              <div>
+                <Label className="block mb-2">Color de letra interior del avatar</Label>
+                <ColorPicker
+                  value={widgetConfig.avatarTextColor}
+                  onChange={(color) => setValue("avatarTextColor", color)}
+                />
+              </div>
+
+              <div className="flex flex-row items-center justify-between gap-3">
+
+                <div className="flex flex-col flex-1">
+                  <Label className="block mb-2">Color del titulo</Label>
+                  <ColorPicker
+                    value={widgetConfig.titleColor}
+                    onChange={(color) => setValue("titleColor", color)}
+                  />
+                </div>
+
+                <ToggleGroup
+                  type="multiple"
+                  className="mt-5"
+                  variant="outline"
+                  value={[
+                    widgetConfig.titleStyle.bold && "bold",
+                    widgetConfig.titleStyle.italic && "italic",
+                    widgetConfig.titleStyle.underline && "underline",
+                  ].filter(Boolean) as string[]}
+                  onValueChange={(values) => {
+                    setValue("titleStyle", {
+                      bold: values.includes("bold"),
+                      italic: values.includes("italic"),
+                      underline: values.includes("underline"),
+                    });
+                  }}
+                >
+                  <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                    <Bold />
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="italic" aria-label="Toggle italic">
+                    <Italic />
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="underline" aria-label="Toggle underline">
+                    <Underline />
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              <div>
+                <Label className="block mb-2">Color de fecha</Label>
+                <ColorPicker
+                  value={widgetConfig.dateColor}
+                  onChange={(color) => setValue("dateColor", color)}
+                />
+              </div>
+              
+              <div className="flex flex-row items-center justify-between gap-3">
+                <div className="flex flex-col flex-1">
+                  <Label className="block mb-2">Color de contenido</Label>
+                  <ColorPicker
+                    value={widgetConfig.contentColor}
+                    onChange={(color) => setValue("contentColor", color)}
+                  />
+                </div>
+
+                <ToggleGroup
+                  type="multiple"
+                  className="mt-5"
+                  variant="outline"
+                  value={[
+                    widgetConfig.contentStyle.bold && "bold",
+                    widgetConfig.contentStyle.italic && "italic",
+                    widgetConfig.contentStyle.underline && "underline",
+                  ].filter(Boolean) as string[]}
+                  onValueChange={(values) => {
+                    setValue("contentStyle", {
+                      bold: values.includes("bold"),
+                      italic: values.includes("italic"),
+                      underline: values.includes("underline"),
+                    });
+                  }}
+                >
+                  <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                    <Bold />
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="italic" aria-label="Toggle italic">
+                    <Italic />
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="underline" aria-label="Toggle underline">
+                    <Underline />
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              <div>
+                <Label className="block mb-2">Color de nombre de producto</Label>
+                <ColorPicker
+                  value={widgetConfig.productColor}
+                  onChange={(color) => setValue("productColor", color)}
+                />
+              </div>
+
+            </form>
+
+          </Card>
+        </div>
       )}
 
 
