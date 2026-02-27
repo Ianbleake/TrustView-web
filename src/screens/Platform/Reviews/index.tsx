@@ -10,12 +10,13 @@ import useReviews from '@/hooks/reviews/useReviews'
 import { ReviewsGrid } from './components/ReviewsGrid'
 import { EmptyReviews } from './components/EmptyReviews'
 import { CreateReview } from './components/CreateReview'
+import { useReviewStore } from '@/storage/reviewStorage';
 import { useSessionStorage } from '@/storage/authStorage'
 import { ImportReviews } from './components/ImportReviews'
 import { ReviewsSkeleton } from '@/components/skeletons/ReviewsSkeleton'
-import { Check, EyeClosed, Hourglass, Search, Star, ArrowUpDown, ArrowUp, ArrowDown, HeartMinus, HeartPlus, type LucideIcon } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { useReviewStore } from '@/storage/reviewStorage';
+import { Check, EyeClosed, Hourglass, Search, Star, ArrowUpDown, ArrowUp, ArrowDown, HeartMinus, HeartPlus, type LucideIcon } from 'lucide-react'
+import { PageTitle } from '@/components/PageTitle';
 
 type SortState = | "newest" | "oldest" | "rating_high" | "rating_low" | "author_az";
 
@@ -87,10 +88,7 @@ export const Reviews = ():React.ReactElement => {
 
       <div className='flex flex-row items-center justify-between animate-fade-in'>
 
-        <div className='flex flex-col items-start justify-start gap-1'>
-          <h1 className='font-heading font-semibold text-2xl text-gray-900'>Reseñas</h1>
-          <p className='font-normal text-sm text-gray-400'>Gestioná todas las reseñas de tu tienda</p>
-        </div>
+        <PageTitle title='Reseñas' subtitle='Gestioná todas las reseñas de tu tienda'/>
 
         <div className='flex flex-row gap-3 items-center'>
 

@@ -15,6 +15,7 @@ import useUpdateWidget from "@/hooks/widget/useUpdateWidget";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft, ArrowRight, Ban, Bold, Italic, Pencil, Save, Sidebar, Underline } from "lucide-react";
+import { PageTitle } from "@/components/PageTitle";
 
 export const Widget = (): React.ReactElement => {
 
@@ -91,14 +92,7 @@ export const Widget = (): React.ReactElement => {
       
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
-        <div>
-          <h1 className="text-2xl font-bold text-foreground">
-            Configuración Widget
-          </h1>
-          <p className="text-muted-foreground">
-            Personaliza la apariencia en tiempo real
-          </p>
-        </div>
+        <PageTitle title="Configuración Widget" subtitle="Personaliza la apariencia en tiempo real"/>
 
         <div className="flex flex-row-reverse gap-4">
 
@@ -477,9 +471,8 @@ export const Widget = (): React.ReactElement => {
 
           </Card>
         </div>
-        
-      )}
 
+      )}
 
       <Widgets widgetConfig={widgetConfig}/>
 
