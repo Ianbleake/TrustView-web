@@ -7,7 +7,5 @@ type BaseLayoutProps = {
 };
 
 export const BaseLayout = ({ children, className = "" }: BaseLayoutProps): React.ReactElement => {
-  return <div className={merge("min-h-screen maw-w-screen pt-16", className)}>{children}</div>;
+  return <div className={merge("min-h-screen bg-gray-50/80 maw-w-screen pt-16", className)}>{children}</div>;
 };
-
-// TODO: algo aqui hace un scroll horizontal sin necesitdad

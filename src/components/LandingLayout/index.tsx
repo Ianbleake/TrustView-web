@@ -14,7 +14,7 @@ export const LandingLayout = (): React.ReactElement => {
   }, [pathname]);
 
   return (
-    <BaseLayout className="pt-0">
+    <BaseLayout className="pt-18">
       <Header />
 
       <div className="flex-1">
