@@ -14,9 +14,12 @@ export const Testimonials = ():React.ReactElement => {
 
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {[
-            { name: "Valentina R.", store: "Moda Urbana", text: "Desde que instalamos ReviewsApp, nuestras conversiones subieron un 23%. Los clientes confían más al ver reseñas reales.", rating: 5 },
-            { name: "Martín S.", store: "Tech Store AR", text: "La integración fue instantánea. En 5 minutos ya teníamos el widget funcionando en nuestra tienda.", rating: 5 },
-            { name: "Camila D.", store: "Casa & Deco", text: "El panel de moderación es súper intuitivo. Puedo gestionar todas las reseñas desde un solo lugar.", rating: 4 },
+            { name: "Sebastián L.", store: "Gadgets Pro MX", text: "Nos sorprendió la cantidad de reseñas que empezamos a recibir apenas activamos los recordatorios automáticos. Súper recomendado.", rating: 5 },
+            { name: "Lucía F.", store: "Belleza Natural Shop", text: "La personalización del widget quedó perfecta con nuestra marca. Parece desarrollado a medida.", rating: 5 },
+            { name: "Andrés M.", store: "Deportes Elite", text: "Las reseñas negativas ahora las gestionamos mucho mejor. Nos ayudó a mejorar procesos internos.", rating: 4 },
+            { name: "Paula G.", store: "Kids Planet", text: "El reporte semanal nos da claridad total sobre la satisfacción del cliente. Información accionable, sin complicaciones.", rating: 5 },
+            { name: "Diego C.", store: "Home Office Store", text: "Me encanta que las reseñas incluyan fotos. Genera mucha más confianza y aumenta el tiempo en página.", rating: 4 },
+            { name: "Fernanda T.", store: "EcoMarket", text: "Desde que mostramos calificaciones visibles en producto, la tasa de rebote bajó bastante. Impacto real.", rating: 5 },
           ].map((t, i) => (
             <motion.div
               key={i}
@@ -30,7 +33,7 @@ export const Testimonials = ():React.ReactElement => {
                 {Array.from({ length: 5 }, (_, j) => (
                   <Star
                     key={j}
-                    className={`h-4 w-4 ${j < t.rating ? "fill-star text-star" : "fill-star-empty text-star-empty"}`}
+                    className={`h-4 w-4 ${j < t.rating ? "fill-yellow-300 text-yellow-500" : "fill-transparent text-gray-300"}`}
                   />
                 ))}
               </div>

@@ -71,7 +71,8 @@ export const Hero = ():React.ReactElement => {
           <motion.div variants={fadeUp} custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
-              className="gradient-primary text-primary-foreground shadow-glow rounded-xl text-base px-8 group"
+              variant={"gradient"}
+              className="shadow-glow rounded-xl text-base px-8"
               onClick={() => navigate("/auth")}
             >
               Empezar gratis

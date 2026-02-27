@@ -30,7 +30,8 @@ export const CTA = ():React.ReactElement => {
           </p>
           <Button
             size="lg"
-            className="gradient-primary text-primary-foreground shadow-glow rounded-xl text-base px-10 group"
+            className="shadow-glow rounded-xl px-10"
+            variant={"gradient"}
             onClick={() => navigate("/auth")}
           >
             Crear cuenta gratis

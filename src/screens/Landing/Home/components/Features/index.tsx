@@ -5,8 +5,11 @@ import React from 'react'
 export const Features = ():React.ReactElement => {
   return (
     <section id="features" className="py-20 md:py-28 relative">
+
       <div className="absolute inset-0 gradient-glow pointer-events-none" />
+
       <div className="container mx-auto px-6">
+
         <div className="text-center mb-16">
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Todo lo que necesitás</h2>
           <p className="text-muted-foreground max-w-lg mx-auto">Herramientas poderosas para gestionar las reseñas de tu tienda y convertir la opinión de tus clientes en ventas.</p>
@@ -29,9 +32,23 @@ export const Features = ():React.ReactElement => {
               transition={{ delay: i * 0.08, duration: 0.45 }}
               className="group relative rounded-2xl border border-border/60 bg-card p-7 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
             >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 gradient-glow pointer-events-none" />
+              
+              <div
+                  className="
+                      pointer-events-none
+                      absolute -top-20 right-25
+                      w-48 h-48
+                      bg-orange-400/20
+                      rounded-full
+                      blur-3xl
+                      opacity-0
+                      transition-opacity duration-300
+                      group-hover:opacity-100
+                  "
+              />
+
               <div className="relative">
-                <div className="rounded-xl gradient-primary p-3 w-fit mb-5 shadow-glow">
+                <div className="rounded-xl gradient-bg p-3 w-fit mb-5 shadow-glow">
                   <f.icon className="h-5 w-5 text-primary-foreground" />
                 </div>
                 <h3 className="font-heading font-semibold text-lg mb-2">{f.title}</h3>
