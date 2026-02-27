@@ -5,31 +5,43 @@ import { Dashboard } from "@/screens/Platform/Dashboard";
 import { PlatformLayout } from "@/components/PlatformLayout";
 import { Settings } from "@/screens/Platform/Settings";
 import { Widget } from "@/screens/Platform/Widget";
+import { Products } from "@/screens/Platform/Products";
+import { Howitworks } from "@/screens/Platform/Howitworks";
 
 export const PlatformRouter = (): React.ReactElement => {
   return (
     <Route
       path="/platform"
-      element={<PlatformLayout />}
+      element={<PlatformLayout/>}
     >
       <Route
         index
-        element={<Dashboard />}
+        element={<Dashboard/>}
       />
 
       <Route
         path="/platform/reviews"
-        element={<Reviews />}
+        element={<Reviews/>}
       />
 
       <Route
         path="/platform/settings"
-        element={<Settings />}
+        element={<Settings/>}
       />
 
       <Route
         path="/platform/widget"
-        element={<Widget />}
+        element={<Widget/>}
+      />
+
+      <Route
+        path="/platform/products"
+        element={<Products/>}
+      />
+
+      <Route
+        path="/platform/howitworks"
+        element={<Howitworks/>}
       />
 
     </Route>
