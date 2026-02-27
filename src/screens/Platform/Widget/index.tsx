@@ -2,6 +2,7 @@ import { Widgets } from "./Widgets";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card } from "@/components/ui/card";
+import { merge } from "@/utils/mergeStyles";
 import { ColorPicker } from "./ColorPicker";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -11,10 +12,9 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { useSessionStorage } from "@/storage/authStorage";
 import useUpdateWidget from "@/hooks/widget/useUpdateWidget";
-import { ArrowLeft, ArrowRight, Ban, Bold, Italic, Pencil, Save, Sidebar, Underline } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { merge } from "@/utils/mergeStyles";
+import { ArrowLeft, ArrowRight, Ban, Bold, Italic, Pencil, Save, Sidebar, Underline } from "lucide-react";
 
 export const Widget = (): React.ReactElement => {
 
@@ -154,15 +154,15 @@ export const Widget = (): React.ReactElement => {
 
       {edit && (
 
-        <div className={merge(              
-            popup && " sticky top-3 z-50 -mt-180 flex",
-            popup && (popPosition ? "justify-end" : "justify-start")
+        <div className={merge(popup && "sticky top-3 z-50 -mt-180 flex justify-center")}>
+
+        <Card
+          className={merge(
+            "p-6 animate-fade-in transition-all duration-500 ease-in-out",
+            popup && "pt-20 h-180 w-120 shadow-2xl",
+            popup && (popPosition ? "translate-x-75" : "-translate-x-75")
           )}
         >
-
-          <Card
-            className={merge("p-6 animate-fade-in transition-all duration-300", popup ? "pt-20 h-180 w-120 shadow-2xl" : "")}
-          >
 
             <div className={merge("", popup ? "flex w-full items-center justify-between pr-12 py-3 fixed top-2" : "")}>
 
@@ -477,6 +477,7 @@ export const Widget = (): React.ReactElement => {
 
           </Card>
         </div>
+        
       )}
 
 
