@@ -25,10 +25,10 @@ export const Hero = ():React.ReactElement => {
   return (
     <section className="relative pt-10 pb-20 md:pt-18 md:pb-32 overflow-hidden">
       
-      <div className="absolute inset-0 gradient-hero" />
+      <div className="absolute inset-0 bg-[conic-gradient(at_left,#f97316,#fdba74,#ffedd5)]" />
       <div className="absolute inset-0 opacity-5 bg-dot-pattern" />
-      <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-primary/12 to-transparent rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-primary/8 to-transparent rounded-full blur-3xl" />
+      <div className="absolute top-20 right-0 w-125 h-125 bg-linear-to-bl from-primary/12 to-transparent rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-100 h-100 bg-linear-to-tr from-primary/8 to-transparent rounded-full blur-3xl" />
 
       {/* Floating stars */}
       {Array.from({ length: 20 }).map((_, i) => (
@@ -46,20 +46,21 @@ export const Hero = ():React.ReactElement => {
       ))}
 
       <div className="container mx-auto px-6 relative z-10">
+
         <motion.div
           className="max-w-3xl mx-auto text-center"
           initial="hidden"
           animate="visible"
           variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
         >
-          <motion.div variants={fadeUp} custom={0} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-6">
+          <motion.div variants={fadeUp} custom={0} className="gradient-bg inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-white text-sm font-medium mb-6">
             <Zap className="h-3.5 w-3.5" />
             La app #1 de reseñas para Tienda Nube
           </motion.div>
 
           <motion.h1 variants={fadeUp} custom={1} className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
             Convertí reseñas en{" "}
-            <span className="bg-gradient-to-r from-primary to-warning bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-amber-200 to-yellow-500 bg-clip-text text-transparent">
               más ventas
             </span>
           </motion.h1>

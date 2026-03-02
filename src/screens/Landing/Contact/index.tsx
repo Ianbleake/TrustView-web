@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Mail, MapPin, MessageSquare } from 'lucide-react'
+import { Clock, Mail, MapPin } from 'lucide-react'
 import React, { useState } from 'react'
 import { toast } from 'sonner';
 
@@ -18,7 +18,9 @@ export const Contact = ():React.ReactElement => {
       toast.success("Mensaje enviado con exito!", {
         description: "Nos contactaremos contigo pronto."
       });
+
       (e.target as HTMLFormElement).reset();
+      
     }, 1000);
   };
 
@@ -27,16 +29,16 @@ export const Contact = ():React.ReactElement => {
 
       <div className="text-center mb-12">
         <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">Contactanos</h1>
-        <p className="text-muted-foreground max-w-lg mx-auto">¿Tenés preguntas o necesitás ayuda? Estamos acá para ayudarte.</p>
+        <p className="text-muted-foreground max-w-lg mx-auto">¿Tienes preguntas o necesitás ayuda? Estamos acá para ayudarte.</p>
       </div>
 
       <div className="grid md:grid-cols-5 gap-8">
 
         <div className="md:col-span-2 space-y-6">
           {[
-            { icon: Mail, title: "Email", detail: "soporte@reviewsapp.com" },
-            { icon: MessageSquare, title: "Chat en vivo", detail: "Lun-Vie, 9:00-18:00 (ART)" },
-            { icon: MapPin, title: "Ubicación", detail: "Buenos Aires, Argentina" },
+            { icon: Mail, title: "Email", detail: "bleakedev@gmail.com" },
+            { icon: Clock, title: "Horario de soporte", detail: "Lun-Vie, 9:00-18:00 (MX)" },
+            { icon: MapPin, title: "Ubicación", detail: "CDMX, MX" },
           ].map((item, i) => (
             <div key={i} className="flex items-start gap-4 p-5 rounded-2xl border border-border/60 bg-card">
               <div className="rounded-xl gradient-bg p-3 shadow-glow shrink-0">
@@ -69,7 +71,7 @@ export const Contact = ():React.ReactElement => {
             <label className="text-sm font-medium">Mensaje</label>
             <Textarea placeholder="Contanos más detalles..." required className="rounded-xl min-h-30" />
           </div>
-          <Button type="submit" disabled={loading} className="w-full gradient-primary text-primary-foreground shadow-glow rounded-xl">
+          <Button type="submit" disabled={loading} variant={"gradient"} size={"lg"} className="w-full shadow-glow rounded-xl">
             {loading ? "Enviando..." : "Enviar mensaje"}
           </Button>
         </form>
