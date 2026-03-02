@@ -1,5 +1,5 @@
 import { Card } from '@/components/ui/card'
-import { ExternalLink, Shirt } from 'lucide-react'
+import { ExternalLink, MessageSquare, Shirt } from 'lucide-react'
 import React from 'react'
 import { StarsCount } from '../StarsCount';
 import { Link } from 'react-router-dom';
@@ -13,7 +13,7 @@ export const ProductCard = ({
 }:ProductCardProps):React.ReactElement => {
   return (
     
-      <Card className="w-72 pt-0 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+      <Card className="flex flex-col w-72 pt-0 max-w-65 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
         
 
         <div className="h-60 bg-gray-50 flex items-center justify-center border-b border-gray-100">
@@ -34,15 +34,21 @@ export const ProductCard = ({
               { product.productName }
             </h2>
 
-            <a href={product.productUrl || "#"} className=''>
+            <a href={product.productUrl || "#"} target='_blank' className=''>
               <ExternalLink className='text-orange-600 '/>
             </a>
           </div>
 
-          <StarsCount count={product.productRating} />
+          <StarsCount showCount count={product.productRating} />
 
-          <div className="">
-            <Link to={product.id} className='text-lg font-normal text-orange-600'>
+          <div className="flex flex-row items-center justify-between mt-2">
+
+            <div className='flex flex-row items-center gap-2 text-xs text-gray-500 font-semibold select-none'>
+              <MessageSquare className='text-gray-500 h-4 w-4' />
+              24 reseñas
+            </div>
+
+            <Link to={product.id} className='text-md font-normal text-orange-600'>
               Ver Reseñas
             </Link>
           </div>
