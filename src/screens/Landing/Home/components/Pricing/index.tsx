@@ -23,7 +23,7 @@ export const Pricing = ():React.ReactElement => {
               name: "Free",
               price: "$0",
               desc: "Para empezar a probar",
-              features: ["Hasta 50 reseñas/mes", "Widget básico", "1 tienda", "Soporte por email"],
+              features: ["Hasta 50 reseñas", "Widget básico", "Soporte por email"],
               cta: "Empezar gratis",
               popular: false,
             },
@@ -31,15 +31,15 @@ export const Pricing = ():React.ReactElement => {
               name: "Basic",
               price: "$9",
               desc: "Para tiendas en crecimiento",
-              features: ["Hasta 500 reseñas/mes", "Widget personalizable", "3 tiendas", "Analíticas básicas", "Soporte prioritario"],
+              features: ["Hasta 250 reseñas", "Widgets avanzados","Creacion manual de reseñas", "Soporte prioritario"],
               cta: "Elegir Basic",
               popular: false,
             },
             {
               name: "Pro",
-              price: "$29",
+              price: "$15",
               desc: "Para tiendas profesionales",
-              features: ["Reseñas ilimitadas", "Widget premium", "Tiendas ilimitadas", "Analíticas avanzadas", "Soporte dedicado", "API access"],
+              features: ["Reseñas ilimitadas", "3 diferentes widgets", "Personalizacion de widget", "Analíticas avanzadas","Importacion de reseñas", "Soporte dedicado"],
               cta: "Elegir Pro",
               popular: true,
             },
@@ -57,7 +57,7 @@ export const Pricing = ():React.ReactElement => {
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full gradient-primary text-primary-foreground text-xs font-semibold shadow-glow">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full gradient-bg text-primary-foreground text-xs font-semibold shadow-glow">
                   Más popular
                 </div>
               )}
@@ -78,7 +78,7 @@ export const Pricing = ():React.ReactElement => {
               <Button
                 className={`w-full rounded-xl ${
                   plan.popular
-                    ? "gradient-primary text-primary-foreground shadow-glow"
+                    ? "gradient-bg text-primary-foreground shadow-glow"
                     : ""
                 }`}
                 variant={plan.popular ? "default" : "outline"}
