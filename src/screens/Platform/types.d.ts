@@ -59,8 +59,13 @@ type WidgetStyles = {
 type Product = {
   id: string;
   productName: string;
-  productRating: number;
+  rating: number;
   product_external_id: string;
   productImg?: string;
   productUrl?: string;
+}
+
+type ProductReviewsData = {
+  reviews: Review[];
+  growth: 'positive' | 'negative';
 }

@@ -4,7 +4,7 @@ export const mockProducts: Product[] = [
     productImg: "https://picsum.photos/seed/product-1/400/400",
     productName: "Audífonos Inalámbricos Pro X",
     productUrl: "https://example.com/products/audifonos-pro-x",
-    productRating: 4.7,
+    rating: 4.7,
     product_external_id: "ext-1001",
   },
   {
@@ -12,7 +12,7 @@ export const mockProducts: Product[] = [
     productImg: "https://picsum.photos/seed/product-2/400/400",
     productName: "Smartwatch Active Fit 2",
     productUrl: "https://example.com/products/smartwatch-active-fit-2",
-    productRating: 4.3,
+    rating: 4.3,
     product_external_id: "ext-1002",
   },
   {
@@ -20,7 +20,7 @@ export const mockProducts: Product[] = [
     productImg: "https://picsum.photos/seed/product-3/400/400",
     productName: "Mochila Urbana Antirrobo",
     productUrl: "https://example.com/products/mochila-urbana-antirrobo",
-    productRating: 4.9,
+    rating: 4.9,
     product_external_id: "ext-1003",
   },
   {
@@ -28,7 +28,7 @@ export const mockProducts: Product[] = [
     productImg: "https://picsum.photos/seed/product-4/400/400",
     productName: "Lámpara LED Minimalista",
     productUrl: "https://example.com/products/lampara-led-minimalista",
-    productRating: 4.1,
+    rating: 4.1,
     product_external_id: "ext-1004",
   },
   {
@@ -36,7 +36,7 @@ export const mockProducts: Product[] = [
     productImg: "https://picsum.photos/seed/product-5/400/400",
     productName: "Teclado Mecánico RGB TKL",
     productUrl: "https://example.com/products/teclado-mecanico-rgb-tkl",
-    productRating: 4.8,
+    rating: 4.8,
     product_external_id: "ext-1005",
   },
   {
@@ -44,7 +44,7 @@ export const mockProducts: Product[] = [
     productImg: "https://picsum.photos/seed/product-6/400/400",
     productName: "Silla Ergonómica ProDesk",
     productUrl: "https://example.com/products/silla-ergonomica-prodesk",
-    productRating: 4.5,
+    rating: 4.5,
     product_external_id: "ext-1006",
   },
 ];

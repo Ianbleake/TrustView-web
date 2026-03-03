@@ -1,25 +1,42 @@
-import { StarsCount } from '@/components/StarsCount'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList } from '@/components/ui/tabs'
-import { ArrowLeft, Camera, ExternalLink, MessageSquare, TrendingUp } from 'lucide-react'
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Card } from '@/components/ui/card'
+import { ReviewsTabs } from './ReviewsTabs'
+import { Button } from '@/components/ui/button'
+import { StarsCount } from '@/components/StarsCount'
+import { useNavigate, useParams } from 'react-router-dom'
+import { ArrowLeft, Camera, ExternalLink, MessageSquare, TrendingUp } from 'lucide-react'
+import { ReviewsChart } from './ReviewsChart'
 
 export const ProductDetail = ():React.ReactElement => {
 
+  const navigate = useNavigate();
+
   const { id:productId } = useParams();
 
-  const product = {
+  console.log("productId:",productId)
 
+  const product =   {
+    id: "1",
+    productImg: "https://picsum.photos/seed/product-1/400/400",
+    productName: "Audífonos Inalámbricos Pro X",
+    productUrl: "https://example.com/products/audifonos-pro-x",
+    rating: 3.7,
+    product_external_id: "ext-1001",
   } as Product;
 
-  return (
-    <div className=''>
+  const testRatings = [ //Esto se añade al producto 
+    { stars: 5, percentage: 0, count: 0},
+    { stars: 4, percentage: 50, count: 2},
+    { stars: 3, percentage: 50, count: 2},
+    { stars: 2, percentage: 0, count: 0},
+    { stars: 1, percentage: 0, count: 0},
+  ]
 
-      <div className='mb-2'>
-        <Button variant={"link"} className=''>
+  return (
+    <div className='flex flex-col flex-1 min-h-full gap-6'>
+
+      <div>
+        <Button variant={"link"} className='' onClick={()=>navigate("/platform/products")}>
           <ArrowLeft/>
           Volver a productos
         </Button>
@@ -43,10 +60,10 @@ export const ProductDetail = ():React.ReactElement => {
 
             <div className='flex flex-col gap-1'>
               <div className='flex flex-row items-center gap-3'>
-                <h1 className="font-heading text-2xl font-bold text-foreground">Producto test</h1>
-                <ExternalLink className='text-orange-500 w-5 h-5'/>
+                <h1 className="font-heading text-2xl font-bold text-foreground">{product.productName}</h1>
+                <a href={product.productUrl} target='_blank'><ExternalLink className='text-orange-500 w-5 h-5'/></a>
               </div>
-              <StarsCount count={5} />
+              <StarsCount count={product.rating} />
             </div>
 
             <div className='flex flex-row items-center justify-between gap-8'>
@@ -83,22 +100,11 @@ export const ProductDetail = ():React.ReactElement => {
 
         </div>
 
-        <div id='reviews chart'>
-
-        </div>
+        <ReviewsChart ratings={testRatings} />
 
       </Card>
 
-      <Tabs>
-
-        <TabsList>
-
-        </TabsList>
-
-        <TabsContent value="">
-          <></>
-        </TabsContent>
-      </Tabs>
+      <ReviewsTabs reviews={[]}/>
 
     </div>
   )

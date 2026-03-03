@@ -39,7 +39,7 @@ export const ProductCard = ({
             </a>
           </div>
 
-          <StarsCount showCount count={product.productRating} />
+          <StarsCount showCount count={product.rating} />
 
           <div className="flex flex-row items-center justify-between mt-2">
 
