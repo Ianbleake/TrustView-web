@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 type ProductCardProps = {
   product: Product
 }
+
 export const ProductCard = ({
   product,
 }:ProductCardProps):React.ReactElement => {
@@ -45,7 +46,7 @@ export const ProductCard = ({
 
             <div className='flex flex-row items-center gap-2 text-xs text-gray-500 font-semibold select-none'>
               <MessageSquare className='text-gray-500 h-4 w-4' />
-              24 reseñas
+              {product.reviews.total} reseñas
             </div>
 
             <Link to={product.id} className='text-md font-normal text-orange-600'>

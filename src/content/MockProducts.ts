@@ -6,6 +6,19 @@ export const mockProducts: Product[] = [
     productUrl: "https://example.com/products/audifonos-pro-x",
     rating: 4.7,
     product_external_id: "ext-1001",
+    reviews: {
+      reviews: [],
+      total: 4,
+      trend:10,
+      growth: "positive",
+      reviewsRatings: [
+        { stars: 5, percentage: 0, count: 0},
+        { stars: 4, percentage: 50, count: 2},
+        { stars: 3, percentage: 50, count: 2},
+        { stars: 2, percentage: 0, count: 0},
+        { stars: 1, percentage: 0, count: 0},
+      ]
+    }
   },
   {
     id: "2",
@@ -14,6 +27,19 @@ export const mockProducts: Product[] = [
     productUrl: "https://example.com/products/smartwatch-active-fit-2",
     rating: 4.3,
     product_external_id: "ext-1002",
+    reviews: {
+      reviews: [],
+      total: 4,
+      trend:10,
+      growth: "positive",
+      reviewsRatings: [
+        { stars: 5, percentage: 0, count: 0},
+        { stars: 4, percentage: 50, count: 2},
+        { stars: 3, percentage: 50, count: 2},
+        { stars: 2, percentage: 0, count: 0},
+        { stars: 1, percentage: 0, count: 0},
+      ]
+    }
   },
   {
     id: "3",
@@ -22,6 +48,19 @@ export const mockProducts: Product[] = [
     productUrl: "https://example.com/products/mochila-urbana-antirrobo",
     rating: 4.9,
     product_external_id: "ext-1003",
+    reviews: {
+      reviews: [],
+      total: 4,
+      trend:10,
+      growth: "positive",
+      reviewsRatings: [
+        { stars: 5, percentage: 0, count: 0},
+        { stars: 4, percentage: 50, count: 2},
+        { stars: 3, percentage: 50, count: 2},
+        { stars: 2, percentage: 0, count: 0},
+        { stars: 1, percentage: 0, count: 0},
+      ]
+    }
   },
   {
     id: "4",
@@ -30,6 +69,19 @@ export const mockProducts: Product[] = [
     productUrl: "https://example.com/products/lampara-led-minimalista",
     rating: 4.1,
     product_external_id: "ext-1004",
+    reviews: {
+      reviews: [],
+      total: 4,
+      trend:10,
+      growth: "positive",
+      reviewsRatings: [
+        { stars: 5, percentage: 0, count: 0},
+        { stars: 4, percentage: 50, count: 2},
+        { stars: 3, percentage: 50, count: 2},
+        { stars: 2, percentage: 0, count: 0},
+        { stars: 1, percentage: 0, count: 0},
+      ]
+    }
   },
   {
     id: "5",
@@ -38,6 +90,19 @@ export const mockProducts: Product[] = [
     productUrl: "https://example.com/products/teclado-mecanico-rgb-tkl",
     rating: 4.8,
     product_external_id: "ext-1005",
+    reviews: {
+      reviews: [],
+      total: 4,
+      trend:10,
+      growth: "positive",
+      reviewsRatings: [
+        { stars: 5, percentage: 0, count: 0},
+        { stars: 4, percentage: 50, count: 2},
+        { stars: 3, percentage: 50, count: 2},
+        { stars: 2, percentage: 0, count: 0},
+        { stars: 1, percentage: 0, count: 0},
+      ]
+    }
   },
   {
     id: "6",
@@ -46,5 +111,18 @@ export const mockProducts: Product[] = [
     productUrl: "https://example.com/products/silla-ergonomica-prodesk",
     rating: 4.5,
     product_external_id: "ext-1006",
+    reviews: {
+      reviews: [],
+      total: 4,
+      trend:10,
+      growth: "positive",
+      reviewsRatings: [
+        { stars: 5, percentage: 0, count: 0},
+        { stars: 4, percentage: 50, count: 2},
+        { stars: 3, percentage: 50, count: 2},
+        { stars: 2, percentage: 0, count: 0},
+        { stars: 1, percentage: 0, count: 0},
+      ]
+    }
   },
 ];

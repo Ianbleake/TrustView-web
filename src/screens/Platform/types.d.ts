@@ -63,9 +63,13 @@ type Product = {
   product_external_id: string;
   productImg?: string;
   productUrl?: string;
+  reviews: ProductReviewsData;
 }
 
 type ProductReviewsData = {
   reviews: Review[];
+  total: number;
+  trend: number;
   growth: 'positive' | 'negative';
+  reviewsRatings: StarRating[];
 }

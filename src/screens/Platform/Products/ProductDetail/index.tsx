@@ -6,6 +6,7 @@ import { StarsCount } from '@/components/StarsCount'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ArrowLeft, Camera, ExternalLink, MessageSquare, TrendingUp } from 'lucide-react'
 import { ReviewsChart } from './ReviewsChart'
+import { merge } from '@/utils/mergeStyles'
 
 export const ProductDetail = ():React.ReactElement => {
 
@@ -22,15 +23,20 @@ export const ProductDetail = ():React.ReactElement => {
     productUrl: "https://example.com/products/audifonos-pro-x",
     rating: 3.7,
     product_external_id: "ext-1001",
+    reviews: {
+      reviews: [],
+      total: 4,
+      trend:10,
+      growth: "positive",
+      reviewsRatings: [
+        { stars: 5, percentage: 0, count: 0},
+        { stars: 4, percentage: 50, count: 2},
+        { stars: 3, percentage: 50, count: 2},
+        { stars: 2, percentage: 0, count: 0},
+        { stars: 1, percentage: 0, count: 0},
+      ]
+    }
   } as Product;
-
-  const testRatings = [ //Esto se añade al producto 
-    { stars: 5, percentage: 0, count: 0},
-    { stars: 4, percentage: 50, count: 2},
-    { stars: 3, percentage: 50, count: 2},
-    { stars: 2, percentage: 0, count: 0},
-    { stars: 1, percentage: 0, count: 0},
-  ]
 
   return (
     <div className='flex flex-col flex-1 min-h-full gap-6'>
@@ -63,7 +69,7 @@ export const ProductDetail = ():React.ReactElement => {
                 <h1 className="font-heading text-2xl font-bold text-foreground">{product.productName}</h1>
                 <a href={product.productUrl} target='_blank'><ExternalLink className='text-orange-500 w-5 h-5'/></a>
               </div>
-              <StarsCount count={product.rating} />
+              <StarsCount count={product.rating} showCount />
             </div>
 
             <div className='flex flex-row items-center justify-between gap-8'>
@@ -75,7 +81,7 @@ export const ProductDetail = ():React.ReactElement => {
                 </div>
 
                 <div className='flex flex-col gap-0'>
-                  <p className='text-sm font-semibold text-gray-500'>4</p>
+                  <p className='text-sm font-semibold text-gray-500'>{product.reviews.total}</p>
                   <span className='text-sm font-semibold text-gray-500' >Reseñas</span>
                 </div>
 
@@ -83,13 +89,13 @@ export const ProductDetail = ():React.ReactElement => {
 
               <div className='flex flex-row items-center gap-3'>
 
-                <div className='p-2 rounded-full bg-green-50 border border-green-500/30'> 
-                  <TrendingUp className='h-5 w-5 m-1 text-emerald-500'/>
+                <div className={merge('p-2 rounded-full ', product.reviews.growth === "positive" ? "bg-green-50 border border-green-500/30" : "bg-red-50 border border-red-500/30" )}> 
+                  <TrendingUp className={merge("h-5 w-5 m-1", product.reviews.growth === "positive" ? "text-emerald-500" : "text-red-500")}/>
                 </div>
 
                 <div className='flex flex-col gap-0'>
-                  <p className='text-sm font-semibold text-gray-500'>4</p>
-                  <span className='text-sm font-semibold text-gray-500' >Promedio</span>
+                  <p className={merge('text-sm font-semibold text-gray-500',product.reviews.growth === "positive" ? "text-emerald-600" : "text-red-500")}>{product.reviews.growth === "positive" ? "+" : "-"}{ product.reviews.trend }%</p>
+                  <span className='text-sm font-semibold text-gray-500'>Este mes</span>
                 </div>
 
               </div>
@@ -100,11 +106,11 @@ export const ProductDetail = ():React.ReactElement => {
 
         </div>
 
-        <ReviewsChart ratings={testRatings} />
+        <ReviewsChart ratings={product.reviews.reviewsRatings} />
 
       </Card>
 
-      <ReviewsTabs reviews={[]}/>
+      <ReviewsTabs reviews={product.reviews.reviews}/>
 
     </div>
   )
