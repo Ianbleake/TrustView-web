@@ -57,19 +57,19 @@ type WidgetStyles = {
 };
 
 type Product = {
-  id: string;
-  productName: string;
-  rating: number;
-  product_external_id: string;
-  productImg?: string;
-  productUrl?: string;
-  reviews: ProductReviewsData;
+  id: string; // DB
+  productName: string; // DB
+  rating: number; // DB
+  product_external_id: string; // DB
+  productImg?: string; // DB
+  productUrl?: string; // DB
+  reviews: ProductReviewsData; // Back
 }
 
 type ProductReviewsData = {
-  reviews: Review[];
-  total: number;
-  trend: number;
-  growth: 'positive' | 'negative';
-  reviewsRatings: StarRating[];
+  reviews: Review[]; // Back
+  total: number; // Back
+  trend: number; // Back
+  growth: 'positive' | 'negative'; // Back
+  reviewsRatings: StarRating[]; // Back
 }
