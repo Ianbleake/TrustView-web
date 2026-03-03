@@ -18,7 +18,7 @@ export const Products = ():React.ReactElement => {
 
       <div className='flex flex-row items-center justify-between'>
 
-        <PageTitle title='Productos' subtitle='Gestiona tus reseñas desde cada uno de tus productos.'/>
+        <PageTitle title='Productos' subtitle='Gestiona tus reseñas desde cada uno de tus productos.' info='Los productos que aparecen aqui, son unicamente aquellos que ya han sido reseñados.'/>
 
         <div className="flex flex-1 items-center justify-end gap-4 animate-fade-in" style={{ animationDelay: "100ms" }}>
 

@@ -30,7 +30,6 @@ export const ReviewsTabs = ({
   reviews,
 }: ReviewTabsProps ):React.ReactElement => {
 
-
   const { filter, setFilter, sortBy, setSortBy, search, setSearch } = useReviewStore();
 
   const filteredReviews = React.useMemo(() => {
