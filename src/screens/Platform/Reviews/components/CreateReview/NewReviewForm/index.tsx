@@ -53,7 +53,7 @@ export const NewReviewForm = ({
 
     const formattedData:NewReviewPayload = {
       store_id: store?.id,
-      product_id: data.productId,
+      product_external_id: data.productId,
       product_name: data.product,
       author_name: data.author,
       rating: data.rating,

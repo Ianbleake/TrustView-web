@@ -1,7 +1,7 @@
 import { toast } from "sonner";
 
 const TEMPLATE_HEADERS = [
-  "product_id",
+  "product_external_id",
   "product_name",
   "product_url",
   "author_name",

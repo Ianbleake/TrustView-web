@@ -22,7 +22,7 @@ type hideReviewResponse = approbeReviewResponse;
 
 type NewReviewPayload = {
   store_id: string | undefined;
-  product_id: string;
+  product_external_id: string;
   product_name?: string | null;
   author_name: string;
   rating: number;
