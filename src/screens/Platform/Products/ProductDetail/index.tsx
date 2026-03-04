@@ -18,8 +18,10 @@ export const ProductDetail = ():React.ReactElement => {
 
   const product =   {
     id: "1",
-    productImg: "https://picsum.photos/seed/product-1/400/400",
-    productName: "Audífonos Inalámbricos Pro X",
+    store_id: "",
+    store_external_id: "",
+    product_img: "https://picsum.photos/seed/product-1/400/400",
+    product_name: "Audífonos Inalámbricos Pro X",
     productUrl: "https://example.com/products/audifonos-pro-x",
     rating: 3.7,
     product_external_id: "ext-1001",
@@ -54,8 +56,8 @@ export const ProductDetail = ():React.ReactElement => {
 
           <div className="h-40 w-40 flex items-center justify-center shrink-0 rounded-xl overflow-hidden bg-gray-200/50 border border-gray-200 ">
               {
-                product.productImg ? (
-                  <img src={product.productImg} alt={product.productName} className="h-full w-full object-cover rounded-xl" />
+                product.product_img ? (
+                  <img src={product.product_img} alt={product.product_name} className="h-full w-full object-cover rounded-xl" />
                 ) : (
                   <Camera className='h-20 w-20 text-gray-500/50'/>
                 )
@@ -66,8 +68,8 @@ export const ProductDetail = ():React.ReactElement => {
 
             <div className='flex flex-col gap-1'>
               <div className='flex flex-row items-center gap-3'>
-                <h1 className="font-heading text-2xl font-bold text-foreground">{product.productName}</h1>
-                <a href={product.productUrl} target='_blank'><ExternalLink className='text-orange-500 w-5 h-5'/></a>
+                <h1 className="font-heading text-2xl font-bold text-foreground">{product.product_name}</h1>
+                <a href={product.product_url} target='_blank'><ExternalLink className='text-orange-500 w-5 h-5'/></a>
               </div>
               <StarsCount count={product.rating} showCount />
             </div>

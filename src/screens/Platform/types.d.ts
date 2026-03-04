@@ -57,12 +57,14 @@ type WidgetStyles = {
 };
 
 type Product = {
-  id: string; // DB
-  productName: string; // DB
-  rating: number; // DB
-  product_external_id: string; // DB
-  productImg?: string; // DB
-  productUrl?: string; // DB
+  id: string; // DB 
+  store_id: string; //DB
+  store_external_id: string // DB - Widget Provided 
+  product_name: string; // DB - Widget Provided
+  product_external_id: string; // DB - Widget Provided
+  product_img?: string; // DB - Widget Provided
+  product_url?: string; // DB - Widget Provided
+  rating: number; // Back
   reviews: ProductReviewsData; // Back
 }
 

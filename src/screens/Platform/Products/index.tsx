@@ -10,7 +10,7 @@ export const Products = ():React.ReactElement => {
   const [search, setSearch] = useState("");
 
   const filtered = mockProducts.filter(p =>
-    p.productName.toLowerCase().includes(search.toLowerCase())
+    p.product_name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -43,7 +43,7 @@ export const Products = ():React.ReactElement => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-3">
         {
           filtered.map((product) => (
-            <div key={product.productName} className="mx-2">
+            <div key={product.product_name} className="mx-2">
               <ProductCard  product={product} />
             </div>
           ))

@@ -1,9 +1,8 @@
-import { Card } from '@/components/ui/card'
-import { ExternalLink, MessageSquare, Shirt } from 'lucide-react'
-import React from 'react'
-import { StarsCount } from '../StarsCount';
+import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { StarsCount } from '../StarsCount';
+import { Card } from '@/components/ui/card';
+import { ExternalLink, MessageSquare, Shirt } from 'lucide-react';
 
 type ProductCardProps = {
   product: Product
@@ -19,8 +18,8 @@ export const ProductCard = ({
 
         <div className="h-60 bg-gray-50 flex items-center justify-center border-b border-gray-100">
           {
-            product.productImg ? (
-              <img className='h-full w-full object-cover' src={product.productImg} alt={product.productName}/>
+            product.product_img ? (
+              <img className='h-full w-full object-cover' src={product.product_img} alt={product.product_name}/>
             ) : (
               <Shirt className="h-20 w-20 text-gray-300" />
             )
@@ -32,10 +31,10 @@ export const ProductCard = ({
           <div className='flex flex-row gap-2 items-center justify-between'>
 
             <h2 className="text-base font-semibold text-gray-900 max-w-2/3">
-              { product.productName }
+              { product.product_name }
             </h2>
 
-            <a href={product.productUrl || "#"} target='_blank' className=''>
+            <a href={product.product_url || "#"} target='_blank' className=''>
               <ExternalLink className='text-orange-600 '/>
             </a>
           </div>
