@@ -8,11 +8,10 @@ import {
 import { Input } from '@/components/ui/input'
 import { useReviewStore } from '@/storage/reviewStorage';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Check, EyeClosed, Hourglass, Search, Star, ArrowUpDown, ArrowUp, ArrowDown, HeartMinus, HeartPlus, type LucideIcon } from 'lucide-react'
-import { EmptyReviews } from '@/screens/Platform/Reviews/components/EmptyReviews';
 import { ReviewsGrid } from '@/screens/Platform/Reviews/components/ReviewsGrid';
-
+import { EmptyReviews } from '@/screens/Platform/Reviews/components/EmptyReviews';
 type SortState = | "newest" | "oldest" | "rating_high" | "rating_low" | "author_az";
+import { Check, EyeClosed, Hourglass, Search, Star, ArrowUpDown, ArrowUp, ArrowDown, HeartMinus, HeartPlus, type LucideIcon } from 'lucide-react'
 
 const sortConfig: Record<SortState, { label: string; icon: LucideIcon }> = {
   newest: { label: "Más recientes", icon: ArrowDown },
