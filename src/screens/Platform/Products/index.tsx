@@ -1,18 +1,15 @@
-import { Package, RefreshCcw, Search } from 'lucide-react'
 import React, { useState } from 'react'
+import { Nodata } from '@/components/NoData'
 import { Input } from '@/components/ui/input'
 import { PageTitle } from '@/components/PageTitle'
-import { useSkeleton } from '@/storage/skeletonTest'
 import { ProductCard } from '@/components/ProductCard'
 import useProducts from '@/hooks/products/useProducts'
+import { Package, RefreshCcw, Search } from 'lucide-react'
 import { ProductsSkeleton } from '@/components/skeletons/ProductsSkeleton'
-import { Nodata } from '@/components/NoData'
 
 export const Products = ():React.ReactElement => {
 
   const [search, setSearch] = useState("");
-
-  const { isTesting } = useSkeleton();
 
   const { isLoading, products } = useProducts(); 
 
@@ -20,7 +17,7 @@ export const Products = ():React.ReactElement => {
     return <ProductsSkeleton/>
   }
 
-  if(!isTesting){
+  if(!products){
     return(
       <Nodata title='No hay productos' description='Aun no tienes productos registrados o algo salio mal.' icon={Package} action={() => window.location.reload()} actionLabel={"Volver a intentar"} actionIcon={RefreshCcw} />
     )

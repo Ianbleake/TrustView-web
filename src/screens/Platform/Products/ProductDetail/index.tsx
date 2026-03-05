@@ -1,13 +1,15 @@
 import React from 'react'
 import { Card } from '@/components/ui/card'
 import { ReviewsTabs } from './ReviewsTabs'
+import { merge } from '@/utils/mergeStyles'
+import { Nodata } from '@/components/NoData'
+import { ReviewsChart } from './ReviewsChart'
 import { Button } from '@/components/ui/button'
 import { StarsCount } from '@/components/StarsCount'
-import { useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, Camera, ExternalLink, MessageSquare, TrendingUp } from 'lucide-react'
-import { ReviewsChart } from './ReviewsChart'
-import { merge } from '@/utils/mergeStyles'
 import useProduct from '@/hooks/products/useProduct'
+import { useNavigate, useParams } from 'react-router-dom'
+import { ArrowLeft, Camera, ExternalLink, MessageSquare, Package, RefreshCcw, TrendingUp } from 'lucide-react'
+import { ProductDetailSkeleton } from '@/components/skeletons/ProductDetailSkeleton'
 
 export const ProductDetail = ():React.ReactElement => {
 
@@ -17,25 +19,15 @@ export const ProductDetail = ():React.ReactElement => {
 
   const { isLoading, product } = useProduct(productId || "" );
 
-  if(!productId){
-    return(
-      <div>
-        producto no encontrado.
-      </div>
-    )
-  }
-
   if(isLoading){
     return(
-      <div>
-        Loading...
-      </div>
+      <ProductDetailSkeleton/>
     )
   }
 
-  if(!product){
+  if(!product || !productId){
     return(
-      <div>No data</div>
+      <Nodata title='No encontramos el producto...' description='Algo salio mal al obtener la informacion del producto...' icon={Package} action={() => window.location.reload()} actionLabel={"Volver a intentar"} actionIcon={RefreshCcw} />
     )
   }
 
@@ -66,11 +58,14 @@ export const ProductDetail = ():React.ReactElement => {
           <div className="flex flex-col items-start gap-7">
 
             <div className='flex flex-col gap-1'>
+
               <div className='flex flex-row items-center gap-3'>
                 <h1 className="font-heading text-2xl font-bold text-foreground">{product.product_name}</h1>
                 <a href={product.product_url} target='_blank'><ExternalLink className='text-orange-500 w-5 h-5'/></a>
               </div>
+
               <StarsCount count={product.rating} showCount />
+
             </div>
 
             <div className='flex flex-row items-center justify-between gap-8'>
