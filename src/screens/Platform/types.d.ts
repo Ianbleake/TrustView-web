@@ -57,21 +57,21 @@ type WidgetStyles = {
 };
 
 type Product = {
-  id: string; // DB 
-  store_id: string; //DB
-  store_external_id: string // DB - Widget Provided 
-  product_name: string; // DB - Widget Provided
-  product_external_id: string; // DB - Widget Provided
-  product_img?: string; // DB - Widget Provided
-  product_url?: string; // DB - Widget Provided
-  rating: number; // Back
-  reviews: ProductReviewsData; // Back
+  id: string; 
+  store_id: string; 
+  store_external_id: string 
+  product_name: string; 
+  product_external_id: string; 
+  product_img?: string; 
+  product_url?: string; 
+  rating: number; st
+  reviews: ProductReviewsData; 
 }
 
 type ProductReviewsData = {
-  reviews: Review[]; // Back
-  total: number; // Back
-  trend: number; // Back
-  growth: 'positive' | 'negative'; // Back
-  reviewsRatings: StarRating[]; // Back
+  reviews: Review[]; 
+  total: number; 
+  trend: number; 
+  growth: 'positive' | 'negative'; 
+  reviewsRatings: StarRating[]; 
 }

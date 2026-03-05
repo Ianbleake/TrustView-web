@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { ArrowLeft, Camera, ExternalLink, MessageSquare, TrendingUp } from 'lucide-react'
 import { ReviewsChart } from './ReviewsChart'
 import { merge } from '@/utils/mergeStyles'
+import useProduct from '@/hooks/products/useProduct'
 
 export const ProductDetail = ():React.ReactElement => {
 
@@ -14,31 +15,29 @@ export const ProductDetail = ():React.ReactElement => {
 
   const { id:productId } = useParams();
 
-  console.log("productId:",productId)
+  const { isLoading, product } = useProduct(productId || "" );
 
-  const product =   {
-    id: "1",
-    store_id: "",
-    store_external_id: "",
-    product_img: "https://picsum.photos/seed/product-1/400/400",
-    product_name: "Audífonos Inalámbricos Pro X",
-    productUrl: "https://example.com/products/audifonos-pro-x",
-    rating: 3.7,
-    product_external_id: "ext-1001",
-    reviews: {
-      reviews: [],
-      total: 4,
-      trend:10,
-      growth: "positive",
-      reviewsRatings: [
-        { stars: 5, percentage: 0, count: 0},
-        { stars: 4, percentage: 50, count: 2},
-        { stars: 3, percentage: 50, count: 2},
-        { stars: 2, percentage: 0, count: 0},
-        { stars: 1, percentage: 0, count: 0},
-      ]
-    }
-  } as Product;
+  if(!productId){
+    return(
+      <div>
+        producto no encontrado.
+      </div>
+    )
+  }
+
+  if(isLoading){
+    return(
+      <div>
+        Loading...
+      </div>
+    )
+  }
+
+  if(!product){
+    return(
+      <div>No data</div>
+    )
+  }
 
   return (
     <div className='flex flex-col flex-1 min-h-full gap-6'>
@@ -57,7 +56,7 @@ export const ProductDetail = ():React.ReactElement => {
           <div className="h-40 w-40 flex items-center justify-center shrink-0 rounded-xl overflow-hidden bg-gray-200/50 border border-gray-200 ">
               {
                 product.product_img ? (
-                  <img src={product.product_img} alt={product.product_name} className="h-full w-full object-cover rounded-xl" />
+                  <img src={product.product_img} alt={product.product_name} className="h-full w-full object-contain rounded-xl" />
                 ) : (
                   <Camera className='h-20 w-20 text-gray-500/50'/>
                 )

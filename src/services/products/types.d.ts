@@ -6,6 +6,6 @@ type GetProductsResponse = {
 
 type GetProductResponse = {
   success: boolean;
-  data: Product[];
+  data: Product;
   meta: undefined;
 }

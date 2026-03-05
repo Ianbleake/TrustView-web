@@ -1,7 +1,7 @@
 import { PageTitle } from '@/components/PageTitle'
 import { ProductCard } from '@/components/ProductCard'
 import { Input } from '@/components/ui/input'
-import { mockProducts } from '@/content/MockProducts'
+import useProducts from '@/hooks/products/useProducts'
 import { Search } from 'lucide-react'
 import React, { useState } from 'react'
 
@@ -9,7 +9,21 @@ export const Products = ():React.ReactElement => {
 
   const [search, setSearch] = useState("");
 
-  const filtered = mockProducts.filter(p =>
+  const { isLoading, products } = useProducts(); 
+
+  console.log("products:",products)
+
+  if(isLoading){
+    return <div>Loading...</div>
+  }
+
+  if(!products){
+    return(
+      <div>No data</div>
+    )
+  }
+
+  const filtered = products.filter(p =>
     p.product_name.toLowerCase().includes(search.toLowerCase())
   );
 

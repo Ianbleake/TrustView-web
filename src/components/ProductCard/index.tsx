@@ -19,7 +19,7 @@ export const ProductCard = ({
         <div className="h-60 bg-gray-50 flex items-center justify-center border-b border-gray-100">
           {
             product.product_img ? (
-              <img className='h-full w-full object-cover' src={product.product_img} alt={product.product_name}/>
+              <img className='h-full w-full object-contain' src={product.product_img} alt={product.product_name}/>
             ) : (
               <Shirt className="h-20 w-20 text-gray-300" />
             )
