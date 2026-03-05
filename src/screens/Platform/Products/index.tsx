@@ -1,25 +1,28 @@
-import { PageTitle } from '@/components/PageTitle'
-import { ProductCard } from '@/components/ProductCard'
-import { Input } from '@/components/ui/input'
-import useProducts from '@/hooks/products/useProducts'
-import { Search } from 'lucide-react'
+import { Package, RefreshCcw, Search } from 'lucide-react'
 import React, { useState } from 'react'
+import { Input } from '@/components/ui/input'
+import { PageTitle } from '@/components/PageTitle'
+import { useSkeleton } from '@/storage/skeletonTest'
+import { ProductCard } from '@/components/ProductCard'
+import useProducts from '@/hooks/products/useProducts'
+import { ProductsSkeleton } from '@/components/skeletons/ProductsSkeleton'
+import { Nodata } from '@/components/NoData'
 
 export const Products = ():React.ReactElement => {
 
   const [search, setSearch] = useState("");
 
+  const { isTesting } = useSkeleton();
+
   const { isLoading, products } = useProducts(); 
 
-  console.log("products:",products)
-
   if(isLoading){
-    return <div>Loading...</div>
+    return <ProductsSkeleton/>
   }
 
-  if(!products){
+  if(!isTesting){
     return(
-      <div>No data</div>
+      <Nodata title='No hay productos' description='Aun no tienes productos registrados o algo salio mal.' icon={Package} action={() => window.location.reload()} actionLabel={"Volver a intentar"} actionIcon={RefreshCcw} />
     )
   }
 
@@ -54,7 +57,7 @@ export const Products = ():React.ReactElement => {
 
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-3 animate-fade-in" style={{ animationDelay: "200ms" }}>
         {
           filtered.map((product) => (
             <div key={product.product_name} className="mx-2">

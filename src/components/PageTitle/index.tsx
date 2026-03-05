@@ -14,6 +14,7 @@ export const PageTitle = ({
 }:PageTitleProps ):React.ReactElement => {
   return (
     <div className='flex flex-col items-start justify-start gap-1'>
+
       <div className='flex flex-row items-center gap-2'> 
         <h1 className="text-2xl font-bold font-heading text-gray-900">
           {title}
@@ -26,6 +27,7 @@ export const PageTitle = ({
           )
         }
       </div>
+      
       <p className="font-normal text-sm text-gray-400">
         {subtitle}
       </p>
