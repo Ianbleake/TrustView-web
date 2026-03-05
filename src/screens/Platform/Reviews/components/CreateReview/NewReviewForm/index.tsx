@@ -61,7 +61,7 @@ export const NewReviewForm = ({
       content: data.content,
       image_url: null,
       product_url: data.productUrl,
-      tienda_nube_user_id: store?.tienda_nube_user_id || ""
+      tienda_nube_user_id: String(store?.tienda_nube_user_id) || ""
     }
 
     createReview(formattedData, {
