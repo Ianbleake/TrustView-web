@@ -13,6 +13,7 @@ export default function useHideReview():UseMutationResult<approbeReviewResponse,
     mutationKey: ["hideReview"],
     mutationFn: hideReview,
     onSuccess: (updatedReview) => {
+
       queryClient.setQueryData<GetReviewsResponse>(
         ["reviews","all", store?.id],
         (old) => {
@@ -28,6 +29,10 @@ export default function useHideReview():UseMutationResult<approbeReviewResponse,
           };
         }
       );
+
+      queryClient.invalidateQueries({
+        queryKey: ["getProduct"]
+      });
     
       toast.success("Reseña actualizada correctamente");
     },    

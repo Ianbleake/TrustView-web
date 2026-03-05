@@ -27,6 +27,10 @@ export default function useApprobeReview(): UseMutationResult<approbeReviewRespo
           };
         }
       );
+
+      queryClient.invalidateQueries({
+        queryKey: ["getProduct"]
+      });
     
       toast.success("Reseña aprobada correctamente");
     },    
