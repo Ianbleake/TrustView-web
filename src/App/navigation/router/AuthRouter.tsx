@@ -4,8 +4,6 @@ import { Login } from "@/screens/Auth/Login";
 import { Password } from "@/screens/Auth/Password";
 import { Register } from "@/screens/Auth/Register";
 import { AuthLayout } from "@/components/AuthLayout";
-import { Checkout } from "@/screens/Checkout";
-import { CheckoutReturn } from "@/screens/Checkout/Return";
 
 export const AuthRouter = (): React.ReactElement => {
   return (
@@ -26,16 +24,6 @@ export const AuthRouter = (): React.ReactElement => {
       <Route
         path="onboarding"
         element={<Register />}
-      />
-
-      <Route
-        path="checkout"
-        element={<Checkout/>}
-      />
-
-      <Route
-        path="return"
-        element={<CheckoutReturn/>}
       />
 
     </Route>

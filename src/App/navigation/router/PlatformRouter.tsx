@@ -8,8 +8,6 @@ import { Widget } from "@/screens/Platform/Widget";
 import { Products } from "@/screens/Platform/Products";
 import { Howitworks } from "@/screens/Platform/Howitworks";
 import { ProductDetail } from "@/screens/Platform/Products/ProductDetail";
-import { Checkout } from "@/screens/Checkout";
-import { CheckoutReturn } from "@/screens/Checkout/Return";
 
 export const PlatformRouter = (): React.ReactElement => {
   return (
@@ -50,16 +48,6 @@ export const PlatformRouter = (): React.ReactElement => {
       <Route
         path="howitworks"
         element={<Howitworks/>}
-      />
-
-      <Route
-        path="checkout"
-        element={<Checkout/>}
-      />
-
-      <Route
-        path="return"
-        element={<CheckoutReturn/>}
       />
 
     </Route>
