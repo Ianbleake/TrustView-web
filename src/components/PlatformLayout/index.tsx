@@ -1,7 +1,7 @@
 import type React from "react";
 import { SidebarProvider } from "../ui/sidebar";
 import { AppSidebar } from "./components/AppSidebar";
-import { SkeletonTest } from "../skeletons/SkeletonTest";
+// import { SkeletonTest } from "../skeletons/SkeletonTest";
 import { useSessionStorage } from "@/storage/authStorage";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { MobileSidebar } from "./components/AppSidebar/components/MobileSidebar";
@@ -41,7 +41,7 @@ export const PlatformLayout = (): React.ReactElement => {
       <main className="w-full flex flex-col bg-gray-100 min-h-screen">
         <section className="py-4 px-16 flex-1 relative">
           <Outlet />
-          <SkeletonTest/>
+          {/* <SkeletonTest/> */}
         </section>
       </main>
 
