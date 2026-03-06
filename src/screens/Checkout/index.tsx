@@ -19,7 +19,7 @@ export const Checkout = ():React.ReactElement => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          priceId: "price_123"
+          priceId: "price_1T83p4A3FhIob0i9Vce9BWjI"
         })
       }
     );
