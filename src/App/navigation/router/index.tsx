@@ -5,6 +5,7 @@ import { NotFound } from "@/screens/NotFound";
 import { Route, Routes } from "react-router-dom";
 import { PlatformRouter } from "./PlatformRouter";
 import { LandingRouter } from "./LandingRouter";
+import { CheckoutRouter } from "./CheckoutRouter";
 
 
 export const AppRouter = (): React.ReactElement => {
@@ -15,6 +16,7 @@ export const AppRouter = (): React.ReactElement => {
       {AdminRouter()}
       {LandingRouter()}
       {PlatformRouter()}
+      {CheckoutRouter()}
 
       <Route
         path="*"
