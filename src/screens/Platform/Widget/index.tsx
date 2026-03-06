@@ -108,40 +108,48 @@ export const Widget = (): React.ReactElement => {
             </Button>
           )}
 
-          {isEditing && (
-            isPro ? (
-              <Button
-                variant="gradient"
-                size="sm"
-                className="flex items-center gap-3 min-w-45"
-                onClick={handleSubmit(onSubmit)}
-                disabled={isPending}
-              >
-                {isPending ? (
-                  <Spinner />
-                ) : (
-                  <>
-                    Guardar Cambios
-                    <Save />
-                  </>
+          {
+            !popup ? (
+              <>
+                {isEditing && (
+                  isPro ? (
+                    <Button
+                      variant="gradient"
+                      size="sm"
+                      className="flex items-center gap-3 min-w-45"
+                      onClick={handleSubmit(onSubmit)}
+                      disabled={isPending}
+                    >
+                      {isPending ? (
+                        <Spinner />
+                      ) : (
+                        <>
+                          Guardar Cambios
+                          <Save />
+                        </>
+                      )}
+                    </Button>
+                  ) : (
+                    <DisabledSave />
+                  )
                 )}
-              </Button>
-            ) : (
-              <DisabledSave />
-            )
-          )}
 
-          
-          {isEditing && (
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => setEdit(false)}
-            >
-              Cancelar
-              <Ban />
-            </Button>
-          )}
+                
+                {isEditing && (
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => setEdit(false)}
+                  >
+                    Cancelar
+                    <Ban />
+                  </Button>
+                )}
+              </>
+            ) : (
+              <></>
+            )
+          }
 
         </div>
       </div>
@@ -149,16 +157,15 @@ export const Widget = (): React.ReactElement => {
       {edit && (
 
         <div className={merge(popup && "sticky top-3 z-50 -mt-180 flex justify-center")}>
+          <Card
+            className={merge(
+              "p-6 animate-fade-in transition-all duration-500 ease-in-out relative",
+              popup && "py-24 h-180 w-120 shadow-2xl",
+              popup && (popPosition ? "translate-x-85" : "-translate-x-85")
+            )}
+          >
 
-        <Card
-          className={merge(
-            "p-6 animate-fade-in transition-all duration-500 ease-in-out",
-            popup && "pt-20 h-180 w-120 shadow-2xl",
-            popup && (popPosition ? "translate-x-75" : "-translate-x-75")
-          )}
-        >
-
-            <div className={merge("", popup ? "flex w-full items-center justify-between pr-12 py-3 fixed top-2" : "")}>
+            <div className={merge("", popup ? "flex w-106 items-center justify-between py-3 fixed top-2 border-b border-gray-200" : "")}>
 
               <button
                 onClick={() => setPopup(!popup)}
@@ -468,6 +475,51 @@ export const Widget = (): React.ReactElement => {
               </div>
 
             </form>
+
+            {
+              popup ? (
+                <div className={merge("", popup ? "flex flex-row-reverse w-106 items-center justify-between py-4 fixed bottom-2 border-t border-gray-200" : "")}>
+                
+                    {isEditing && (
+                      isPro ? (
+                        <Button
+                          variant="gradient"
+                          size="sm"
+                          className="flex items-center gap-3 min-w-45"
+                          onClick={handleSubmit(onSubmit)}
+                          disabled={isPending}
+                        >
+                          {isPending ? (
+                            <Spinner />
+                          ) : (
+                            <>
+                              Guardar Cambios
+                              <Save />
+                            </>
+                          )}
+                        </Button>
+                      ) : (
+                        <DisabledSave />
+                      )
+                    )}
+
+                    
+                    {isEditing && (
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => setEdit(false)}
+                      >
+                        Cancelar
+                        <Ban />
+                      </Button>
+                    )}
+                  
+                </div>
+              ) : (
+                <></>
+              )
+            }
 
           </Card>
         </div>

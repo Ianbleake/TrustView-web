@@ -6,7 +6,7 @@ import useLastReviews from '@/hooks/reviews/useLastReviews';
 import { Shirt } from 'lucide-react';
 import { StarsRating } from '../../StarsRating';
 import { ProductPageWidgetSkeleton } from '@/components/skeletons/ProductPageWidgetSkeleton';
-
+import { mockReviews } from '@/content/MockReviews';
 
 type ReviewsGridProps = {
   widgetConfig: WidgetStyles;
@@ -17,6 +17,8 @@ export const ReviewsGrid = ({
 }:ReviewsGridProps ):React.ReactElement => {
 
   const { lastReviews, isLoading } = useLastReviews();
+
+  const widgetReviews = lastReviews?.length ? lastReviews : mockReviews;
   
 
   if (isLoading) {
@@ -88,7 +90,7 @@ export const ReviewsGrid = ({
         </div>
 
         <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {lastReviews?.map((review) => (
+          {widgetReviews?.map((review) => (
             <ReviewCardWidget
               key={review.id}
               review={review}
