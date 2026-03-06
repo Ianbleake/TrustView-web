@@ -8,6 +8,8 @@ import { Widget } from "@/screens/Platform/Widget";
 import { Products } from "@/screens/Platform/Products";
 import { Howitworks } from "@/screens/Platform/Howitworks";
 import { ProductDetail } from "@/screens/Platform/Products/ProductDetail";
+import { Checkout } from "@/screens/Checkout";
+import { CheckoutReturn } from "@/screens/Checkout/Return";
 
 export const PlatformRouter = (): React.ReactElement => {
   return (
@@ -21,33 +23,43 @@ export const PlatformRouter = (): React.ReactElement => {
       />
 
       <Route
-        path="/platform/reviews"
+        path="reviews"
         element={<Reviews/>}
       />
 
       <Route
-        path="/platform/settings"
+        path="settings"
         element={<Settings/>}
       />
 
       <Route
-        path="/platform/widget"
+        path="widget"
         element={<Widget/>}
       />
 
       <Route
-        path="/platform/products"
+        path="products"
         element={<Products/>}
       />
 
       <Route
-        path="/platform/products/:id"
+        path="products/:id"
         element={<ProductDetail/>}
       />
 
       <Route
-        path="/platform/howitworks"
+        path="howitworks"
         element={<Howitworks/>}
+      />
+
+      <Route
+        path="checkout"
+        element={<Checkout/>}
+      />
+
+      <Route
+        path="return"
+        element={<CheckoutReturn/>}
       />
 
     </Route>
