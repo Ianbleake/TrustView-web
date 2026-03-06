@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const envApiUrl = import.meta.env.VITE_ENV_SCOPE === "PROD" ? import.meta.env.VITE_API_URL : import.meta.env.VITE_DEV_API_URL;
+
 export const CheckoutReturn = ():React.ReactElement => {
 
   const [status, setStatus] = useState<string | null>(null);
@@ -11,7 +13,7 @@ export const CheckoutReturn = ():React.ReactElement => {
     const sessionId = params.get("session_id");
 
     fetch(
-      `${import.meta.env.VITE_API_URL}/checkout/session-status?session_id=${sessionId}`
+      `${envApiUrl}/checkout/session-status?session_id=${sessionId}`
     )
       .then(res => res.json())
       .then(data => {

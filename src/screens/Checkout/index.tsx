@@ -5,6 +5,8 @@ import {
   EmbeddedCheckout
 } from "@stripe/react-stripe-js";
 
+const envApiUrl = import.meta.env.VITE_ENV_SCOPE === "PROD" ? import.meta.env.VITE_API_URL : import.meta.env.VITE_DEV_API_URL;
+
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 export const Checkout = ():React.ReactElement => {
@@ -12,7 +14,7 @@ export const Checkout = ():React.ReactElement => {
   const fetchClientSecret = useCallback(async () => {
 
     const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/checkout/create-checkout-session`,
+      `${envApiUrl}/checkout/create-checkout-session`,
       {
         method: "POST",
         headers: {

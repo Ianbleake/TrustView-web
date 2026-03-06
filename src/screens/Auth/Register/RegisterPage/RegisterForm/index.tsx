@@ -22,6 +22,8 @@ type RegisterValues = {
 
 export const RegisterForm = (): React.ReactElement => {
 
+  const envApiUrl = import.meta.env.VITE_ENV_SCOPE === "PROD" ? import.meta.env.VITE_API_URL : import.meta.env.VITE_DEV_API_URL;
+
   const [showPass, setShowPass] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -48,7 +50,7 @@ export const RegisterForm = (): React.ReactElement => {
       setErrorMsg(null);
 
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/onboarding/complete`,
+        `${envApiUrl}/onboarding/complete`,
         {
           storeId,
           storeName: data.storeName,
