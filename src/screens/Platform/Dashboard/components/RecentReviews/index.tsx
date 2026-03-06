@@ -29,7 +29,7 @@ export const RecentReviews = ():React.ReactElement => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {
           lastReviews && lastReviews.length > 0 ? (
-            lastReviews.map((review) => {
+            lastReviews.slice(0,6).map((review) => {
               return (
                 <ReviewCard key={review.id} review={review} />
               )
