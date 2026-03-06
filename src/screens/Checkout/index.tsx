@@ -6,8 +6,9 @@ import {
 } from "@stripe/react-stripe-js";
 
 const envApiUrl = import.meta.env.VITE_ENV_SCOPE === "PROD" ? import.meta.env.VITE_API_URL : import.meta.env.VITE_DEV_API_URL;
+const envStripeKey = import.meta.env.VITE_ENV_SCOPE === "PROD" ? import.meta.env.VITE_STRIPE_PUBLIC_KEY : import.meta.env.VITE_DEV_STRIPE_PUBLIC_KEY;
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(envStripeKey);
 
 export const Checkout = ():React.ReactElement => {
 
