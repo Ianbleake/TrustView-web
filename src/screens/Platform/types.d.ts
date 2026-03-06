@@ -64,7 +64,7 @@ type Product = {
   product_external_id: string; 
   product_img?: string; 
   product_url?: string; 
-  rating: number; st
+  rating: number;
   reviews: ProductReviewsData; 
 }
 
