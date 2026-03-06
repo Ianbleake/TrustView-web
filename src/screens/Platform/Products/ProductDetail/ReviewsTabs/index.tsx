@@ -146,10 +146,12 @@ export const ReviewsTabs = ({
 
       </div>
 
-      <TabsContent value={filter} className="flex flex-1">
+      <TabsContent value={filter}>
         {
           !filteredReviews || filteredReviews.length <= 0 ? (
-            <EmptyReviews/>
+            <div className="flex flex-1">
+              <EmptyReviews/>
+            </div>
           ) : (
             <ReviewsGrid reviews={filteredReviews} />
           ) 

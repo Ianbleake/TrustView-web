@@ -9,7 +9,7 @@ export const ReviewsGrid = ({
   reviews,
 }: ReviewsGrid): React.ReactElement => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in flex-1">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in w-full h-fit">
       {reviews.map((review) => (
         <ReviewCard key={review.id} review={review} />
       ))}
