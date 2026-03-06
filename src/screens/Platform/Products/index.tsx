@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Nodata } from '@/components/NoData'
 import { Input } from '@/components/ui/input'
 import { PageTitle } from '@/components/PageTitle'
-import { ProductCard } from '@/components/ProductCard'
 import useProducts from '@/hooks/products/useProducts'
 import { Package, RefreshCcw, Search } from 'lucide-react'
 import { ProductsSkeleton } from '@/components/skeletons/ProductsSkeleton'
+import { EmptyProducts } from './EmptyProducts'
+import { ProductsGrid } from './ProductsGrid'
 
 export const Products = ():React.ReactElement => {
 
@@ -28,7 +29,7 @@ export const Products = ():React.ReactElement => {
   );
 
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex h-full flex-col gap-4'>
 
       <div className='flex flex-row items-center justify-between'>
 
@@ -54,15 +55,13 @@ export const Products = ():React.ReactElement => {
 
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-3 animate-fade-in" style={{ animationDelay: "200ms" }}>
-        {
-          filtered.map((product) => (
-            <div key={product.product_name} className="mx-2">
-              <ProductCard  product={product} />
-            </div>
-          ))
-        }
-      </div>
+      {
+        !filtered || filtered.length <= 0 ? (
+          <EmptyProducts/>
+        ) : (
+          <ProductsGrid products={filtered} />
+        )
+      }
 
     </div>
   )
